@@ -8,7 +8,7 @@ class App extends Component {
     super(props)
     this.socket = io('http://localhost:1984')    
     this.state = {
-      users: 0
+      users: null
     }
 
   }
@@ -24,26 +24,33 @@ class App extends Component {
           users: data
       })
     })
+    this.socket.on('decremented', (data) => {
+      this.setState({
+          users: data
+      })
+    })
 
   }
   
 
-  iterate = () => {this.socket.emit('iterate')}
+  iterate = (inc) => {this.socket.emit('iterate')}
+  decrement = (dec) => {this.socket.emit('decrement')}
   
   render() {
 
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">
             <button
-              onClick={() => this.iterate()}>Welcome to React</button>
-          </h1>
+              onClick={inc => this.iterate()}>
+                +
+            </button>
+            <button
+              onClick={dec => this.decrement()}>
+                -
+            </button>
+          <h3>{this.state.users} </h3>
         </header>
-        <div>
-          {this.state.users}
-        </div>
       </div>
     );
   }

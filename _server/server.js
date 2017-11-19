@@ -36,13 +36,16 @@ let number = 0;
 io.on('connection', (socket) => {
   let fartTaco = api.enterHogwarts();
   // log(fartTaco)
-  let message = 'Welcome fucker';
   log('a user connected');
   socket.emit('welcome', number);
 
   socket.on('iterate', () => {
     number++
     io.sockets.emit('iterated', number)
+  })
+  socket.on('decrement', () => {
+    number--
+    io.sockets.emit('decremented', number)
   })
 
   socket.on('disconnect', () => {
