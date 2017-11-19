@@ -6,7 +6,7 @@ import io from 'socket.io-client'
 class App extends Component {
   constructor(props){
     super(props)
-    this.socket = io('http://localhost:1984')    
+    this.socket = io('http://localhost:1979')    
     this.state = { 
       number: null,
       name: null

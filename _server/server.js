@@ -5,19 +5,15 @@ const http = require('http')
 const app = express();
 const server = http.createServer(app)
 const io = require('socket.io')(server)
-const PORT = process.env.PORT || 1984
+const PORT = process.env.PORT || 1979
 const log = (stuff) => console.log(stuff)
 const api = require('./_controller/api.controller')
 const {Client} = require('pg')
+
+
 const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/mischiefmanaged'});
-// log(client)
 client.connect( (err) => {
-	if (err) {
-		log('error yo: ', err.stack)
-	} else {
-    log('connected to db')
-    // log(api.enterHogwarts)
-	}
+	if (err) { log('error yo: ', err.stack)} 
 });
 
 app.use(bodyParser.json());
@@ -28,7 +24,7 @@ app.get('*', (req, res) => {
     res.send('hi')
 });
 
-server.listen(PORT, () => log('listening on ' + PORT));
+server.listen(PORT, () => log('Shakedown ' + PORT));
 
 
 let number = 0;
@@ -45,7 +41,7 @@ io.on('connection', (socket) => {
     number++
     io.sockets.emit('iterated', number)
   })
-  
+
   socket.on('decrement', () => {
     number--
     io.sockets.emit('decremented', number)
