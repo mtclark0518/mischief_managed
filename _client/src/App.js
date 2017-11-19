@@ -7,26 +7,29 @@ class App extends Component {
   constructor(props){
     super(props)
     this.socket = io('http://localhost:1984')    
-    this.state = {
-      users: null
-    }
-
+    this.state = { 
+      number: null,
+      name: null
+     }
   }
 
   componentDidMount(){
     this.socket.on('welcome', (data) => {
+      console.log(data)
       this.setState({
-        users: data
+        name: data.name,
+        number: data.number
+
       })
     })
     this.socket.on('iterated', (data) => {
       this.setState({
-          users: data
+          number: data
       })
     })
     this.socket.on('decremented', (data) => {
       this.setState({
-          users: data
+          number: data
       })
     })
 
@@ -41,6 +44,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+        <h1>name: {this.state.name}</h1>
             <button
               onClick={inc => this.iterate()}>
                 +
@@ -49,7 +53,7 @@ class App extends Component {
               onClick={dec => this.decrement()}>
                 -
             </button>
-          <h3>{this.state.users} </h3>
+          <h3>{this.state.number} </h3>
         </header>
       </div>
     );

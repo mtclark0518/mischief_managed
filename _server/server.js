@@ -16,7 +16,7 @@ client.connect( (err) => {
 		log('error yo: ', err.stack)
 	} else {
     log('connected to db')
-    log(api.enterHogwarts)
+    // log(api.enterHogwarts)
 	}
 });
 
@@ -34,15 +34,18 @@ server.listen(PORT, () => log('listening on ' + PORT));
 let number = 0;
 
 io.on('connection', (socket) => {
-  let fartTaco = api.enterHogwarts();
-  // log(fartTaco)
   log('a user connected');
-  socket.emit('welcome', number);
+  
+  socket.emit('welcome', {
+    number: number,
+    name: 'hogwarts'
+  });
 
   socket.on('iterate', () => {
     number++
     io.sockets.emit('iterated', number)
   })
+  
   socket.on('decrement', () => {
     number--
     io.sockets.emit('decremented', number)
