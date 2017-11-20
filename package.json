@@ -1,0 +1,26 @@
+{
+    "name": "mischief_managed",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mtclark0518/mischief_managed.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mtclark0518/mischief_managed/issues"
+    },
+    "homepage": "https://github.com/mtclark0518/mischief_managed#readme",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "pg": "^7.4.0",
+        "socket.io": "^2.0.4"
+    }
+}
