@@ -4,7 +4,6 @@ import io from 'socket.io-client'
 const deploymentType = process.env.NODE_ENV
 console.log(deploymentType)
 
-serverURL()
 class App extends Component {
 
     constructor(props){
@@ -13,10 +12,15 @@ class App extends Component {
       this.socket = io()
       this.state = { 
         number: null,
-        name: null
+        name: null,
+        users: null
       }
     }
   componentDidMount(){
+    this.socket.on('update users', (data)=>{
+      console.log(data)
+      this.setState({users: data.users})
+    })
 
     this.socket.on('welcome', (data) => {
       console.log(data)
@@ -42,7 +46,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <h1>name: {this.state.name}</h1>
+        <div>users: {this.state.users}</div>
+        <h1>{this.state.name}</h1>
             <button
               onClick={inc => this.iterate()}>
                 +
@@ -51,7 +56,7 @@ class App extends Component {
               onClick={dec => this.decrement()}>
                 -
             </button>
-          <h3>{this.state.number} </h3>
+          <h3>{this.state.number}</h3>
         </header>
       </div>
     );

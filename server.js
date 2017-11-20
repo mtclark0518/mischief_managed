@@ -23,22 +23,26 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
-// app.get('*', (req, res) => {
-//     res.send('hi')
-// });
+
 
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
 
 let number = 0;
+let users = 0;
 
 
 const io = socketio(server)
 io.on('connection', (socket) => {
   log('a user connected');
+  users++
+  io.sockets.emit('update users', {
+      users: users
+  })
+
   socket.emit('welcome', {
     number: number,
-    name: 'hogwarts'
+    name: 'real-time iterator demonstration'
   })
 
   socket.on('iterate', () => {
@@ -52,7 +56,12 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-	  log('a user dipped')
+      log('a user dipped')
+      users--
+      io.sockets.emit('update users', {
+        users: users
+      })
   });
+    
 });
 
