@@ -45,7 +45,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
         <div>users: {this.state.users}</div>
         <h1>{this.state.name}</h1>
             <button
@@ -57,7 +56,6 @@ class App extends Component {
                 -
             </button>
           <h3>{this.state.number}</h3>
-        </header>
       </div>
     );
   }
