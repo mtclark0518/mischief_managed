@@ -18,14 +18,14 @@ const {Client} = require('pg')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 
-// app.use(express.static(path.join(__dirname, '_client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/_client/build/index.html'));
-// });
 app.get('*', (req, res) => {
-    res.send('hi')
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
+// app.get('*', (req, res) => {
+//     res.send('hi')
+// });
 
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
