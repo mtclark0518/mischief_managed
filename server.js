@@ -30,25 +30,24 @@ app.get('*', (req, res) => {
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
 
-// let number = 0;
+let number = 0;
 
 io.on('connection', (socket) => {
   log('a user connected');
-  socket.emit('welcome', 'hi there')
-//   socket.emit('welcome', {
-//     number: number,
-//     name: 'hogwarts'
-  
+  socket.emit('welcome', {
+    number: number,
+    name: 'hogwarts'
+  })
 
-//   socket.on('iterate', () => {
-//     number++
-//     io.sockets.emit('iterated', number)
-//   })
+  socket.on('iterate', () => {
+    number++
+    io.sockets.emit('iterated', number)
+  })
 
-//   socket.on('decrement', () => {
-//     number--
-//     io.sockets.emit('decremented', number)
-//   })
+  socket.on('decrement', () => {
+    number--
+    io.sockets.emit('decremented', number)
+  })
 
   socket.on('disconnect', () => {
 	  log('a user dipped')
