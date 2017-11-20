@@ -34,11 +34,11 @@ server.listen(PORT, () => log('Shakedown ' + PORT));
 
 io.on('connection', (socket) => {
   log('a user connected');
-  
+  socket.emit('welcome', 'hi there')
 //   socket.emit('welcome', {
 //     number: number,
 //     name: 'hogwarts'
-//   });
+  
 
 //   socket.on('iterate', () => {
 //     number++

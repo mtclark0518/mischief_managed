@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import io from 'socket.io-client'
 
 class App extends Component {
+
+    constructor(props){
+      super(props)
+
+      this.socket = 
+        io('http://localhost:1979')
+      
+    }
+      componentDidMount(){
+        this.socket.on('welcome', (data)=>{
+          console.log(data)
+        })
+      }
   render() {
     return (
       <div className="App">
