@@ -2,10 +2,10 @@
     "name": "mischief_managed",
     "version": "1.0.0",
     "description": "",
-    "main": "_server/server.js",
+    "main": "server/server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "cd _server && node server.js"
+        "start": "cd server && node server.js"
     },
     "repository": {
         "type": "git",
