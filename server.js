@@ -32,8 +32,8 @@ server.listen(PORT, () => log('Shakedown ' + PORT));
 
 // let number = 0;
 
-// io.on('connection', (socket) => {
-//   log('a user connected');
+io.on('connection', (socket) => {
+  log('a user connected');
   
 //   socket.emit('welcome', {
 //     number: number,
@@ -50,8 +50,8 @@ server.listen(PORT, () => log('Shakedown ' + PORT));
 //     io.sockets.emit('decremented', number)
 //   })
 
-//   socket.on('disconnect', () => {
-// 	  log('a user dipped')
-//   });
-// });
+  socket.on('disconnect', () => {
+	  log('a user dipped')
+  });
+});
 
