@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import io from 'socket.io-client'
-
+const serverURL = () => {
+  console.log(process.env.NODE_ENV)
+}
+serverURL()
 class App extends Component {
 
     constructor(props){
       super(props)
 
       this.socket = 
-        io('http://localhost:1979')
+        io()
       this.state = { 
         number: null,
         name: null

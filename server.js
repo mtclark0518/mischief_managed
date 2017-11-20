@@ -4,7 +4,7 @@ const path = require('path')
 const http = require('http')
 const app = express();
 const server = http.createServer(app)
-const io = require('socket.io')(server)
+const socketio = require('socket.io')
 const PORT = process.env.PORT || 1979
 const log = (stuff) => console.log(stuff)
 const {Client} = require('pg')
@@ -32,6 +32,8 @@ server.listen(PORT, () => log('Shakedown ' + PORT));
 
 let number = 0;
 
+
+const io = socketio(server)
 io.on('connection', (socket) => {
   log('a user connected');
   socket.emit('welcome', {
