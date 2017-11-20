@@ -11,15 +11,19 @@ const api = require('./_controller/api.controller')
 const {Client} = require('pg')
 
 
-const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/mischiefmanaged'});
+const client = new Client({ connectionString: process.env.DATABASE_URL});
 client.connect( (err) => {
-	if (err) { log('error yo: ', err.stack)} 
+	if (err) { log('error yo: ', err)} 
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 
+app.use(express.static(path.join(__dirname, '_client/build')));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/_client/build/index.html'));
+});
 app.get('*', (req, res) => {
     res.send('hi')
 });
