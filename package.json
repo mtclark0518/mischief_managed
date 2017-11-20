@@ -1,6 +1,9 @@
 {
     "name": "mischief_managed",
     "version": "1.0.0",
+    "engine": {
+        "node": "8.4.0"
+    },
     "description": "",
     "main": "server/server.js",
     "scripts": {
