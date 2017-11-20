@@ -1,44 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
 import io from 'socket.io-client'
-const serverURL = () => {
-  console.log(process.env.NODE_ENV)
-}
+const deploymentType = process.env.NODE_ENV
+console.log(deploymentType)
+
 serverURL()
 class App extends Component {
 
     constructor(props){
       super(props)
 
-      this.socket = 
-        io()
+      this.socket = io()
       this.state = { 
         number: null,
         name: null
       }
     }
   componentDidMount(){
+
     this.socket.on('welcome', (data) => {
       console.log(data)
       this.setState({
         name: data.name,
         number: data.number
-
       })
     })
+
     this.socket.on('iterated', (data) => {
-      this.setState({
-          number: data
-      })
-    })
-    this.socket.on('decremented', (data) => {
-      this.setState({
-          number: data
-      })
+      this.setState({ number: data })
     })
 
+    this.socket.on('decremented', (data) => {
+      this.setState({ number: data })
+    })
   }
-  
 
   iterate = (inc) => {this.socket.emit('iterate')}
   decrement = (dec) => {this.socket.emit('decrement')}
