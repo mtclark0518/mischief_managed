@@ -7,7 +7,7 @@ const server = http.createServer(app)
 const io = require('socket.io')(server)
 const PORT = process.env.PORT || 1979
 const log = (stuff) => console.log(stuff)
-const api = require('./_controller/api.controller')
+const api = require('./_server/_controller/api.controller')
 const {Client} = require('pg')
 
 
