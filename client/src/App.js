@@ -29,7 +29,7 @@ class App extends Component {
         number: data.number
       })
     })
-
+    // this.socket.on('iterated', (data)=> {this.setState({number: data})})
     this.socket.on('incremented', (data) => {
       this.setState({ number: data })
     })
@@ -48,10 +48,12 @@ class App extends Component {
         <div>users: {this.state.users}</div>
         <h1>{this.state.name}</h1>
             <button
+              value={1}
               onClick={inc => this.increment()}>
                 +
             </button>
             <button
+              value={-1}
               onClick={dec => this.decrement()}>
                 -
             </button>

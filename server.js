@@ -44,8 +44,6 @@ io.on('connection', (socket) => {
     })
   })
   
-
-
   socket.on('increment', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
         let num = number.dataValues.number
