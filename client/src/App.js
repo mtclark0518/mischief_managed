@@ -30,7 +30,7 @@ class App extends Component {
       })
     })
 
-    this.socket.on('iterated', (data) => {
+    this.socket.on('incremented', (data) => {
       this.setState({ number: data })
     })
 
@@ -39,7 +39,7 @@ class App extends Component {
     })
   }
 
-  iterate = (inc) => {this.socket.emit('iterate')}
+  iterate = (inc) => {this.socket.emit('increment')}
   decrement = (dec) => {this.socket.emit('decrement')}
   
   render() {
