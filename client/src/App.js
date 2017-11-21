@@ -39,7 +39,7 @@ class App extends Component {
     })
   }
 
-  iterate = (inc) => {this.socket.emit('increment')}
+  increment = (inc) => {this.socket.emit('increment')}
   decrement = (dec) => {this.socket.emit('decrement')}
   
   render() {
@@ -48,7 +48,7 @@ class App extends Component {
         <div>users: {this.state.users}</div>
         <h1>{this.state.name}</h1>
             <button
-              onClick={inc => this.iterate()}>
+              onClick={inc => this.increment()}>
                 +
             </button>
             <button
