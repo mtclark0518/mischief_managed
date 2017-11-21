@@ -47,39 +47,27 @@ io.on('connection', (socket) => {
   socket.on('iterate', () => {
     number++    
         db.models.container.findOne({where: {id : 1}}).then(number =>{
-        console.log(number)        
         let num = number.dataValues.number
-        console.log('this is num: ', num)
         num++
-        console.log('just apply iterate and num becomes: ', num)
         number.updateAttributes({
             number: num
         }).then(newNumber=>{
         let newNum = newNumber.dataValues.number;
-        console.log('here is the updated number')
-        console.log(newNum)
         io.sockets.emit('iterated', newNum)
       })
     })
-    
   })
   socket.on('decrement', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
-        console.log(number)        
         let num = number.dataValues.number
-        console.log('this is num: ', num)
         num--
-        console.log('just apply iterate and num becomes: ', num)
         number.updateAttributes({
             number: num
         }).then(newNumber=>{
         let newNum = newNumber.dataValues.number;
-        console.log('here is the updated number')
-        console.log(newNum)
         io.sockets.emit('decremented', newNum)
       })
     })
-    
   })
 
 
