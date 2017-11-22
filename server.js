@@ -18,48 +18,44 @@ client.connect( (err) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 
+
 app.use(express.static(path.join(__dirname, 'backend/build')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/backend/build/index.html'));
 });
 
-
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
 let users = 0;
-const io = socketio(server)
 
+const io = socketio(server)
 io.on('connection', (socket) => {
   log('a user connected');
 
-  socket.on('new user', data=>{
-    console.log(data)
-    db.models.user.findOrCreate({
-      where: {
-          name: data.user
-        }
-      })
-    // console.log(created)
-    users++
-    io.sockets.emit('update users', { 
-      users: users 
-    });
-    
 
-  });
-  //add user to the database
-
-
-  
-  
-  
-  
   db.models.container.findOne({where: {id : 1}}).then(number =>{
     let num = number.dataValues.number
     io.sockets.emit('welcome', {
       number: num,
       name: 'real-time iterator demonstration',
-    })})
+    })
+  });
+
+  socket.on('new user', data => {
+    console.log(data);
+    
+    //add user to the database    
+    db.models.user.findOrCreate({
+      where: { name: data.user }
+    });
+    users++;
+
+    io.sockets.emit('update users', { 
+      users: users 
+    });
+  });
+  
+
 
   
 
