@@ -18,7 +18,6 @@ client.connect( (err) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 
-
 app.use(express.static(path.join(__dirname, 'backend/build')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/backend/build/index.html'));
@@ -31,7 +30,6 @@ let users = 0;
 const io = socketio(server)
 io.on('connection', (socket) => {
   log('a user connected');
-
 
   db.models.container.findOne({where: {id : 1}}).then(number =>{
     let num = number.dataValues.number
@@ -54,10 +52,6 @@ io.on('connection', (socket) => {
       users: users 
     });
   });
-  
-
-
-  
 
   socket.on('increment', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
@@ -72,7 +66,6 @@ io.on('connection', (socket) => {
     })
   })
 
-
   socket.on('decrement', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
         let num = number.dataValues.number
@@ -86,7 +79,6 @@ io.on('connection', (socket) => {
     })
   })
 
-
   socket.on('disconnect', () => {
       log('a user dipped')
       users--
@@ -94,6 +86,5 @@ io.on('connection', (socket) => {
         users: users
       })
   });
-    
 });
 
