@@ -10,8 +10,9 @@ const log = (stuff) => console.log(stuff)
 const {Client} = require('pg')
 const db = require('./backend/models')
 const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged' });
+
 client.connect( (err) => {
-	if (err) { log('error yo: ', err)} else {log('connected to db')}
+	if (err) { log('error yo: ', err) } else { log('connected to db') }
 });
 
 app.use(bodyParser.json());
@@ -30,28 +31,37 @@ const io = socketio(server)
 
 io.on('connection', (socket) => {
   log('a user connected');
-  
 
-
-  socket.on('user joined', (data) => {
-
-    log(data)
-    //add user to the database
-    //db.models.user.findOrCreate({where: {username: data.username, password: data.password}})
-    db.models.container.findOne({where: {id : 1}}).then(number =>{
-      let num = number.dataValues.number
-      socket.emit('welcome', {
-        number: num,
-        name: 'real-time iterator demonstration',
-        username: data.username
+  socket.on('new user', data=>{
+    console.log(data)
+    db.models.user.findOrCreate({
+      where: {
+          name: data.user
+        }
       })
-    })
-    users++;
-    io.sockets.emit('update users', {
-      users: users
-    })
-  })
+    // console.log(created)
+    users++
+    io.sockets.emit('update users', { 
+      users: users 
+    });
+    
 
+  });
+  //add user to the database
+
+
+  
+  
+  
+  
+  db.models.container.findOne({where: {id : 1}}).then(number =>{
+    let num = number.dataValues.number
+    io.sockets.emit('welcome', {
+      number: num,
+      name: 'real-time iterator demonstration',
+    })})
+
+  
 
   socket.on('increment', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Iterator from './containers/iterator'
-// import io from 'socket.io-client'
 
 import Login from './containers/login'
 import './App.css';
@@ -8,15 +7,14 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props)
-    // this.socket = io();
     this.state = {
       isUser: false,
+      username: null
     }
     this.toggleUser = this.toggleUser.bind(this);
   }
 
   componentDidMount(){
-
   }
 
   toggleUser = () => {
@@ -24,21 +22,23 @@ class App extends Component {
         isUser : !prevState.isUser
       }))
   }
+  SetUserName = data => {
+    this.setState({username: data})
+    console.log(data)
+  }
 
   render() {
     return (
-      
       <div className="App">
-          {
-            this.state.isUser !== true && (
-              <Login onToggleUser={this.toggleUser.bind(this)}/>
-            )
-          }
-          {
-            this.state.isUser === true && (
-              <Iterator />
-            )
-          }
+          { this.state.isUser !== true && (
+            <Login 
+              onSetUserName={this.SetUserName}
+              onToggleUser={this.toggleUser} />
+          )}
+          { this.state.isUser === true && (
+            <Iterator 
+              username={this.state.username} />
+          )}
       </div>
     );
   }

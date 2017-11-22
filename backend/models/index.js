@@ -2,12 +2,12 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged')
 
 const container = sequelize.import('./container')
-// const user = sequelize.import('./user')
+const user = sequelize.import('./user')
 
 const db = {}
 db.models = {
     container,
-    // user
+    user
 }
 
 db.Sequelize = Sequelize

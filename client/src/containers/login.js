@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import io from 'socket.io-client'
 
 class Login extends Component {
   constructor(props){
     super(props)
-    this.socket = io();
     this.state = {
       username: null,
     }
@@ -13,11 +11,11 @@ class Login extends Component {
 componentDidMount(){}
 
   login = (e) => {
-      e.preventDefault();
-      this.socket.emit('user joined', {
-          username: this.state.username,
-      })
-      this.props.onToggleUser();
+    e.preventDefault();
+    this.props.onSetUserName(this.state.username);
+    this.setState({username: null})
+    this.props.onToggleUser();
+    
   }
 
     updateName(nameEvent){
@@ -28,14 +26,14 @@ componentDidMount(){}
   render() {
     return (
       <div>
-      <form className="Login" onSubmit={e => this.login(e)}>
-        <input 
-            type="text"
-            placeholder="username"
-            onChange={nameEvent => this.updateName(nameEvent)}/>
+        <form className="Login" onSubmit={e => this.login(e)}>
+          <input 
+              type="text"
+              placeholder="username"
+              onChange={nameEvent => this.updateName(nameEvent)}/>
 
-        <button type="submit">enter</button>
-      </form>
+          <button type="submit">enter</button>
+        </form>
       </div>
     );
   }
