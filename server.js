@@ -26,24 +26,33 @@ app.get('/', (req, res) => {
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
 let users = 0;
-
 const io = socketio(server)
+
 io.on('connection', (socket) => {
   log('a user connected');
+  
 
-  users++
-  io.sockets.emit('update users', {
+
+  socket.on('user joined', (data) => {
+
+    log(data)
+    //add user to the database
+    //db.models.user.findOrCreate({where: {username: data.username, password: data.password}})
+    db.models.container.findOne({where: {id : 1}}).then(number =>{
+      let num = number.dataValues.number
+      socket.emit('welcome', {
+        number: num,
+        name: 'real-time iterator demonstration',
+        username: data.username
+      })
+    })
+    users++;
+    io.sockets.emit('update users', {
       users: users
-  })
-
-  db.models.container.findOne({where: {id : 1}}).then(number =>{
-    let num = number.dataValues.number
-    socket.emit('welcome', {
-      number: num,
-      name: 'real-time iterator demonstration'
     })
   })
-  
+
+
   socket.on('increment', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
         let num = number.dataValues.number
@@ -56,6 +65,8 @@ io.on('connection', (socket) => {
       })
     })
   })
+
+
   socket.on('decrement', () => {
         db.models.container.findOne({where: {id : 1}}).then(number =>{
         let num = number.dataValues.number
