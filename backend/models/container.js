@@ -7,6 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         number: {
             type: Sequelize.INTEGER
+        },
+        activeUsers: {
+            type: Sequelize.INTEGER
         }
     });
     return model

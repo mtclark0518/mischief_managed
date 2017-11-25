@@ -8,51 +8,43 @@ class Iterator extends Component {
         name: null,
         number: null,        
         users: null,
-        username: null
       }
     }
   componentDidMount(){
     this.socket.on('welcome', data => {
-      this.setState( { name: data.name, number: data.number, username: this.props.username } )
-      this.socket.emit('new user', {user: this.state.username})
-      
+      this.setState( { name: data.name, number: data.number } )
     })
     this.socket.on('update users', data => {
-      this.setState( { users: data.users } );
+      this.setState({ users: data.users });
     })
-    this.socket.on('incremented', data => {
-      this.setState( { number: data } );
-    })
-    this.socket.on('decremented', data => {
-      this.setState( { number: data } ); 
+    this.socket.on('iterated', data => { 
+      this.setState({ number: data }) 
     })
   }
 
-  increment = (ie) => {
-    console.log(ie.target.value)
-    this.socket.emit('increment')
-  
+
+  iterate = (e) => {
+    let by = e.target.value
+    this.socket.emit('iterate', by);
   }
-  decrement = (de) => {
-    console.log(de)
-    this.socket.emit('decrement')
-  
-  }
+
 
     render(){
         return(
             <div>
               <div>{this.state.name}</div>
-              <div>logged in as {this.state.username}</div>
               <div>users connected: {this.state.users}</div>
+              <div>logged in as {this.props.username}</div>
+              
                 <button
                     value={1}
-                    onClick={ie=>this.increment(ie)}>
+                    onClick={e=>this.iterate(e)}>
                         +
                 </button>
+
                 <button
                     value={-1}
-                    onClick={de=>this.decrement(de)}>
+                    onClick={e=>this.iterate(e)}>
                         -
                 </button>
                 <h3>{this.state.number}</h3>
@@ -60,6 +52,7 @@ class Iterator extends Component {
         )
     }
 }
+
 
 
 export default Iterator

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Iterator from './containers/iterator'
+import axios from 'axios'
+import Iterator from './iterator'
 
-import Login from './containers/login'
-import './App.css';
+import Login from './login'
+import '../App.css';
 
-class App extends Component {
+
+class Container extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -22,10 +24,29 @@ class App extends Component {
         isUser : !prevState.isUser
       }))
   }
-  SetUserName = data => {
-    this.setState({username: data})
+  SetUserName = (name, password) => {
+    let data = {
+      name: name,
+      password: password
+    }
+    
     console.log(data)
-  }
+    axios({
+      method: 'POST',
+      url: 'api/login',
+      data: data
+    })
+    .then(response => {
+      console.log(response.data)
+      let res = response.data;
+      if(typeof(res) === 'string'){
+        console.log('got an error')
+      } else {
+      this.setState({username: response.data.name})
+      this.toggleUser();
+      }
+    });
+  };
 
   render() {
     return (
@@ -33,7 +54,7 @@ class App extends Component {
           { this.state.isUser !== true && (
             <Login 
               onSetUserName={this.SetUserName}
-              onToggleUser={this.toggleUser} />
+              />
           )}
           { this.state.isUser === true && (
             <Iterator 
@@ -44,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Container;

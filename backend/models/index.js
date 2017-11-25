@@ -4,6 +4,10 @@ const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://TheTDriv
 const container = sequelize.import('./container')
 const user = sequelize.import('./user')
 
+
+container.hasMany(user);
+user.belongsTo(container);
+
 const db = {}
 db.models = {
     container,

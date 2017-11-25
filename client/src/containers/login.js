@@ -5,24 +5,27 @@ class Login extends Component {
     super(props)
     this.state = {
       username: null,
+      password: null
     }
   }
 
-componentDidMount(){}
 
   login = (e) => {
-    e.preventDefault();
-    this.props.onSetUserName(this.state.username);
-    this.setState({username: null})
-    this.props.onToggleUser();
-    
+      e.preventDefault();
+      this.props.onSetUserName(this.state.username, this.state.password);
   }
 
-    updateName(nameEvent){
-        this.setState({
-            username: nameEvent.target.value
-        });
-    }
+
+  updateName(nameEvent){
+      this.setState({
+          username: nameEvent.target.value
+      });
+  }
+  updatePass(passEvent){
+      this.setState({
+          password: passEvent.target.value
+      });
+  }
   render() {
     return (
       <div>
@@ -31,8 +34,11 @@ componentDidMount(){}
               type="text"
               placeholder="username"
               onChange={nameEvent => this.updateName(nameEvent)}/>
-
-          <button type="submit">enter</button>
+          <input 
+              type="password"
+              placeholder="password"
+              onChange={passEvent => this.updatePass(passEvent)}/>
+          <button type="submit">join</button>
         </form>
       </div>
     );
@@ -40,3 +46,5 @@ componentDidMount(){}
 }
 
 export default Login;
+
+

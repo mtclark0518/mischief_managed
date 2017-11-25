@@ -4,6 +4,7 @@ const DB = db.models;
 let number = 
     {
         number: 0,
+        activeUsers: 0
     }
 
 
