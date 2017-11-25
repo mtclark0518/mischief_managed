@@ -11,7 +11,8 @@ class Container extends Component {
     super(props)
     this.state = {
       isUser: false,
-      username: null
+      username: null,
+      error: null
     }
     this.toggleUser = this.toggleUser.bind(this);
   }
@@ -41,8 +42,9 @@ class Container extends Component {
       let res = response.data;
       if(typeof(res) === 'string'){
         console.log('got an error')
+        this.setState({error: 'there was an issue with your login, please check password or try a different username'})
       } else {
-      this.setState({username: response.data.name})
+      this.setState({username: response.data.name, error: ''})
       this.toggleUser();
       }
     });
@@ -51,6 +53,7 @@ class Container extends Component {
   render() {
     return (
       <div className="App">
+      <div>{this.state.error}</div>
           { this.state.isUser !== true && (
             <Login 
               onSetUserName={this.SetUserName}

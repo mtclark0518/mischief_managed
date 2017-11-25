@@ -7,7 +7,7 @@ class Iterator extends Component {
       this.state = { 
         name: null,
         number: null,        
-        users: null,
+        users: null
       }
     }
   componentDidMount(){
