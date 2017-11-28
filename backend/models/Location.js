@@ -1,15 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-    const model = sequelize.define('container', {
+    const model = sequelize.define('Location', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        number: {
-            type: Sequelize.INTEGER
+        name: {
+            type: Sequelize.STRING,
+            allowNull: false
         },
-        activeUsers: {
-            type: Sequelize.INTEGER
+        type: {
+            type: Sequelize.STRING,
+            allowNull: false
         }
     });
     return model
