@@ -7,11 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         name: {
             type: Sequelize.STRING,
-            allowNull: false
         },
         type: {
             type: Sequelize.STRING,
-            allowNull: false
         }
     });
     return model

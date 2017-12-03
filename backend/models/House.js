@@ -7,6 +7,21 @@ module.exports = (sequelize, Sequelize) => {
         },
         name: {
             type: Sequelize.STRING
+        },
+        founder: {
+            type: Sequelize.STRING
+        },
+        points: {
+            type: Sequelize.INTEGER
+        },
+        primaryColor: {
+            type: Sequelize.STRING
+        },
+        secondaryColor: {
+            type: Sequelize.STRING
+        },
+        mascot: {
+            type: Sequelize.STRING
         }
     });
     return model

@@ -4,6 +4,7 @@
 var Sequelize = require('sequelize');
 var db = require('../models/index');
 
-db.sequelize.sync({ force: true }).then(function() {
-    process.exit();
-});
+db.sequelize.sync( { force: true } )
+    .then( () => {
+        process.exit();
+    });

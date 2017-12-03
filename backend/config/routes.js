@@ -1,6 +1,23 @@
 const router = require('express').Router();
 const controller = require('../controller/controller')
 
-router.post('/api/login', controller.login)
+//CASTLE
+router.get('/api/castle', controller.showHogwarts)
+
+//HOUSE
+router.get('/api/houses', controller.showHouses)
+
+//LOCATION
+router.get('/api/locations', controller.showLocations)
+
+//STAFF
+router.get('/api/staff', controller.showStaff)
+
+//STUDENT
+router.get('/api/students', controller.showStudents)
+
+//SUBJECT
+router.get('/api/subjects', controller.showSubjects)
+
 
 module.exports = router;

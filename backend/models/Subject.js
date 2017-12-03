@@ -1,16 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
-    
-    const model = sequelize.define('Student', {
+    const model = sequelize.define('Subject', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        firstName: {
-            type: Sequelize.STRING
-        },
-        lastName: {
-            type: Sequelize.STRING
+        name: {
+            type: Sequelize.STRING,
         }
     });
     return model
