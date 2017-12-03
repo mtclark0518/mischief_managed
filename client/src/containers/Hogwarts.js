@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import Classroom from './Classroom'
 class Hogwarts extends Component {
   constructor(props){
     super(props)
@@ -59,6 +59,9 @@ class Hogwarts extends Component {
     return (
       <div className="App">
         {this.state.hogwarts}
+        <Classroom
+          name={this.state.locations}
+          />
       </div>
     );
   }
