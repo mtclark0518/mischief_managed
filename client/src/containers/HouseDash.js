@@ -17,7 +17,7 @@ class HouseDash extends Component {
         axios({}).then(houses=>{this.setState({houses: houses.data.houses})})
     }
     render() {
-        let houses = this.props.houses.map( house => {
+        let houses = this.state.houses.map( house => {
             console.log(house)
             return(
                 <House
