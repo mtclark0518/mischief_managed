@@ -16,9 +16,6 @@ const showHogwarts = (req, res) => {
             include:[
                 {
                     model: House
-                },
-                {
-                    model: Location
                 }
             ]
     })
@@ -53,6 +50,12 @@ const showLocations = (req, res) => {
             },
             {
                 model: Staff
+            },
+            {
+                model: Subject
+            },
+            {
+                model: House
             }
         ]
     })
