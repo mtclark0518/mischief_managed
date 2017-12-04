@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import LocationList from '../components/LocationList'
-import HouseDash from '../components/HouseDash'
 import Button from '../components/Button'
-
+import CastleDash from './CastleDash'
+import Header from './Header'
 class Hogwarts extends Component {
   constructor(props){
     super(props)
     this.state = {
       hogwarts: null,
-      houses: [],
-      searching: false
+      active: false
     }
-    this.toggleSearching = this.toggleSearching.bind(this)
+    this.toggleActive = this.toggleActive.bind(this)
   }
 
   componentDidMount(){
@@ -25,21 +24,19 @@ class Hogwarts extends Component {
       url: "api/castle"
     })
   .then( hogwarts => {
-      console.log(hogwarts)
       this.setState({ 
         hogwarts: hogwarts.data.name,
-        houses: hogwarts.data.Houses,
       });
     });
   }
 
   enter = () => {
-    this.toggleSearching()
+    this.toggleActive()
   }
   
-  toggleSearching = () => {
+  toggleActive = () => {
     this.setState(prevState => ({
-      searching : !prevState.searching
+      active : !prevState.active
     }))
   }
 
@@ -48,23 +45,22 @@ class Hogwarts extends Component {
     return (
       <div className="Hogwarts">
 
-        { this.state.searching !== true && (
-        <div>
-          {this.state.hogwarts}
-          <Button 
-            text={'enter'}
-            onClick={this.enter.bind(this)} />
-        </div>
-        )}
-        { this.state.searching === true && (
-          <div>
+        { this.state.active !== true && (
+          <div className="enter">
             <Button 
-              text={'exit'}
+              text={'I solemnly swear that i am up to no good'}
               onClick={this.enter.bind(this)} />
-            <HouseDash houses={this.state.houses}/>
-            <LocationList/>
           </div>
         )}
+
+        { this.state.active === true && (
+          
+          <div className="active">
+            <Header hogwarts={this.state.hogwarts} onClick={this.enter.bind(this)} />
+            <CastleDash />              
+          </div>
+        )}
+
       </div>
     );
   }

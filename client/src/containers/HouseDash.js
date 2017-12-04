@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import House from './House'
+import axios from 'axios'
+import House from '../components/House'
 
 class HouseDash extends Component {
-
+    constructor(props){
+        super(props)
+        this.state= {
+            houses: []
+        }
+    }
+    ComponentDidMount(){
+        this.getData()
+    }
+    
+    getData = () => {
+        axios({}).then(houses=>{this.setState({houses: houses.data.houses})})
+    }
     render() {
         let houses = this.props.houses.map( house => {
             console.log(house)
@@ -13,7 +26,7 @@ class HouseDash extends Component {
             )
         })
         return (
-            <div className="Location">
+            <div className="HouseDash">
                 {houses}
             </div>
         );
