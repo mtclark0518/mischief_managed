@@ -12,7 +12,8 @@ class HouseDash extends Component {
     super(props)
     this.state = {
         houses: [],
-        expanded: false
+        expanded: false,
+        inFocus: null
     }
     this.expand = this.expand.bind(this)
 
@@ -43,6 +44,8 @@ class HouseDash extends Component {
           house={house}
           expanded={this.state.expanded}
           expand={this.expand}
+          focused={this.state.inFocus}
+          onFocus={this.focus}
         />
       )
     })
@@ -57,6 +60,12 @@ class HouseDash extends Component {
     this.setState(prevState => ({
       expanded : !prevState.expanded
     }))
+  }
+  focus = house => {
+    console.log(house)
+    this.setState({
+      inFocus : house
+    })
   }
 }
 
