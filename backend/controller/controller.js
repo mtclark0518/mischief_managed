@@ -15,7 +15,7 @@ const showHogwarts = (req, res) => {
 //HOUSE
 const showHouses = (req, res) => {
     House.findAll({
-        include: [
+        include:[
             {
                 model: Student
             },
@@ -28,6 +28,7 @@ const showHouses = (req, res) => {
         res.json(houses);
     });
 }
+
 
 //LOCATION
 const showLocations = (req, res) => {

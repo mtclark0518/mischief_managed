@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios'
+import React from 'react';
+
 
 const Location = props => {
+    console.log(props.location)
     return (
         <div className="Location">
-            {props.location.name}
+        {props.location.name}
         </div>
     );
 }

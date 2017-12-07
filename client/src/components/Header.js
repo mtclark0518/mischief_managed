@@ -8,7 +8,6 @@ class Header extends Component {
                 <Button 
                     onClick={this.props.onClick}
                     text={"mischief managed"} />
-                <div>{this.props.hogwarts}</div>
             </div>
         );
     }

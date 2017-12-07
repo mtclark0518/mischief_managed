@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import LocationList from '../components/LocationList'
-import Button from '../components/Button'
-import CastleDash from './CastleDash'
+import Button from './Button'
+import CastleDash from '../containers/CastleDash'
 import Header from './Header'
 class Hogwarts extends Component {
   constructor(props){
@@ -44,7 +43,6 @@ class Hogwarts extends Component {
     
     return (
       <div className="Hogwarts">
-
         { this.state.active !== true && (
           <div className="enter">
             <Button 
@@ -54,7 +52,6 @@ class Hogwarts extends Component {
         )}
 
         { this.state.active === true && (
-          
           <div className="active">
             <Header hogwarts={this.state.hogwarts} onClick={this.enter.bind(this)} />
             <CastleDash />              

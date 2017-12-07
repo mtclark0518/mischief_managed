@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
-import Panel from '../components/Panel'
 import HouseDash from './HouseDash'
+import LocationDash from './LocationDash'
+import Panel from '../components/Panel'
+import Button from '../components/Button'
+
 class CastleDash extends Component {
     constructor(props){
         super(props)
         this.state = {
-            houses: false,
-            staff: false,
-            location: false            
+            searching: false            
         }
+        this.search = this.search.bind(this)
     }
 
-    render(){
+    render() {
         return (
             <div className="CastleDash">
-                {
-                    this.state.houses !== true && 
-                    this.state.staff !== true &&
-                    this.state.location !== true && (
+                    {
+                    this.state.searching !== true &&(
                         <div>
-                            all false
-                            <Panel value={'houses'} onClick={ e => this.toggle(e)} />
-                            <Panel value={'location'} onClick={ e => this.toggle(e)} />
-                            <Panel value={'staff'} onClick={ e => this.toggle(e)} />
-                            <Panel value={'location'} onClick={ e => this.toggle(e)} />
-                            <Panel value={'location'} onClick={ e => this.toggle(e)} />
+                            <HouseDash />
+                            <Panel value={'Locations'} onClick={this.search} />
                         </div>
-                    )
-                }
-                {this.state.houses === true && (
-                    <HouseDash />
-                )}
+                    )}
+                    {
+                    this.state.searching === true && (
+                        <div>
+                            <Button text={'back'} onClick={this.search}/>
+                            <LocationDash />
+                        </div>
+                    )}
             </div>
         )
+    }
+
+    search = () => {
+        this.setState(prevState => ({
+            searching : !prevState.searching
+        }))
     }
 }
 export default CastleDash;

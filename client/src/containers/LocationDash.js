@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Location from '../containers/Location'
 import axios from 'axios'
 
 
+import Location from '../components/Location'
 
-class LocationList extends Component {
+
+
+
+class LocationDash extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -48,4 +51,4 @@ class LocationList extends Component {
   }
 }
 
-export default LocationList;
+export default LocationDash;
