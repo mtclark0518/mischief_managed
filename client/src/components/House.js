@@ -22,30 +22,32 @@ class House extends Component {
                     </div>
                 )}
 
-                {this.props.expanded === true && (
+                {this.props.expanded === true && this.props.focused === this.props.house.name && (
                     <div>
-                        <Button onClick={this.expandHouse} text={'back'} />            
+                        <Button onClick={this.closeHouse} text={'close'} />            
                         {this.props.house.name} is in focus
+                        <div>{this.props.house.Students[4].firstName}</div>
                     </div>
                 )}
 
-                {this.props.expanded === true && (
-                    <div>
-                        <Button onClick={ this.switchFocus } text={'focus'} />            
-                        <div>{this.props.house.name}</div>
-                        <div>{this.props.house.mascot}</div>
-                    </div>
-                )}
+
             </div>
         )
     }
     switchFocus = () => {
         let house = this.props.house.name
-        this.props.onFocus(house)
+        this.props.focus(house)
     }
 
     expandHouse = () => {
         this.props.expand()
+        let house = this.props.house.name
+        this.props.focus(house)
+    }
+
+    closeHouse = () => {
+        this.props.expand()
+        this.props.focus(null)
     }
 }
 export default House;

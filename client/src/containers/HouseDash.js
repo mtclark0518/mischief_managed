@@ -45,7 +45,7 @@ class HouseDash extends Component {
           expanded={this.state.expanded}
           expand={this.expand}
           focused={this.state.inFocus}
-          onFocus={this.focus}
+          focus={this.focus}
         />
       )
     })
