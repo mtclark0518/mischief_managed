@@ -51,20 +51,29 @@ class HouseDash extends Component {
     })
 
     return (
-      <div className="House">
-        {houseArray}
+      <div className="HouseDash">
+
+      { this.state.inFocus !== null && (
+        <div className="houseInFocus">
+          I'm focused on {this.state.inFocus.name} 
+        </div>
+      )}
+
+        <div className="houseArray">
+          {houseArray}
+        </div>
+
       </div>
     );
   }
   expand = () => {
     this.setState(prevState => ({
-      expanded : !prevState.expanded
+      expanded: !prevState.expanded
     }))
   }
   focus = house => {
-    console.log(house)
     this.setState({
-      inFocus : house
+      inFocus: house
     })
   }
 }

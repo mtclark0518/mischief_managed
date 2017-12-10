@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Button from './Button'
+import '../styles/house.styles.css'
 class House extends Component {
     constructor(props){
         super(props)
@@ -10,38 +11,45 @@ class House extends Component {
         console.log(this.props.house.name)
     }
     render(){
-        
+        let houseName = this.props.house.name;
         return(
-            <div className={this.props.house.name}>
+            <div className={houseName}>
 
                 {this.props.expanded !== true && (
-                    <div>
+                    <div className="house dashView">
                         <Button onClick={this.expandHouse} text={'expand'} />            
-                        <div>{this.props.house.name}</div>
-                        <div>{this.props.house.points}</div>
+                        {this.props.house.name}: {this.props.house.points}
                     </div>
                 )}
 
-                {this.props.expanded === true && this.props.focused === this.props.house.name && (
-                    <div>
-                        <Button onClick={this.closeHouse} text={'close'} />            
-                        {this.props.house.name} is in focus
-                        <div>{this.props.house.Students[4].firstName}</div>
+                {this.props.expanded === true && (
+                    <div className="house expandedDashView">
+                        {this.props.focused === this.props.house && (
+                            <div className="inFocus">
+                                <Button onClick={this.closeHouse} text={'close'} />            
+                                {this.props.house.name}
+                            </div>
+                        )}
+
+                        {this.props.focused !== this.props.house && (
+                            <div className="outOfFocus">
+                                <Button onClick={this.switchFocus} text={'switch'} />            
+                                {this.props.house.name}
+                            </div>
+                        )}
                     </div>
                 )}
-
-
             </div>
         )
     }
     switchFocus = () => {
-        let house = this.props.house.name
+        let house = this.props.house
         this.props.focus(house)
     }
 
     expandHouse = () => {
         this.props.expand()
-        let house = this.props.house.name
+        let house = this.props.house
         this.props.focus(house)
     }
 
@@ -51,3 +59,5 @@ class House extends Component {
     }
 }
 export default House;
+
+

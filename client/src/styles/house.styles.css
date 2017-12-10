@@ -1,0 +1,36 @@
+/* House Component  */
+
+.house {
+    border: 1px solid red;
+    padding: 10px;
+}
+
+.dashView {
+    background: grey;
+}
+
+.expandedDashView {
+    background: blue;
+}
+
+.inFocus {
+    background: yellow;
+}
+
+.outOfFocus {
+    background: green;
+}
+
+
+/* HouseDash Component  */
+
+.houseArray {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 1px solid black;
+}
+
+.houseInFocus {
+    height: 250px;
+}
