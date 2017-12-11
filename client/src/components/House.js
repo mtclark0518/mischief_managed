@@ -11,14 +11,22 @@ class House extends Component {
         console.log(this.props.house.name)
     }
     render(){
+
         let houseName = this.props.house.name;
+        let primaryColor = this.props.house.primaryColor;
+        let secondaryColor = this.props.house.secondaryColor;
+        let houseStyles = {
+            backgroundColor: primaryColor,
+            color: secondaryColor
+        }
+
+
         return(
-            <div className={houseName}>
+            <div className={houseName} style={houseStyles}>
 
                 {this.props.expanded !== true && (
                     <div className="house dashView">
-                        <Button onClick={this.expandHouse} text={'expand'} />            
-                        {this.props.house.name}: {this.props.house.points}
+                        <Button onClick={this.expandHouse} text={this.props.house.name} />             
                     </div>
                 )}
 
@@ -26,15 +34,13 @@ class House extends Component {
                     <div className="house expandedDashView">
                         {this.props.focused === this.props.house && (
                             <div className="inFocus">
-                                <Button onClick={this.closeHouse} text={'close'} />            
-                                {this.props.house.name}
+                                <Button onClick={this.closeHouse} text={this.props.house.name} />
                             </div>
                         )}
 
                         {this.props.focused !== this.props.house && (
                             <div className="outOfFocus">
-                                <Button onClick={this.switchFocus} text={'switch'} />            
-                                {this.props.house.name}
+                                <Button onClick={this.switchFocus} text={this.props.house.name} />            
                             </div>
                         )}
                     </div>

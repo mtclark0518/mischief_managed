@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
-
 import House from '../components/House'
+import Roster from '../components/Roster'
 
 
 
@@ -13,10 +12,9 @@ class HouseDash extends Component {
     this.state = {
         houses: [],
         expanded: false,
-        inFocus: null
+        focused: null
     }
     this.expand = this.expand.bind(this)
-
   }
     componentDidMount(){
     this.getData()
@@ -28,7 +26,6 @@ class HouseDash extends Component {
       url: "api/houses"
     })
   .then( response => {
-      console.log(response.data)
       this.setState({ 
         houses: response.data
       })
@@ -37,14 +34,13 @@ class HouseDash extends Component {
 
   render() {
     let houseArray = this.state.houses.map( house=>{
-      console.log(house)
       return (
         <House
           key={house.id}
           house={house}
           expanded={this.state.expanded}
           expand={this.expand}
-          focused={this.state.inFocus}
+          focused={this.state.focused}
           focus={this.focus}
         />
       )
@@ -53,9 +49,11 @@ class HouseDash extends Component {
     return (
       <div className="HouseDash">
 
-      { this.state.inFocus !== null && (
+      { this.state.focused !== null && (
         <div className="houseInFocus">
-          I'm focused on {this.state.inFocus.name} 
+          <h1>{this.state.focused.name}</h1>
+          <Roster 
+            students={this.state.focused.Students}/>            
         </div>
       )}
 
@@ -73,7 +71,7 @@ class HouseDash extends Component {
   }
   focus = house => {
     this.setState({
-      inFocus: house
+      focused: house
     })
   }
 }

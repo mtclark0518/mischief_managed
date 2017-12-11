@@ -1,25 +1,23 @@
 /* House Component  */
 
 .house {
-    border: 1px solid red;
     padding: 10px;
 }
 
-.dashView {
-    background: grey;
-}
 
-.expandedDashView {
-    background: blue;
-}
+/* .dashView {} */
+
+
+/* .expandedDashView {} */
 
 .inFocus {
-    background: yellow;
+    color: #fff;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+    font-weight: 700;
 }
 
-.outOfFocus {
-    background: green;
-}
+
+/* .outOfFocus {} */
 
 
 /* HouseDash Component  */
@@ -32,5 +30,5 @@
 }
 
 .houseInFocus {
-    height: 250px;
+    min-height: 250px;
 }
