@@ -20,7 +20,7 @@ class CastleDash extends Component {
                     this.state.searching !== true &&(
                         <div>
                             <HouseDash />
-                            <div title={'Locations'} onClick={this.search}>hi </div>
+                            <Panel data={"search"} onClick={this.search} />
                         </div>
                     )}
                     {
