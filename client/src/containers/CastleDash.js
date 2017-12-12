@@ -11,13 +11,14 @@ class CastleDash extends Component {
             searching: false            
         }
         this.search = this.search.bind(this)
+
     }
 
     render() {
         return (
             <div className="CastleDash">
-                    {
-                    this.state.searching !== true &&(
+
+                    {this.state.searching !== true &&(
                         <div>
                             <HouseDash />
                             <Panel data={"search"} onClick={this.search} />

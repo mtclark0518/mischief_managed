@@ -13,7 +13,7 @@ Castle.hasMany(House);
 House.belongsTo(Castle);
 
 Castle.hasMany(Subject);
-Subject.belongsTo(Castle)
+Subject.belongsTo(Castle);
 
 Castle.hasMany(Location);
 Location.belongsTo(Castle);
@@ -21,8 +21,8 @@ Location.belongsTo(Castle);
 Castle.hasMany(Staff);
 Staff.belongsTo(Castle);
 
-Castle.hasMany(Student)
-Student.belongsTo(Castle)
+Castle.hasMany(Student);
+Student.belongsTo(Castle);
 
 House.hasMany(Student);
 Student.belongsTo(House);
@@ -33,7 +33,7 @@ Staff.belongsTo(House);
 House.hasOne(Location);
 Location.belongsTo(House);
 
-Subject.hasOne(Location)
+Subject.hasOne(Location);
 Location.belongsTo(Subject);
 
 Subject.hasOne(Staff);

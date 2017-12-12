@@ -22,7 +22,7 @@ class Location extends Component {
                 </div>
             )}
             {this.state.type==="Restricted" && this.props.location.name === 'Common Room' && (
-                <div className="commonRoom">
+                <div className="houseCommonRoom">
                     {this.props.location.House.name} {this.props.location.name}
                 </div>
             )}

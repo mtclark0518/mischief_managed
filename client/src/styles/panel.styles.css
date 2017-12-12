@@ -1,5 +1,19 @@
+/* Master Component Styles --- Bare Minimum   */
+
 .Panel {
-    font-weight: 600;
     display: flex;
     flex-direction: column;
+    margin: 5px;
+}
+
+
+/*  Doesn't overwrite .Panel styles from above  */
+
+.rosterPanel {
+    background: rgba(245, 245, 245, 1.0);
+    display: flex;
+    flex-direction: row;
+    margin-top: 2px;
+    box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.1);
+    padding: 2px 1px;
 }
