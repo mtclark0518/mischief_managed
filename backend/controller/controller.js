@@ -8,7 +8,8 @@ const Student = db.models.Student;
 
 //CASTLE
 const showHogwarts = (req, res) => {
-    Castle.findOne({ where: {id: 1} })
+    Castle.findOne({ where: {id: 1},
+    include:[{model: House}] })
     .then( hogwarts => { res.json(hogwarts); } );
 }
 

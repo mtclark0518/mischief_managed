@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import HouseDash from './HouseDash'
+import SearchContainer from './SearchContainer'
 import LocationDash from './LocationDash'
 import Panel from '../components/Panel'
 import Button from '../components/Button'
-
+import Footer from '../components/Footer'
+import '../styles/castle.css'
 class CastleDash extends Component {
     constructor(props){
         super(props)
         this.state = {
-            searching: false            
+            searching: false,
+            exploring: false            
         }
         this.search = this.search.bind(this)
+        this.explore = this.explore.bind(this)
 
     }
 
@@ -18,17 +22,22 @@ class CastleDash extends Component {
         return (
             <div className="CastleDash">
 
-                    {this.state.searching !== true &&(
+                    {this.state.searching !== true && this.state.exploring !== true &&(
                         <div>
-                            <HouseDash />
-                            <Panel data={"search"} onClick={this.search} />
+                        <Panel data={'Explore Houses'} onClick={this.explore} />
+                        <Panel data={'Search Castle'} onClick={this.search} />
                         </div>
                     )}
-                    {
-                    this.state.searching === true && (
+                    {this.state.exploring === true && (
                         <div>
-                            <Button text={'back'} onClick={this.search}/>
+                            <HouseDash />
+                            <Footer onClose={this.close} onExplore={this.explore} onSearch={this.search} />
+                        </div>
+                    )}
+                    {this.state.searching === true && (
+                        <div>
                             <LocationDash />
+                            <Footer onClose={this.close} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
             </div>
@@ -36,9 +45,22 @@ class CastleDash extends Component {
     }
 
     search = () => {
-        this.setState(prevState => ({
-            searching : !prevState.searching
-        }))
+        this.setState({
+            searching : true,
+            exploring: false
+        })
+    }
+    explore = () => {
+        this.setState({
+            searching : false,
+            exploring: true
+        })
+    }
+    close = () => {
+        this.setState({
+            exploring: false,
+            searching: false
+        })
     }
 }
 export default CastleDash;

@@ -8,7 +8,8 @@ class Hogwarts extends Component {
     super(props)
     this.state = {
       hogwarts: null,
-      active: false
+      active: false,
+      houses: []
     }
     this.toggleActive = this.toggleActive.bind(this)
   }
@@ -23,8 +24,10 @@ class Hogwarts extends Component {
       url: "api/castle"
     })
   .then( hogwarts => {
-      this.setState({ 
+    console.log(hogwarts.data.Houses)  
+    this.setState({ 
         hogwarts: hogwarts.data.name,
+        houses: hogwarts.data.Houses
       });
     });
   }
@@ -54,7 +57,7 @@ class Hogwarts extends Component {
         { this.state.active === true && (
           <div className="active">
             <Header hogwarts={this.state.hogwarts} onClick={this.enter.bind(this)} />
-            <CastleDash />              
+            <CastleDash houses={this.state.houses}/>              
           </div>
         )}
 

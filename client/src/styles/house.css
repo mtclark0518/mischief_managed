@@ -1,7 +1,7 @@
 /* House Component  */
 
 .house {
-    padding: 10px;
+    padding: 1em;
 }
 
 
@@ -30,5 +30,5 @@
 }
 
 .houseInFocus {
-    min-height: 250px;
+    min-height: 450px;
 }
