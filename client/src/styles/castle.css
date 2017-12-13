@@ -6,6 +6,7 @@
 div.Header {
     background: rgba(25, 25, 25, 1.0);
     padding: 10px;
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.8)
 }
 
 
@@ -26,4 +27,5 @@ footer.Footer {
     padding: 10px;
     text-align: center;
     background: rgba(25, 25, 25, 1.0);
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2)
 }

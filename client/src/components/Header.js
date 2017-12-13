@@ -7,7 +7,7 @@ class Header extends Component {
             <div className="Header">
                 <Button 
                     onClick={this.props.onClick}
-                    text={"mischief managed"} />
+                    text={this.props.buttonText} />
             </div>
         );
     }

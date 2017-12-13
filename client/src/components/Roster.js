@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Panel from './Panel'
-import '../styles/panel.styles.css'
+import '../styles/panel.css'
 const Roster = props => {
 
     let studentArray = props.students.map(student => {
