@@ -23,21 +23,21 @@ class CastleDash extends Component {
             <div className="CastleDash">
 
                     {this.state.searching !== true && this.state.exploring !== true &&(
-                        <div>
-                        <Panel data={'Explore Houses'} onClick={this.explore} />
-                        <Panel data={'Search Castle'} onClick={this.search} />
+                        <div className="container">
+                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
                     {this.state.exploring === true && (
-                        <div>
+                        <div className="container">
                             <HouseDash />
-                            <Footer onClose={this.close} onExplore={this.explore} onSearch={this.search} />
+                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
                     {this.state.searching === true && (
-                        <div>
+                        <div className="container">
                             <LocationDash />
-                            <Footer onClose={this.close} onExplore={this.explore} onSearch={this.search} />
+
+                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
             </div>
@@ -56,7 +56,7 @@ class CastleDash extends Component {
             exploring: true
         })
     }
-    close = () => {
+    home = () => {
         this.setState({
             exploring: false,
             searching: false

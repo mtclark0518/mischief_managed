@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import Button from './Button'
+import Panel from './Panel'
 import '../styles/house.css'
+
 class House extends Component {
     constructor(props){
         super(props)
@@ -16,8 +18,10 @@ class House extends Component {
         let primaryColor = this.props.house.primaryColor;
         let secondaryColor = this.props.house.secondaryColor;
         let houseStyles = {
-            backgroundColor: primaryColor,
-            color: secondaryColor
+            background: primaryColor,
+            border: "2px solid " + secondaryColor,
+            color: secondaryColor,
+            height: '30px'
         }
 
 
@@ -26,23 +30,31 @@ class House extends Component {
 
                 {this.props.expanded !== true && (
                     <div className="house dashView">
-                        <Button onClick={this.expandHouse} text={this.props.house.name} />             
+                        <Panel onClick={this.expandHouse} data={this.props.house.name} />             
                     </div>
                 )}
 
+
+
                 {this.props.expanded === true && (
+
+
                     <div className="house expandedDashView">
+
+
                         {this.props.focused === this.props.house && (
-                            <div className="inFocus">
-                                <Button onClick={this.closeHouse} text={this.props.house.name} />
+                            <div className="hasFocus">
+                                <Panel onClick={this.closeHouse} data={this.props.house.name} />
                             </div>
                         )}
 
                         {this.props.focused !== this.props.house && (
-                            <div className="outOfFocus">
-                                <Button onClick={this.switchFocus} text={this.props.house.name} />            
+                            <div className="noFocus">
+                                <Panel onClick={this.switchFocus} data={this.props.house.name} />            
                             </div>
                         )}
+
+
                     </div>
                 )}
             </div>

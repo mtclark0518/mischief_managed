@@ -7,9 +7,9 @@ class Footer extends Component {
         console.log(this.props)
         return (
             <footer className="Footer">
-                <Button onClick={this.props.onClose}/>
-                <Button onClick={this.props.onExplore}/>
-                <Button onClick={this.props.onSearch}/>
+                <Button text={'home'} onClick={this.props.onHome}/>
+                <Button text={'houses'} onClick={this.props.onExplore}/>
+                <Button text={'search'} onClick={this.props.onSearch}/>
             </footer>
         );
     }

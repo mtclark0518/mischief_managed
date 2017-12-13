@@ -1,34 +1,34 @@
-/* House Component  */
-
-.house {
-    padding: 1em;
-}
-
-
-/* .dashView {} */
-
-
-/* .expandedDashView {} */
-
-.inFocus {
-    color: #fff;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
-    font-weight: 700;
-}
-
-
-/* .outOfFocus {} */
-
-
 /* HouseDash Component  */
 
+.houseDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
 .houseArray {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: 1px solid black;
 }
 
-.houseInFocus {
-    min-height: 450px;
+
+/* House Component  */
+
+.house {
+    padding: 1%;
 }
+
+.hasFocus {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 1%;
+    font-weight: 400;
+}
+
+.noFocus {
+    font-weight: 400;
+}
+
+@media (max-height: 480px) {}

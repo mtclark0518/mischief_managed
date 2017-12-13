@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import House from '../components/House'
 import Roster from '../components/Roster'
-
+import '../styles/house.css'
 
 
 
@@ -47,21 +47,28 @@ class HouseDash extends Component {
     })
 
     return (
-      <div className="HouseDash">
-
-      { this.state.focused !== null && (
-        <div className="houseInFocus">
-          <h1>{this.state.focused.name}</h1>
-          <Roster 
-            students={this.state.focused.Students}/>            
-        </div>
-      )}
-
-        <div className="houseArray">
-          {houseArray}
-        </div>
-
+    <div className="HouseDash">
+    
+      <div className="houseDisplay">
+        { this.state.focused !== null && (
+          <div className="houseInFocus">
+            <h1>{this.state.focused.name}</h1>
+            <Roster 
+              students={this.state.focused.Students}/>            
+          </div>
+        )}
+        { this.state.focused === null && (
+          <div className="scoreboard">
+          <h1>scoreboard</h1>
+          </div>
+        )}
       </div>
+
+      <div className="houseArray">
+        {houseArray}
+      </div>
+
+    </div>
     );
   }
   expand = () => {

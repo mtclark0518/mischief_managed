@@ -3,7 +3,7 @@ import axios from 'axios'
 import Location from '../components/Location'
 import Roster from '../components/Roster'
 
-
+import '../styles/location.css'
 
 
 class LocationDash extends Component {
