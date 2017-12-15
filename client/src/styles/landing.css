@@ -1,8 +1,7 @@
 .Landing {
-    height: 100vh;
+    /* height: 300px; */
     display: flex;
     vertical-align: middle;
-    background: blue;
     justify-content: space-around;
 }
 

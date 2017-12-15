@@ -21,20 +21,24 @@ body {
 
 /*  CastleDash Component  */
 
+.CastleDash {
+    padding: 10px 0 90px;
+}
+
 
 /* ----------------------------------------------------------------  */
 
 
 /* HouseDash Component  */
 
-.houseDisplay {
-    display: flex;
-    flex-direction: row;
-}
+
+/* .houseDisplay {} */
 
 .houseArray {
-    position: absolute;
-    bottom: 50px;
+    position: fixed;
+    background: rgba(235, 235, 235, 0.6);
+    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.4);
+    bottom: 40px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -47,13 +51,11 @@ body {
 
 /* House Component  */
 
-.house {
-    padding: 1%;
+.House {
+    padding: 0.3em 0;
 }
 
 .hasFocus {
-    color: rgba(255, 255, 255, 0.9);
-    padding: 1%;
     font-weight: 400;
 }
 
@@ -69,8 +71,9 @@ body {
 
 .locationPanels {
     border: 1px solid blue;
-    width: 80%;
+    width: 90%;
     margin: auto;
+    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.4);
 }
 
 
@@ -80,9 +83,12 @@ body {
 /*  Header Component  */
 
 .Header {
-    background: rgba(25, 25, 25, 1.0);
-    padding: 10px;
-    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.8)
+    position: relative;
+    top: 0;
+    background: rgba(245, 245, 245, 1.0);
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.8);
+    height: 30px;
+    width: 100%;
 }
 
 
@@ -92,18 +98,15 @@ body {
 /*  Footer Component  */
 
 .Footer {
-    position: absolute;
-    height: 30px;
-    width: 100%;
+    position: fixed;
     bottom: 0;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-    background: rgba(25, 25, 25, 1.0);
-    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
+    height: 40px;
+    width: 100%;
+    background: rgba(245, 245, 245, 0.9);
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.8);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 
@@ -112,11 +115,17 @@ body {
 
 /* Button Component  */
 
-Button {
-    box-shadow: 0 0 1px 1px rgba(25, 25, 25, 0.8);
-    padding: 5px 35px;
-    border-radius: 2px;
-    box-shadow: 0 0 1px 1px rgba(20, 20, 20, 1);
+button {
+    height: 100%;
+    background: rgba(250, 250, 250, 1);
+    border: 2px solid transparent;
+    color: black;
+    padding: 0 5em;
+    text-align: center;
+}
+
+button:hover {
+    background: rgba(220, 220, 230, 1);
 }
 
 
@@ -127,9 +136,8 @@ Button {
 
 .Panel {
     margin: 5px auto;
-    width: 40%;
-    border: 1px solid black;
-    display: inline-block;
+    padding: 3px 0;
+    width: 100%;
 }
 
 
@@ -141,10 +149,8 @@ Button {
 .rosterPanel {
     background: rgba(245, 245, 245, 1.0);
     display: flex;
-    flex-direction: column;
-    margin-top: 2px;
-    box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.1);
-    padding: 2px 1px;
+    flex-direction: row;
+    line-height: 1em;
 }
 
 @media (max-height: 480px) {}

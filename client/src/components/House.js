@@ -13,17 +13,24 @@ class House extends Component {
         let secondaryColor = this.props.house.secondaryColor;
         let houseStyles = {
             background: primaryColor,
-            border: "2px solid " + secondaryColor,
+            border: "3px solid " + primaryColor,
             color: secondaryColor,
-            height: '30px'
+            padding: '0px 1em'
+        }
+        let inFocusStyles = {
+            background: primaryColor,
+            border: "3px solid " + secondaryColor,
+            color: secondaryColor,
+            padding: '0px 1em'
+
         }
 
 
         return(
-            <div className={houseName} style={houseStyles}>
+            <div className="House">
 
                 {this.props.expanded !== true && (
-                    <div className="house dashView">
+                    <div className="dashView" style={houseStyles}>
                         <Panel onClick={this.expandHouse} data={this.props.house.name} />             
                     </div>
                 )}
@@ -31,17 +38,17 @@ class House extends Component {
 
 
                 {this.props.expanded === true && (
-                    <div className="house expandedDashView">
+                    <div className="expandedDashView">
 
 
                         {this.props.focused === this.props.house && (
-                            <div className="hasFocus">
+                            <div className="hasFocus" style={inFocusStyles}>
                                 <Panel onClick={this.closeHouse} data={this.props.house.name} />
                             </div>
                         )}
 
                         {this.props.focused !== this.props.house && (
-                            <div className="noFocus">
+                            <div className="noFocus" style={houseStyles}>
                                 <Panel onClick={this.switchFocus} data={this.props.house.name} />            
                             </div>
                         )}

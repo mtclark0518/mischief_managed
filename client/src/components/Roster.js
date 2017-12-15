@@ -17,7 +17,7 @@ const Roster = props => {
         <div> 
             <h3>Roster</h3>
             <div>
-                <Panel data={studentArray}/>
+                <div>{studentArray}</div>
             </div>
         </div>
 

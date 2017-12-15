@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import Panel from './Panel'
 
 class Location extends Component {
     constructor(props){
@@ -33,7 +33,7 @@ class Location extends Component {
             )}
             {this.state.type==="Common Area" && (
                 <div className="commonArea">
-                    {this.props.location.name}
+                    <Panel data={this.props.location.name} />
                 </div>
             )}
         </div>
