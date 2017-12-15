@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Landing from '../components/Landing'
+import Hallows from '../components/Hallows'
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
 import Footer from '../components/Footer'
@@ -23,7 +23,7 @@ class CastleDash extends Component {
                 <div className="container">
                     {this.state.searching !== true && this.state.exploring !== true &&(
                         <div>
-                            <Landing />
+                            <Hallows />
                             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}

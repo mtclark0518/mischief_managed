@@ -47,20 +47,19 @@ class Hogwarts extends Component {
     return (
       <div className="Hogwarts">
         { this.state.active !== true && (
-            <div>
             <Header 
               buttonText={'I solemnly swear that i am up to no good'}
               onClick={this.enter.bind(this)} />
-              </div>
         )}
 
         { this.state.active === true && (
           <div className="active">
-            <Header hogwarts={this.state.hogwarts} buttonText={'Mischief Managed'} onClick={this.enter.bind(this)} />
+            <Header 
+              buttonText={'Mischief Managed'} 
+              onClick={this.enter.bind(this)} />
             <CastleDash houses={this.state.houses}/>              
           </div>
         )}
-
       </div>
     );
   }

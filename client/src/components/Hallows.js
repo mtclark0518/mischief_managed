@@ -2,11 +2,11 @@
 //items have a click function 
 
 import React from 'react'
-import '../styles/landing.css'
+import '../styles/hallows.css'
 
-const Landing = props => {
+const Hallows = props => {
     return(
-    <div className="Landing">
+    <div className="Hallows">
         <div className="svgContainer">
                 <svg 
                     className="circle"
@@ -35,4 +35,4 @@ const Landing = props => {
     </div>
     )
 }
-export default Landing;
+export default Hallows;
