@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import Landing from '../components/Landing'
 import HouseDash from './HouseDash'
-import SearchContainer from './SearchContainer'
 import LocationDash from './LocationDash'
-import Panel from '../components/Panel'
-import Button from '../components/Button'
 import Footer from '../components/Footer'
-import '../styles/castle.css'
+import '../styles/index.css'
+
+
 class CastleDash extends Component {
     constructor(props){
         super(props)
@@ -15,31 +15,34 @@ class CastleDash extends Component {
         }
         this.search = this.search.bind(this)
         this.explore = this.explore.bind(this)
-
     }
 
     render() {
         return (
             <div className="CastleDash">
-
+                <div className="container">
                     {this.state.searching !== true && this.state.exploring !== true &&(
-                        <div className="container">
+                        <div>
+                            <Landing />
                             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
                     {this.state.exploring === true && (
-                        <div className="container">
+                        
+                        <div>
                             <HouseDash />
                             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
                     {this.state.searching === true && (
-                        <div className="container">
+                        
+                        
+                        <div className="">
                             <LocationDash />
-
                             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
                         </div>
                     )}
+                </div>
             </div>
         )
     }

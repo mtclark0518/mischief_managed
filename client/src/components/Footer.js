@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from './Button'
-import '../styles/footer.css'
+import '../styles/index.css'
 class Footer extends Component {
 
     render(){

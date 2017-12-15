@@ -1,0 +1,150 @@
+/*  Primary Body Styles  */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  Hogwarts Component  */
+
+
+/* .Hogwarts {} */
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  CastleDash Component  */
+
+
+/* ----------------------------------------------------------------  */
+
+
+/* HouseDash Component  */
+
+.houseDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.houseArray {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/* House Component  */
+
+.house {
+    padding: 1%;
+}
+
+.hasFocus {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 1%;
+    font-weight: 400;
+}
+
+.noFocus {
+    font-weight: 400;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  LocationDash Component  */
+
+.locationPanels {
+    border: 1px solid blue;
+    width: 80%;
+    margin: auto;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  Header Component  */
+
+.Header {
+    background: rgba(25, 25, 25, 1.0);
+    padding: 10px;
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.8)
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  Footer Component  */
+
+.Footer {
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    bottom: 0;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background: rgba(25, 25, 25, 1.0);
+    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/* Button Component  */
+
+Button {
+    box-shadow: 0 0 1px 1px rgba(25, 25, 25, 0.8);
+    padding: 5px 35px;
+    border-radius: 2px;
+    box-shadow: 0 0 1px 1px rgba(20, 20, 20, 1);
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/* Panel Component */
+
+.Panel {
+    margin: 5px auto;
+    width: 40%;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/*  Roster Component  */
+
+.rosterPanel {
+    background: rgba(245, 245, 245, 1.0);
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.1);
+    padding: 2px 1px;
+}
+
+@media (max-height: 480px) {}

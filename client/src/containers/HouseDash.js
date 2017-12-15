@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import House from '../components/House'
 import Roster from '../components/Roster'
-import '../styles/house.css'
+import '../styles/index.css'
 
 
 

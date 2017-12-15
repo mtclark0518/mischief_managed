@@ -1,17 +1,11 @@
 import React, {Component} from 'react'
 import Button from './Button'
 import Panel from './Panel'
-import '../styles/house.css'
+import '../styles/index.css'
 
 class House extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-        }
-    }
-    componentDidMount(){
-        console.log(this.props.house.name)
-    }
+
+    
     render(){
 
         let houseName = this.props.house.name;
@@ -37,8 +31,6 @@ class House extends Component {
 
 
                 {this.props.expanded === true && (
-
-
                     <div className="house expandedDashView">
 
 

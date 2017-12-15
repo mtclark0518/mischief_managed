@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import Button from '../components/Button'
 import CastleDash from './CastleDash'
 import Header from '../components/Header'
-import '../styles/castle.css'
+import '../styles/index.css'
 class Hogwarts extends Component {
   constructor(props){
     super(props)
