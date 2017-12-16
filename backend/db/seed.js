@@ -224,7 +224,6 @@ const students = [
         HouseId: 1,
         LocationId: 1,
         CastleId: 1,
-        OrganizationId: 1
     },
     {
         firstName: 'Neville',
@@ -695,6 +694,11 @@ const organizations = [
     {
         name: 'Dumbledore\'s Army',
         type: 'Secret'
+    },
+    {
+        name: 'Quidditch',
+        type: 'Team',
+        HouseId: 1,
     }
 ]
 
@@ -730,11 +734,10 @@ const createOrganizations = () => {
 //         createSubject()
 //     )
 //     .then(
-//         createOrganizations()
-//     )
-//     .then(
 //         createLocation()
 //     )
+
+// createOrganizations()
 
 //    createStaff()
     

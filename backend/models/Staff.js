@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true        
         },
         firstName: {
             type: Sequelize.STRING,
@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
         },
         position: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
         }
     });
     return model
