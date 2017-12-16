@@ -5,19 +5,19 @@ import Panel from './Panel'
 import '../styles/index.css'
 const Roster = props => {
 
-    let studentArray = props.students.map(student => {
-        console.log(student)
+    let people = props.people.map(person => {
+        console.log(person)
         return(
-            <div className="rosterPanel" key={student.id} details={student}>
-                <div>{student.firstName} {student.lastName}</div>
+            <div className="rosterPanel" details={person}>
+                <div>{person.position} {person.firstName} {person.lastName}</div>
             </div>
         );
     });
     return(
         <div> 
-            <h3>Roster</h3>
+            <h3>{props.title}</h3>
             <div>
-                <div>{studentArray}</div>
+                <div>{people}</div>
             </div>
         </div>
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import House from '../components/House'
+import Panel from '../components/Panel'
+import Staff from '../components/Staff'
 import Roster from '../components/Roster'
 import '../styles/index.css'
 
@@ -45,7 +47,6 @@ class HouseDash extends Component {
         />
       )
     })
-
     return (
     <div className="HouseDash">
     
@@ -53,7 +54,8 @@ class HouseDash extends Component {
         { this.state.focused !== null && (
           <div className="houseInFocus">
             <h1>{this.state.focused.name}</h1>
-            <Roster students={this.state.focused.Students}/>            
+            <Staff view={'house'} staff={this.state.focused.Staff}/>
+            <Roster title={'Roster:'} people={this.state.focused.Students}/>            
           </div>
         )}
         { this.state.focused === null && (

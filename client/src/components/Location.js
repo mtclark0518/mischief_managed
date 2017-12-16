@@ -6,12 +6,14 @@ class Location extends Component {
         super(props)
         this.state = {
             type: null,
+            staff: [],
             students: []
         }
     }
     componentDidMount(){
         this.setState({
             type: this.props.location.type,
+            staff: this.props.location.Staffs,
             students: this.props.location.Students
         });
     }

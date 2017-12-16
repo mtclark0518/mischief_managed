@@ -4,10 +4,7 @@ import Panel from './Panel'
 import '../styles/index.css'
 
 class House extends Component {
-
-    
     render(){
-
         let houseName = this.props.house.name;
         let primaryColor = this.props.house.primaryColor;
         let secondaryColor = this.props.house.secondaryColor;
@@ -24,8 +21,6 @@ class House extends Component {
             padding: '0px 1em'
 
         }
-
-
         return(
             <div className="House">
 
@@ -34,9 +29,6 @@ class House extends Component {
                         <Panel onClick={this.expandHouse} data={this.props.house.name} />             
                     </div>
                 )}
-
-
-
                 {this.props.expanded === true && (
                     <div className="expandedDashView">
 
@@ -52,8 +44,6 @@ class House extends Component {
                                 <Panel onClick={this.switchFocus} data={this.props.house.name} />            
                             </div>
                         )}
-
-
                     </div>
                 )}
             </div>
@@ -63,13 +53,11 @@ class House extends Component {
         let house = this.props.house
         this.props.focus(house)
     }
-
     expandHouse = () => {
         this.props.expand()
         let house = this.props.house
         this.props.focus(house)
     }
-
     closeHouse = () => {
         this.props.expand()
         this.props.focus(null)

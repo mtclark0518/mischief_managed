@@ -3,6 +3,7 @@ import axios from 'axios'
 import Panel from '../components/Panel'
 import Header from '../components/Header'
 import Location from '../components/Location'
+import Staff from '../components/Staff'
 import Roster from '../components/Roster'
 import '../styles/index.css'
 
@@ -25,7 +26,6 @@ class LocationDash extends Component {
     componentDidMount(){
     this.getData()
   }
-
   getData(){
     axios({
       method: "GET",
@@ -37,7 +37,6 @@ class LocationDash extends Component {
       })
     });
   }
-
   render() {
     const classroomArray = 
     this.state.locations.map( classroom => {
@@ -103,13 +102,14 @@ return(
         { this.state.focused !== null && (
           <div className="locationInFocus">
             <h1>{this.state.focused.name}</h1>
-            <Roster students={this.state.focused.Students}/>
+            <Roster title={'Staff:'} people={this.state.focused.Staffs}/>
+            <Roster title={'Students:'} people={this.state.focused.Students}/>
             <Header buttonText={'close'} onClick={this.clear}/>            
           </div>
         )}
 
         { this.state.focused === null && this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
-          <div className="locationPanels">
+          <div className="locationPanel">
             <Panel data={'Classrooms'} onClick={this.searchClasses}/>
             <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
             <Panel data={'Public Spaces'} onClick={this.searchCommonAreas}/>
@@ -117,25 +117,25 @@ return(
           </div>
         )}
         { this.state.classrooms === true && this.state.expanded === false && (
-          <div className="locationPanels">
+          <div className="locationPanel">
             <div focus={this.props.focus}>{classroomArray}</div>
             <Header buttonText={'Back'} onClick={this.searchClasses}/>
           </div>
         )}
         { this.state.houseRooms === true && this.state.expanded === false && (
-          <div className="locationPanels">
+          <div className="locationPanel">
             <div>{houseRoomArray}</div>
             <Header buttonText={'Back'} onClick={this.searchHouseRooms}/>            
           </div>
         )}
         { this.state.commonAreas === true && this.state.expanded === false && (
-          <div className="locationPanels">
+          <div className="locationPanel">
             <div>{commonPlacesArray}</div>
             <Header buttonText={'Back'} onClick={this.searchCommonAreas}/>
           </div>
         )}
         { this.state.restrictedAreas === true && this.state.expanded === false && (
-          <div className="locationPanels">
+          <div className="locationPanel">
             <div>{restrictedAreasArray}</div>
             <Header buttonText={'Back'} onClick={this.searchRestricedAreas}/>
           </div>
