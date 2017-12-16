@@ -53,13 +53,12 @@ class HouseDash extends Component {
         { this.state.focused !== null && (
           <div className="houseInFocus">
             <h1>{this.state.focused.name}</h1>
-            <Roster 
-              students={this.state.focused.Students}/>            
+            <Roster students={this.state.focused.Students}/>            
           </div>
         )}
         { this.state.focused === null && (
           <div className="scoreboard">
-          <h1>scoreboard</h1>
+            <h1>scoreboard</h1>
           </div>
         )}
       </div>

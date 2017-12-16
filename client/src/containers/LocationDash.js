@@ -3,7 +3,7 @@ import axios from 'axios'
 import Panel from '../components/Panel'
 import Header from '../components/Header'
 import Location from '../components/Location'
-
+import Roster from '../components/Roster'
 import '../styles/index.css'
 
 
@@ -16,8 +16,11 @@ class LocationDash extends Component {
         houseRooms: false,
         commonAreas: false,
         restrictedAreas: false,
+        expanded: false,
         focused: null
     }
+    this.expand = this.expand.bind(this)
+
   }
     componentDidMount(){
     this.getData()
@@ -36,42 +39,35 @@ class LocationDash extends Component {
   }
 
   render() {
-    // let locationArray = string => {
-    //   this.state.locations.map( location => {
-    //     if(location.type === string){
-    //      return (
-    //       <Location
-    //         key={location.id}
-    //         location={location}
-    //       />
-    //     )         
-    //     }
-    //   })
-    // }
     const classroomArray = 
-    this.state.locations.map( classroom=>{
+    this.state.locations.map( classroom => {
+      
       if(classroom.type === 'Classroom'){
-        console.log('fuckin ay am i right')
+        let name = classroom.Subject.name + ' ' + classroom.name
+        console.log(name)
         return (
         <Location
           key={classroom.id}
           location={classroom}
+          name={name}
+          expand={this.expand}
+          focus={this.focus}
         />
       )}
     })
     let houseRoomArray = 
     this.state.locations.map( commonroom=>{
-      if(commonroom.type === 'Restricted'){
-        
-        if(commonroom.name === 'Common Room'){
-        console.log('common ROOOOM')
-          
+      if(commonroom.type === 'Restricted' && commonroom.name === 'Common Room'){
+        let name = commonroom.House.name + ' ' + commonroom.name
         return (
         <Location
           key={commonroom.id}
           location={commonroom}
+          name={name}
+          expand={this.expand}
+          focus={this.focus}
         />
-      )}}
+      )}
     })
     const commonPlacesArray = 
     this.state.locations.map( place=>{
@@ -81,6 +77,8 @@ class LocationDash extends Component {
         <Location
           key={place.id}
           location={place}
+          expand={this.expand}
+          focus={this.focus}
         />
       )}
     })
@@ -93,6 +91,8 @@ class LocationDash extends Component {
         <Location
           key={place.id}
           location={place}
+          expand={this.expand}
+          focus={this.focus}
         />
       )}}
     })
@@ -100,7 +100,15 @@ return(
     <div className="LocationDash">
     
       <div className="locationDashDisplay">
-        { this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
+        { this.state.focused !== null && (
+          <div className="locationInFocus">
+            <h1>{this.state.focused.name}</h1>
+            <Roster students={this.state.focused.Students}/>
+            <Header buttonText={'close'} onClick={this.clear}/>            
+          </div>
+        )}
+
+        { this.state.focused === null && this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
           <div className="locationPanels">
             <Panel data={'Classrooms'} onClick={this.searchClasses}/>
             <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
@@ -108,35 +116,31 @@ return(
             <Panel data={'Restricted Areas'} onClick={this.searchRestricedAreas}/>
           </div>
         )}
-        { this.state.classrooms === true && (
+        { this.state.classrooms === true && this.state.expanded === false && (
           <div className="locationPanels">
-            <div>{classroomArray}</div>
-            <Header className="classass" buttonText={'Back'} onClick={this.searchClasses}/>
-            
+            <div focus={this.props.focus}>{classroomArray}</div>
+            <Header buttonText={'Back'} onClick={this.searchClasses}/>
           </div>
         )}
-        { this.state.houseRooms === true && (
+        { this.state.houseRooms === true && this.state.expanded === false && (
           <div className="locationPanels">
             <div>{houseRoomArray}</div>
             <Header buttonText={'Back'} onClick={this.searchHouseRooms}/>            
           </div>
         )}
-        { this.state.commonAreas === true && (
+        { this.state.commonAreas === true && this.state.expanded === false && (
           <div className="locationPanels">
             <div>{commonPlacesArray}</div>
             <Header buttonText={'Back'} onClick={this.searchCommonAreas}/>
           </div>
         )}
-        { this.state.restrictedAreas === true && (
+        { this.state.restrictedAreas === true && this.state.expanded === false && (
           <div className="locationPanels">
             <div>{restrictedAreasArray}</div>
             <Header buttonText={'Back'} onClick={this.searchRestricedAreas}/>
           </div>
         )}
       </div>
-
-
-
     </div>
     );
   }
@@ -160,15 +164,21 @@ return(
       restrictedAreas: !prevState.restrictedAreas
     }))
   }
-  // close = () => {
-  //   this.setState({
-
-  //   })
-  // }
+  expand = () => {
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }))
+  }
   focus = place => {
     this.setState({
       focused: place
     })
+  }
+  clear = () => {
+    this.setState({
+      focused: null
+    })
+  this.expand();
   }
 }
 
