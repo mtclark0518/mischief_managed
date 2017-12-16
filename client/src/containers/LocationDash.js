@@ -42,7 +42,7 @@ class LocationDash extends Component {
     this.state.locations.map( classroom => {
       
       if(classroom.type === 'Classroom'){
-        let name = classroom.Subject.name + ' ' + classroom.name
+        let name = classroom.Subject.name
         console.log(name)
         return (
         <Location
@@ -97,16 +97,23 @@ class LocationDash extends Component {
     })
 return(
     <div className="LocationDash">
-    
-      <div className="locationDashDisplay">
         { this.state.focused !== null && (
           <div className="locationInFocus">
-            <h1>{this.state.focused.name}</h1>
-            <Roster title={'Staff:'} people={this.state.focused.Staffs}/>
-            <Roster title={'Students:'} people={this.state.focused.Students}/>
-            <Header buttonText={'close'} onClick={this.clear}/>            
+            { this.state.focused.type !== 'Classroom' && (
+              <h1>{this.state.focused.name}</h1>
+            )}
+            { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name !== 'Care of Magical Creatures' && (
+              <h1> {this.state.focused.Subject.name} {this.state.focused.name}</h1>
+            )}
+            { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name === 'Care of Magical Creatures' && (
+              <h1>{this.state.focused.name}</h1>
+            )}
+              <Roster title={'Staff:'} people={this.state.focused.Staffs}/>
+              <Roster title={'Students:'} people={this.state.focused.Students}/>
+              <Header buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}
+
 
         { this.state.focused === null && this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
           <div className="locationPanel">
@@ -140,7 +147,6 @@ return(
             <Header buttonText={'Back'} onClick={this.searchRestricedAreas}/>
           </div>
         )}
-      </div>
     </div>
     );
   }
