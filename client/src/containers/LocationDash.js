@@ -4,7 +4,7 @@ import Panel from '../components/Panel'
 import Bar from '../components/Bar'
 import Location from '../components/Location'
 import Staff from '../components/Staff'
-import Roster from '../components/Roster'
+import StudentContainer from './StudentContainer'
 import '../styles/index.css'
 
 
@@ -96,13 +96,14 @@ class LocationDash extends Component {
       )}}
     })
 return(
-    <div className="LocationDash">
+
+    <div className="flexColumn">
         { this.state.focused !== null && (
 
     
-          <div className="locationInFocus">
+          <div>
   {/*  formats the heading  */}
-            { this.state.focused.type !== 'Classroom' && (
+            { this.state.focused.type !== 'Classroom' && this.state.focused.name !== 'Common Room' &&(
               <h1>{this.state.focused.name}</h1>
             )}
             { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name !== 'Care of Magical Creatures' && (
@@ -111,17 +112,19 @@ return(
             { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name === 'Care of Magical Creatures' && (
               <h1>{this.state.focused.name}</h1>
             )}
+            { this.state.focused.name === 'Common Room' && (
+              <h1>{this.state.focused.House.name } { this.state.focused.name}</h1>
+            )}
 
 {/*  consistent across all locations  */}
-              {/* <Roster title={'Staff:'} people={this.state.focused.Staffs}/> */}
-              <Roster title={'Student'} students={this.state.focused.Students}/>
+              <StudentContainer from={this.state.focused.id}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}
 
 
         { this.state.focused === null && this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
-          <div className="locationPanel">
+          <div>
             <Panel data={'Classrooms'} onClick={this.searchClasses}/>
             <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
             <Panel data={'Public Spaces'} onClick={this.searchCommonAreas}/>
@@ -129,25 +132,25 @@ return(
           </div>
         )}
         { this.state.classrooms === true && this.state.expanded === false && (
-          <div className="locationPanel">
-            <div focus={this.props.focus}>{classroomArray}</div>
+          <div>
+            <div>{classroomArray}</div>
             <Bar buttonText={'Back'} onClick={this.searchClasses}/>
           </div>
         )}
         { this.state.houseRooms === true && this.state.expanded === false && (
-          <div className="locationPanel">
+          <div>
             <div>{houseRoomArray}</div>
             <Bar buttonText={'Back'} onClick={this.searchHouseRooms}/>            
           </div>
         )}
         { this.state.commonAreas === true && this.state.expanded === false && (
-          <div className="locationPanel">
+          <div>
             <div>{commonPlacesArray}</div>
             <Bar buttonText={'Back'} onClick={this.searchCommonAreas}/>
           </div>
         )}
         { this.state.restrictedAreas === true && this.state.expanded === false && (
-          <div className="locationPanel">
+          <div>
             <div>{restrictedAreasArray}</div>
             <Bar buttonText={'Back'} onClick={this.searchRestricedAreas}/>
           </div>

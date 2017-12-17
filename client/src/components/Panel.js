@@ -3,6 +3,7 @@
 import React from 'react'
 import '../styles/index.css'
 const Panel = props => {
+    
 
     return(
         <div className="Panel" onClick={props.onClick}>

@@ -3,7 +3,7 @@ import axios from 'axios'
 import House from '../components/House'
 import Panel from '../components/Panel'
 import Staff from '../components/Staff'
-import Roster from '../components/Roster'
+import HouseRoster from '../components/HouseRoster'
 import '../styles/index.css'
 import StudentContainer from './StudentContainer'
 
@@ -51,13 +51,13 @@ class HouseDash extends Component {
     return (
     <div className="HouseDash">
 
-      <div className="houseDisplay">
+      <div className="flexColumn">
         { this.state.focused !== null && (
-          <div className="houseInFocus">
-            <h1>{this.state.focused.name}</h1>
-            <h3>founder: {this.state.focused.founder} </h3>            
+          <div>
+            <h1>{this.state.focused.name} {this.state.focused.mascot}s</h1>
+            <h3>founder: {this.state.focused.founder} Points: {this.state.focused.points}</h3>            
             <Staff view={'house'} staff={this.state.focused.Staff}/>
-            <Roster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
+            <HouseRoster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
           </div>
         )}
         { this.state.focused === null && (

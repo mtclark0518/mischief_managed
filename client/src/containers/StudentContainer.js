@@ -1,51 +1,59 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Student from '../components/Student'
+
 class StudentContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-        // student: {},
+        students: []
         // expanded: false,
         // focused: null
     }
     // this.expand = this.expand.bind(this)
   }
     componentDidMount(){
-    // this.getData(this.props.student.id)
+    this.getData(this.props.from)
   }
 
-//   getData(id){
-//     axios({
-//       method: "GET",
-//       url: "api/student/" + id
-//     })
-//   .then( response => {
-//       this.setState({ 
-//         student: response.data
-//       })
-//     });
-//   }
+  getData = id => {
+    axios({
+      method: "GET",
+      url: "api/students/location/" + id
+    })
+  .then( students => {
+      console.log(students)  
+    this.setState({ 
+        students: students.data
+      })
+    });
+  }
 
   render() {
-    let students = this.props.showStudentsLocated;
-    // .map( student => {
-    //   return (
-    //     <Student
-    //       key={student.id}
-    //       student={student}
-    //       // expanded={this.state.expanded}
-    //       // expand={this.expand}
-    //       // focused={this.state.focused}
-    //       // focus={this.focus}
-    //     />
-    //   )
-    // })
-    console.log(students)
+    let students = this.state.students.map( student => {
+      let houseColors = {
+        primary: student.House.primaryColor,
+        secondary: student.House.secondaryColor
+      }
+      return (
+        <Student
+          key={student.id}
+          student={student}
+          houseColors={houseColors}
+          // expanded={this.state.expanded}
+          // expand={this.expand}
+          // focused={this.state.focused}
+          // focus={this.focus}
+        />
+      )
     
+    })
     return (
-        <div className="StudentContainer">
-        hi
+        <div>
+          students:
+          <div>
+            {students}
+          </div>
         </div>
     )
 }

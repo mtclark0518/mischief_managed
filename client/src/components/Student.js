@@ -11,18 +11,15 @@ class Student extends Component {
 
     }
     render(){
-        let styles = {
-            background: this.props.houseColors.primary
+        let studentStyles = {
+            border:'1px solid ' + this.props.houseColors.secondary,
+            color: this.props.houseColors.primary,
+            marginTop: '5px'
         }
-        console.log(styles)
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
         return(
-            <div >
-            <div className="tag" style={styles}>
-
-            </div>
-            
-                <Panel data={name} />
+            <div style={studentStyles}>
+                <Panel data={name} onClick={this.props.onClick}/>
             </div>
         )
     }
