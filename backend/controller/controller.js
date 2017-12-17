@@ -64,8 +64,24 @@ const showStaff = (req, res) => {
 
 //STUDENT
 const showStudents = (req, res) => {
-    Students.findAll()
+    Student.findAll()
     .then( students => {
+        res.json(students);
+    });
+};
+const studentsByLocation = (req, res) => {
+    Student.findAll({
+        where: {
+            LocationId: req.params.id
+        },
+        include:[
+            {
+                model: House
+            }
+        ]
+    })
+    .then( students => {
+        console.log(students)
         res.json(students);
     });
 }
@@ -93,6 +109,7 @@ module.exports = {
     showLocations: showLocations,
     showStaff: showStaff,
     showStudents: showStudents,
+    studentsByLocation: studentsByLocation,
     showSubjects: showSubjects,
 };
 // const login = (req, res) => {
