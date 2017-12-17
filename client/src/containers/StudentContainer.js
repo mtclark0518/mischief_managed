@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-
+import Student from '../components/Student'
 class StudentContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-        student: {},
+        // student: {},
         // expanded: false,
         // focused: null
     }
@@ -28,21 +28,25 @@ class StudentContainer extends Component {
 //   }
 
   render() {
-    // let houseArray = this.state.houses.map( house=>{
+    let students = this.props.showStudentsLocated;
+    // .map( student => {
     //   return (
-    //     <House
-    //       key={house.id}
-    //       house={house}
-    //       expanded={this.state.expanded}
-    //       expand={this.expand}
-    //       focused={this.state.focused}
-    //       focus={this.focus}
+    //     <Student
+    //       key={student.id}
+    //       student={student}
+    //       // expanded={this.state.expanded}
+    //       // expand={this.expand}
+    //       // focused={this.state.focused}
+    //       // focus={this.focus}
     //     />
     //   )
     // })
+    console.log(students)
     
     return (
-        <div>hi</div>
+        <div className="StudentContainer">
+        hi
+        </div>
     )
 }
 }

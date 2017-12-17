@@ -6,10 +6,14 @@ import '../styles/index.css'
 
 
 const Roster = props => {
-
     let students = props.students.map(student => {
+        let houseColors = {
+            primary: props.primary,
+            secondary: props.secondary
+        }
+        console.log(houseColors)
         return(
-            <Student key={student.id} student={student} />
+            <Student key={student.id} student={student} houseColors={houseColors}/>
         );
     });
     return(

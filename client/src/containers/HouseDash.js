@@ -5,6 +5,7 @@ import Panel from '../components/Panel'
 import Staff from '../components/Staff'
 import Roster from '../components/Roster'
 import '../styles/index.css'
+import StudentContainer from './StudentContainer'
 
 
 
@@ -47,7 +48,6 @@ class HouseDash extends Component {
         />
       )
     })
-    
     return (
     <div className="HouseDash">
 
@@ -57,7 +57,7 @@ class HouseDash extends Component {
             <h1>{this.state.focused.name}</h1>
             <h3>founder: {this.state.focused.founder} </h3>            
             <Staff view={'house'} staff={this.state.focused.Staff}/>
-            <Roster title={this.state.focused.mascot} students={this.state.focused.Students}/>            
+            <Roster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
           </div>
         )}
         { this.state.focused === null && (

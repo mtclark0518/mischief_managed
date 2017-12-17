@@ -11,10 +11,19 @@ class Student extends Component {
 
     }
     render(){
+        let styles = {
+            background: this.props.houseColors.primary
+        }
+        console.log(styles)
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
-        console.log(name)
         return(
-            <Panel data={name} />
+            <div >
+            <div className="tag" style={styles}>
+
+            </div>
+            
+                <Panel data={name} />
+            </div>
         )
     }
     switchFocus = () => {

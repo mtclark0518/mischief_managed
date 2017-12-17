@@ -172,3 +172,8 @@ button:hover {
 }
 
 @media (max-height: 480px) {}
+
+.tag {
+    width: 10px;
+    height: 5px;
+}

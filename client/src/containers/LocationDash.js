@@ -113,8 +113,8 @@ return(
             )}
 
 {/*  consistent across all locations  */}
-              <Roster title={'Staff:'} people={this.state.focused.Staffs}/>
-              <Roster title={'Students:'} people={this.state.focused.Students}/>
+              {/* <Roster title={'Staff:'} people={this.state.focused.Staffs}/> */}
+              <Roster title={'Student'} students={this.state.focused.Students}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}
