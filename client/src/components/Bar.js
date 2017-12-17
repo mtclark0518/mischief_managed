@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Button from '../components/Button'
-class Header extends Component {
+class Bar extends Component {
 
     render(){
         return (
-            <div className="Header">
+            <div className="Bar">
                 <Button 
                     onClick={this.props.onClick}
                     text={this.props.buttonText} />
@@ -12,4 +12,4 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+export default Bar;

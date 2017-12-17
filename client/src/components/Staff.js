@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 // import Button from './Button'
+import Panel from './Panel'
 class Staff extends Component {
     constructor(props){
         super(props)
@@ -13,12 +14,14 @@ class Staff extends Component {
         });
     }
     render(){
-
+        let title = 'Head of House: ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         return(
             <div className="Staff">
-            {this.state.view === 'house' && (
-                <h3>Head of House: {this.props.staff.firstName} {this.props.staff.lastName}</h3>
-            )}
+                {this.state.view === 'house' && (
+                    <div className="headOfHouse">
+                        <Panel data={title} />
+                    </div>
+                )}
             </div>
         )
     }

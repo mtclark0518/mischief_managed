@@ -47,15 +47,17 @@ class HouseDash extends Component {
         />
       )
     })
+    
     return (
     <div className="HouseDash">
-    
+
       <div className="houseDisplay">
         { this.state.focused !== null && (
           <div className="houseInFocus">
             <h1>{this.state.focused.name}</h1>
+            <h3>founder: {this.state.focused.founder} </h3>            
             <Staff view={'house'} staff={this.state.focused.Staff}/>
-            <Roster title={'Roster:'} people={this.state.focused.Students}/>            
+            <Roster title={this.state.focused.mascot} students={this.state.focused.Students}/>            
           </div>
         )}
         { this.state.focused === null && (

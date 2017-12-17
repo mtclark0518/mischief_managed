@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 // import Button from './Button'
+import Panel from './Panel'
 class Student extends Component {
     constructor(props){
         super(props)
@@ -7,13 +8,13 @@ class Student extends Component {
         }
     }
     componentDidMount(){
-        // console.log(this.props.house.name)
+
     }
     render(){
-
+        let name = this.props.student.firstName + ' ' + this.props.student.lastName
+        console.log(name)
         return(
-            <div>student</div>
-
+            <Panel data={name} />
         )
     }
     switchFocus = () => {

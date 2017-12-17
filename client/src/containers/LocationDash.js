@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Panel from '../components/Panel'
-import Header from '../components/Header'
+import Bar from '../components/Bar'
 import Location from '../components/Location'
 import Staff from '../components/Staff'
 import Roster from '../components/Roster'
@@ -98,7 +98,10 @@ class LocationDash extends Component {
 return(
     <div className="LocationDash">
         { this.state.focused !== null && (
+
+    
           <div className="locationInFocus">
+  {/*  formats the heading  */}
             { this.state.focused.type !== 'Classroom' && (
               <h1>{this.state.focused.name}</h1>
             )}
@@ -108,9 +111,11 @@ return(
             { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name === 'Care of Magical Creatures' && (
               <h1>{this.state.focused.name}</h1>
             )}
+
+{/*  consistent across all locations  */}
               <Roster title={'Staff:'} people={this.state.focused.Staffs}/>
               <Roster title={'Students:'} people={this.state.focused.Students}/>
-              <Header buttonText={'Back'} onClick={this.clear}/> 
+              <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}
 
@@ -126,25 +131,25 @@ return(
         { this.state.classrooms === true && this.state.expanded === false && (
           <div className="locationPanel">
             <div focus={this.props.focus}>{classroomArray}</div>
-            <Header buttonText={'Back'} onClick={this.searchClasses}/>
+            <Bar buttonText={'Back'} onClick={this.searchClasses}/>
           </div>
         )}
         { this.state.houseRooms === true && this.state.expanded === false && (
           <div className="locationPanel">
             <div>{houseRoomArray}</div>
-            <Header buttonText={'Back'} onClick={this.searchHouseRooms}/>            
+            <Bar buttonText={'Back'} onClick={this.searchHouseRooms}/>            
           </div>
         )}
         { this.state.commonAreas === true && this.state.expanded === false && (
           <div className="locationPanel">
             <div>{commonPlacesArray}</div>
-            <Header buttonText={'Back'} onClick={this.searchCommonAreas}/>
+            <Bar buttonText={'Back'} onClick={this.searchCommonAreas}/>
           </div>
         )}
         { this.state.restrictedAreas === true && this.state.expanded === false && (
           <div className="locationPanel">
             <div>{restrictedAreasArray}</div>
-            <Header buttonText={'Back'} onClick={this.searchRestricedAreas}/>
+            <Bar buttonText={'Back'} onClick={this.searchRestricedAreas}/>
           </div>
         )}
     </div>

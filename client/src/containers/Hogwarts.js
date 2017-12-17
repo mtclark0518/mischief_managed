@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import CastleDash from './CastleDash'
-import Header from '../components/Header'
+import Bar from '../components/Bar'
 import '../styles/index.css'
 class Hogwarts extends Component {
   constructor(props){
@@ -47,14 +47,14 @@ class Hogwarts extends Component {
     return (
       <div className="Hogwarts">
         { this.state.active !== true && (
-            <Header 
+            <Bar 
               buttonText={'I solemnly swear that i am up to no good'}
               onClick={this.enter.bind(this)} />
         )}
 
         { this.state.active === true && (
           <div className="active">
-            <Header 
+            <Bar 
               buttonText={'Mischief Managed'} 
               onClick={this.enter.bind(this)} />
             <CastleDash houses={this.state.houses}/>              
