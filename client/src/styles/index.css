@@ -7,17 +7,6 @@ body {
     font-size: 1.1em;
 }
 
-h1,
-h3 {
-    font-family: 'Reenie Beanie', cursive;
-    width: 94%;
-    margin: auto;
-}
-
-h3 {
-    width: 92%;
-}
-
 button {
     height: 100%;
     font-family: 'Reenie Beanie', cursive;
@@ -72,23 +61,13 @@ button:hover {
     justify-content: space-evenly;
 }
 
-.studentArray {
-    background: rgba(235, 235, 235, 0.5);
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 0.6em;
-}
-
-.rosterTitle {
+.studentArrayTitle {
     font-weight: 700;
     margin-bottom: 3px;
-    line-height: 0.8em;
+    font-size: 1.3em;
 }
 
-
+*/
 /* ----------------------------------------------------------------  */
 
 
@@ -151,29 +130,16 @@ button:hover {
     width: 100%;
 }
 
-.rosterPanel {
-    width: 90%;
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+    max-width: 94%;
     margin: auto;
-    background: rgba(245, 245, 245, 1.0);
-}
-
-.locationPanel {
-    border: 1px solid blue;
-    width: 90%;
-    margin: auto;
-    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.4);
 }
 
 .headOfHouse {
-    width: 90%;
-    display: flex;
     margin: 2px auto 5px;
     font-weight: 800;
 }
 
 @media (max-height: 480px) {}
-
-.tag {
-    width: 10px;
-    height: 5px;
-}
