@@ -14,8 +14,15 @@ class Staff extends Component {
         });
     }
     render(){
+        let staffStyles = {
+            boxShadow:'0 0 3px 1px rgba(25,25,25,0.2)',
+            color: 'black',
+            marginTop: '2px',
+            marginBottom: '2px',
+            fontSize: '1.2em'
+        }
         let headofhouse = 'Head of House: ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
-        let formaltitle = this.props.staff.position + ' ' + this.props.staff.lastName
+        let formaltitle = this.props.staff.position + ' ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         return(
             <div className="Staff">
                 {this.state.view === 'house' && (
@@ -24,7 +31,7 @@ class Staff extends Component {
                     </div>
                 )}
                 {this.state.view === 'location' && (
-                    <div className="formalTitle">
+                    <div style={staffStyles} className="formalTitle">
                         <Panel data={formaltitle} />
                     </div>
                 )}

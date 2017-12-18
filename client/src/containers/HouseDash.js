@@ -54,15 +54,26 @@ class HouseDash extends Component {
       <div className="flexColumn">
         { this.state.focused !== null && (
           <div>
-            <h1>{this.state.focused.name} {this.state.focused.mascot}s</h1>
-            <h3>founder: {this.state.focused.founder} Points: {this.state.focused.points}</h3>            
-            <Staff view={'house'} staff={this.state.focused.Staff}/>
+            <div className="flexHouseHeading">
+            
+              <div className="flexPrimary">
+                <div className="emboldened">{this.state.focused.name} {this.state.focused.mascot}s</div>
+                <Staff view={'house'} staff={this.state.focused.Staff}/>
+              </div>
+
+              <div className="flexSecondary">
+                <div>Founder: {this.state.focused.founder}</div>
+                <div>House Points: {this.state.focused.points}</div>
+              </div>
+            
+            </div>
+
             <HouseRoster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
           </div>
         )}
         { this.state.focused === null && (
           <div className="scoreboard">
-            <h1>scoreboard</h1>
+            <h1>House Cup Standings</h1>
           </div>
         )}
       </div>

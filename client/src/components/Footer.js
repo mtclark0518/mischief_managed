@@ -4,7 +4,6 @@ import '../styles/index.css'
 class Footer extends Component {
 
     render(){
-        console.log(this.props)
         return (
             <footer className="Footer">
                 <Button text={'home'} onClick={this.props.onHome}/>

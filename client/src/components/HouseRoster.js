@@ -6,7 +6,7 @@ import '../styles/index.css'
 
 
 const HouseRoster = props => {
-            let rosterStyles = {
+        let rosterStyles = {
             color: props.primary,
             boxShadow: '0 0 5px 1px ' + props.secondary
         }
@@ -22,10 +22,8 @@ const HouseRoster = props => {
     });
     return(
         <div>
-                <div style={rosterStyles}> 
-                    <div className="studentArrayTitle">{props.title}s:</div>
-                    <div>{students}</div>
-                </div>
+            <div className="studentArrayTitle">{props.title}s:</div>
+            <div style={rosterStyles}>{students}</div>
         </div>
     )
 };

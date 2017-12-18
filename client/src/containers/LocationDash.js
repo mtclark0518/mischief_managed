@@ -102,7 +102,6 @@ return(
     <div className="flexColumn">
         { this.state.focused !== null && (
 
-    
           <div>
   {/*  formats the heading  */}
             { this.state.focused.type !== 'Classroom' && this.state.focused.name !== 'Common Room' &&(
@@ -120,7 +119,6 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-
               <StudentContainer from={this.state.focused.id}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
