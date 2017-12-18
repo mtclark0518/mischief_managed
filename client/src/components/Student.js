@@ -23,14 +23,14 @@ class Student extends Component {
             </div>
         )
     }
-    switchFocus = () => {
-    }
+    // switchFocus = () => {
+    // }
 
-    expandStudent = () => {
-    }
+    // expandStudent = () => {
+    // }
 
-    closeStudent = () => {
-    }
+    // closeStudent = () => {
+    // }
 }
 export default Student;
 

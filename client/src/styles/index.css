@@ -26,30 +26,12 @@ button:hover {
     background: rgba(220, 220, 230, 1);
 }
 
-
-/* ----------------------------------------------------------------  */
-
-
-/*  Hogwarts Component  */
-
-
-/* .Hogwarts {} */
-
-
-/* ----------------------------------------------------------------  */
-
-
-/*  CastleDash Component  */
-
 .CastleDash {
     padding: 0 0 99px;
 }
 
 
-/* ----------------------------------------------------------------  */
-
-
-/* HouseDash Component  */
+/* House Dash  */
 
 .HouseDash {
     width: 100%;
@@ -67,16 +49,8 @@ button:hover {
     justify-content: space-evenly;
 }
 
-.studentArrayTitle {
-    font-weight: 600;
-    font-size: 1.2em;
-}
 
-
-/* ----------------------------------------------------------------  */
-
-
-/* House Component  */
+/* House  */
 
 .House {
     padding: 0.3em 0;
@@ -91,10 +65,52 @@ button:hover {
 }
 
 
-/* ----------------------------------------------------------------  */
+/* StudentContainer && StaffContainer Component  */
+
+.Container {
+    text-align: center;
+}
 
 
-/*  Bar Component  */
+/* Student Component  */
+
+.Student {
+    display: inline-block;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+
+/* Staff Component  */
+
+.HeadOfHouse {
+    font-weight: 600;
+    font-size: 1.0em;
+}
+
+.FormalTitle {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+
+/* HouseRoster Component  */
+
+.HouseRoster {
+    margin: 1%;
+}
+
+.RosterTitle {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.RosterStudents {
+    text-align: center;
+}
+
+
+/* Bar Component  */
 
 .Bar {
     position: sticky;
@@ -106,10 +122,7 @@ button:hover {
 }
 
 
-/* ----------------------------------------------------------------  */
-
-
-/*  Footer Component  */
+/* Footer Component  */
 
 .Footer {
     position: fixed;
@@ -124,10 +137,7 @@ button:hover {
 }
 
 
-/* ----------------------------------------------------------------  */
-
-
-/* Panel Component */
+/* Panel Component  */
 
 .Panel {
     margin: 0.3em auto;
@@ -143,11 +153,12 @@ button:hover {
     border: 3px solid transparent;
 }
 
-.flexHeading {
+
+/* Heading Component */
+
+.Heading {
     display: flex;
     flex-direction: row;
-    /* padding: 0.3em; */
-    /* justify-content: space-between; */
 }
 
 .emboldened {
@@ -166,40 +177,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
-
-.headOfHouse {
-    font-weight: 600;
-    font-size: 1.0em;
-}
-
-
-/* ----------------------------------------------------------------  */
-
-
-/* Student Component */
-
-.HouseRoster {
-    margin: 1%;
-}
-
-.rosterStudents {
-    text-align: center;
-}
-
-.StudentContainer {
-    text-align: center;
-}
-
-.Student {
-    display: inline-block;
-    margin: 0.5em;
-    padding: 0.5em;
-}
-
-.staff.formalTitle {
-    padding: 0.5em;
-    margin: 0.5em;
 }
 
 @media (max-height: 480px) {}

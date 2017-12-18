@@ -49,7 +49,7 @@ class StudentContainer extends Component {
     
     })
     return (
-        <div className="StudentContainer">
+        <div className="Container">
             {students}
         </div>
     )

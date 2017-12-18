@@ -6,6 +6,7 @@ import Staff from '../components/Staff'
 import HouseRoster from '../components/HouseRoster'
 import '../styles/index.css'
 import StudentContainer from './StudentContainer'
+import Heading from '../components/Heading'
 
 
 
@@ -49,26 +50,12 @@ class HouseDash extends Component {
       )
     })
     return (
-    <div className="flexColumn">
+    <div className="HouseDash">
 
-      <div>
         { this.state.focused !== null && (
-          <div>
-            <div className="flexHeading">
-              <div className="flexPrimary">
-                <div className="emboldened">{this.state.focused.name} {this.state.focused.mascot}s</div>
-                <Staff view={'house'} staff={this.state.focused.Staff}/>
-              </div>
-
-              <div className="flexSecondary">
-                <div>Founder: {this.state.focused.founder}</div>
-                <div>House Points: {this.state.focused.points}</div>
-              </div>
-            </div>
-            
-          <div className="flexColumn">
+          <div className="HouseInFocus">
+            <Heading details={this.state.focused}/>
             <HouseRoster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
-            </div>
           </div>
         )}
         { this.state.focused === null && (
@@ -76,7 +63,6 @@ class HouseDash extends Component {
             <h1>House Cup Standings</h1>
           </div>
         )}
-      </div>
 
       <div className="houseArray">
         {houseArray}

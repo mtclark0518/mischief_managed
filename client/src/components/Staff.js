@@ -23,14 +23,14 @@ class Staff extends Component {
         let headofhouse = 'Head of House: ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         let formaltitle = this.props.staff.position + ' ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         return(
-            <div className="StaffContainer">
+            <div className="Staff">
                 {this.state.view === 'house' && (
-                    <div className="staff headOfHouse">
+                    <div className="HeadOfHouse">
                         <Panel data={headofhouse} />
                     </div>
                 )}
                 {this.state.view === 'location' && (
-                    <div style={staffStyles} className="staff formalTitle">
+                    <div style={staffStyles} className="FormalTitle">
                         <Panel data={formaltitle} />
                     </div>
                 )}

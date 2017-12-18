@@ -45,7 +45,7 @@ class StaffContainer extends Component {
     
     })
     return (
-        <div>
+        <div className="Container">
             {staff}
         </div>
     )

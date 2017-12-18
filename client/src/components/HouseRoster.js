@@ -1,6 +1,6 @@
 // Reuseable Functional Component that returns a list of Panel Components
 
-import React, {Component} from 'react';
+import React from 'react';
 import Student from './Student'
 import '../styles/index.css'
 import Panel from './Panel'
@@ -19,8 +19,8 @@ const HouseRoster = props => {
     });
     return(
         <div className="HouseRoster">
-            <div className="studentArrayTitle">{props.title}s:</div>
-            <div className="rosterStudents">
+            <div className="RosterTitle">{props.title}s:</div>
+            <div className="RosterStudents">
                 <Panel data={students} />
             </div>
         </div>
