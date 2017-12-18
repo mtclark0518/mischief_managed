@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended : true }));
 
 
 const path = require('path')
-app.use(express.static(path.join(__dirname, 'backend/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 
@@ -29,7 +29,7 @@ const routes = require('./backend/config/routes')
 app.use('/', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/backend/build/index.html'));
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 app.listen(PORT, () => log('Shakedown ' + PORT));
 
