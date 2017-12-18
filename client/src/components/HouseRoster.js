@@ -3,13 +3,10 @@
 import React, {Component} from 'react';
 import Student from './Student'
 import '../styles/index.css'
+import Panel from './Panel'
 
 
 const HouseRoster = props => {
-        let rosterStyles = {
-            color: props.primary,
-            boxShadow: '0 0 5px 1px ' + props.secondary
-        }
     let students = props.students.map(student => {
         let houseColors = {
             primary: props.primary,
@@ -21,9 +18,11 @@ const HouseRoster = props => {
         );
     });
     return(
-        <div>
+        <div className="HouseRoster">
             <div className="studentArrayTitle">{props.title}s:</div>
-            <div style={rosterStyles}>{students}</div>
+            <div className="rosterStudents">
+                <Panel data={students} />
+            </div>
         </div>
     )
 };

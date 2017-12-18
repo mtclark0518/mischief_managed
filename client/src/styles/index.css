@@ -51,8 +51,10 @@ button:hover {
 
 /* HouseDash Component  */
 
-
-/* .houseDisplay {} */
+.HouseDash {
+    width: 100%;
+    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
+}
 
 .houseArray {
     position: fixed;
@@ -134,17 +136,17 @@ button:hover {
 
 .flexColumn {
     display: flex;
-    flex-direction: column;
     width: 98%;
     margin: auto;
+    flex-direction: column;
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
     border: 3px solid transparent;
 }
 
-.flexHouseHeading {
+.flexHeading {
     display: flex;
     flex-direction: row;
-    padding: 0.3em 0;
+    padding: 0.3em;
     justify-content: space-between;
 }
 
@@ -170,6 +172,35 @@ button:hover {
     margin: 2px 0 5px;
     font-weight: 600;
     font-size: 1.2em;
+}
+
+
+/* ----------------------------------------------------------------  */
+
+
+/* Student Component */
+
+.HouseRoster {
+    margin: 1%;
+}
+
+.rosterStudents {
+    text-align: center;
+}
+
+.StudentContainer {
+    text-align: center;
+}
+
+.Student {
+    display: inline-block;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.staff.formalTitle {
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 @media (max-height: 480px) {}

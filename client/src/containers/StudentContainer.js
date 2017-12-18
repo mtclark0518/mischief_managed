@@ -49,13 +49,14 @@ class StudentContainer extends Component {
     
     })
     return (
-        <div>
+        <div className="StudentContainer">
             {students}
         </div>
     )
+  }
 }
-}
-      
+export default StudentContainer;
+
     // <div className="HouseDash">
     
     //   <div className="houseDisplay">
@@ -90,4 +91,3 @@ class StudentContainer extends Component {
 //     })
 //   }
 
-export default StudentContainer;

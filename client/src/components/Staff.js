@@ -16,22 +16,21 @@ class Staff extends Component {
     render(){
         let staffStyles = {
             boxShadow:'0 0 3px 1px rgba(25,25,25,0.2)',
+            border:'1px solid rgba(25,25,25,0.2)',
             color: 'black',
-            marginTop: '2px',
-            marginBottom: '2px',
             fontSize: '1.2em'
         }
         let headofhouse = 'Head of House: ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         let formaltitle = this.props.staff.position + ' ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         return(
-            <div className="Staff">
+            <div className="StaffContainer">
                 {this.state.view === 'house' && (
-                    <div className="headOfHouse">
+                    <div className="staff headOfHouse">
                         <Panel data={headofhouse} />
                     </div>
                 )}
                 {this.state.view === 'location' && (
-                    <div style={staffStyles} className="formalTitle">
+                    <div style={staffStyles} className="staff formalTitle">
                         <Panel data={formaltitle} />
                     </div>
                 )}
