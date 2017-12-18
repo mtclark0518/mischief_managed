@@ -12,10 +12,10 @@ router.get('/api/locations', controller.showLocations)
 
 //STAFF
 router.get('/api/staff', controller.showStaff)
+router.get('/api/staff/location/:id', controller.staffByLocation)
 
 //STUDENT
 router.get('/api/students', controller.showStudents)
-
 router.get('/api/students/location/:id', controller.studentsByLocation)
 
 //SUBJECT

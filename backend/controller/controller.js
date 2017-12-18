@@ -22,7 +22,11 @@ const showHouses = (req, res) => {
             },
             {
                 model: Staff
+            },
+            {
+                model: Organization
             }
+
         ]
     })
     .then( houses => {
@@ -60,7 +64,27 @@ const showStaff = (req, res) => {
     .then( staff => {
         res.json(staff);
     });
-}
+};
+//STAFF BY LOCATION
+const staffByLocation = (req, res) => {
+    Staff.findAll({
+        where: {
+            LocationId: req.params.id
+        },
+        include:[
+            {
+                model: House
+            },
+            {
+                model: Subject
+            }
+        ]
+    })
+    .then( staff => {
+        console.log(staff)
+        res.json(staff);
+    });
+};
 
 //STUDENT
 const showStudents = (req, res) => {
@@ -69,6 +93,7 @@ const showStudents = (req, res) => {
         res.json(students);
     });
 };
+//STUDENT BY LOCATION
 const studentsByLocation = (req, res) => {
     Student.findAll({
         where: {
@@ -77,6 +102,9 @@ const studentsByLocation = (req, res) => {
         include:[
             {
                 model: House
+            },
+            {
+                model: School_Clubs
             }
         ]
     })
@@ -95,7 +123,11 @@ const showSubjects = (req, res) => {
             },
             {
                 model: Location
+            },
+            {
+                model: Organization
             }
+
         ]
     })
     .then( subjects => {
@@ -110,6 +142,7 @@ module.exports = {
     showStaff: showStaff,
     showStudents: showStudents,
     studentsByLocation: studentsByLocation,
+    staffByLocation: staffByLocation,
     showSubjects: showSubjects,
 };
 // const login = (req, res) => {
