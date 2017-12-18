@@ -8,7 +8,7 @@ const log = (stuff) => console.log(stuff)
 
 
 const {Client} = require('pg')
-const client = new Client({ connectionString: process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged' });
+const client = new Client({ connectionString: process.env.DATABASE_URL });
 client.connect( (error) => {
 	if (error) { log('error yo: ', error) } else { log('connected to db') }
 });
