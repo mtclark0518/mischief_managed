@@ -1,7 +1,7 @@
 const express = require('express')
 const http = require('http')
 const app = express();
-const server = http.createServer(app)
+// const server = http.createServer(app)
 const PORT = process.env.PORT || 1979
 
 const log = (stuff) => console.log(stuff)
@@ -22,14 +22,16 @@ app.use(bodyParser.urlencoded({ extended : true }));
 
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'backend/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/backend/build/index.html'));
-});
+
 
 
 const routes = require('./backend/config/routes')
 app.use('/', routes)
-server.listen(PORT, () => log('Shakedown ' + PORT));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/backend/build/index.html'));
+});
+app.listen(PORT, () => log('Shakedown ' + PORT));
 
 
 
