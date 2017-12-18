@@ -31,15 +31,15 @@ class StaffContainer extends Component {
 
   render() {
     let staff = this.state.staff.map( staff => {
-      let houseColors = {
-        primary: student.House.primaryColor,
-        secondary: student.House.secondaryColor
-      }
+      // let houseColors = {
+      //   primary: student.House.primaryColor,
+      //   secondary: student.House.secondaryColor
+      // }
       return (
         <Staff
-          key={student.id}
+          key={staff.id}
           staff={staff}
-          houseColors={houseColors}
+          // houseColors={houseColors}
           // expanded={this.state.expanded}
           // expand={this.expand}
           // focused={this.state.focused}

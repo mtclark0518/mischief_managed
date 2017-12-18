@@ -5,6 +5,8 @@ import Bar from '../components/Bar'
 import Location from '../components/Location'
 import Staff from '../components/Staff'
 import StudentContainer from './StudentContainer'
+import StaffContainer from './StaffContainer'
+
 import '../styles/index.css'
 
 
@@ -116,7 +118,9 @@ return(
               <h1>{this.state.focused.House.name } { this.state.focused.name}</h1>
             )}
 
-{/*  consistent across all locations  */}
+  {/* consistent across all locations   */}
+              <StaffContainer from={this.state.focused.id}/>
+
               <StudentContainer from={this.state.focused.id}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
