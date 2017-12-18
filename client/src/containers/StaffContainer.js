@@ -39,6 +39,7 @@ class StaffContainer extends Component {
         <Staff
           key={staff.id}
           staff={staff}
+          view={'location'}
           // houseColors={houseColors}
           // expanded={this.state.expanded}
           // expand={this.expand}
@@ -50,10 +51,7 @@ class StaffContainer extends Component {
     })
     return (
         <div>
-          staff:
-          <div>
             {staff}
-          </div>
         </div>
     )
 }

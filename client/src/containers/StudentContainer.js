@@ -50,10 +50,7 @@ class StudentContainer extends Component {
     })
     return (
         <div>
-          students:
-          <div>
             {students}
-          </div>
         </div>
     )
 }

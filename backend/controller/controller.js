@@ -22,10 +22,10 @@ const showHouses = (req, res) => {
             },
             {
                 model: Staff
-            },
-            {
-                model: Organization
             }
+            // {
+            //     model: Organization
+            // }
 
         ]
     })
@@ -102,10 +102,10 @@ const studentsByLocation = (req, res) => {
         include:[
             {
                 model: House
-            },
-            {
-                model: School_Clubs
             }
+            // {
+            //     model: School_Clubs
+            // }
         ]
     })
     .then( students => {
@@ -123,10 +123,10 @@ const showSubjects = (req, res) => {
             },
             {
                 model: Location
-            },
-            {
-                model: Organization
             }
+            // {
+            //     model: Organization
+            // }
 
         ]
     })
@@ -140,9 +140,10 @@ module.exports = {
     showHouses: showHouses,
     showLocations: showLocations,
     showStaff: showStaff,
+    staffByLocation: staffByLocation,
+    
     showStudents: showStudents,
     studentsByLocation: studentsByLocation,
-    staffByLocation: staffByLocation,
     showSubjects: showSubjects,
 };
 // const login = (req, res) => {
