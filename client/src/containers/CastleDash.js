@@ -20,7 +20,7 @@ class CastleDash extends Component {
 
     render() {
         return (
-            <div ClassName="CastleDash">
+            <div className="CastleDash">
                     {this.state.searching !== true && this.state.exploring !== true &&(
                             <Hallows />
                     )}
