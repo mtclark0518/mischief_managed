@@ -35,7 +35,7 @@ button:hover {
 
 .HouseDash {
     box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
-    padding: 0 26px 99px;
+    padding: 0 18px 99px;
 }
 
 .houseArray {
@@ -46,7 +46,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-left: -26px;
+    margin-left: -18px;
     justify-content: space-evenly;
 }
 
