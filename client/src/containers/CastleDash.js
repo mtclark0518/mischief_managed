@@ -16,33 +16,21 @@ class CastleDash extends Component {
         this.search = this.search.bind(this)
         this.explore = this.explore.bind(this)
     }
+    
 
     render() {
         return (
-            <div className="CastleDash">
-                <div className="container">
+            <div ClassName="CastleDash">
                     {this.state.searching !== true && this.state.exploring !== true &&(
-                        <div>
                             <Hallows />
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
                     )}
                     {this.state.exploring === true && (
-                        
-                        <div>
                             <HouseDash />
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
                     )}
                     {this.state.searching === true && (
-                        
-                        
-                        <div className="">
                             <LocationDash />
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
                     )}
-                </div>
+                <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
         )
     }

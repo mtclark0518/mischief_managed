@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import CastleDash from './CastleDash'
 import Bar from '../components/Bar'
+import Footer from '../components/Footer'
 import '../styles/index.css'
+
 class Hogwarts extends Component {
   constructor(props){
     super(props)
     this.state = {
       hogwarts: null,
       active: false,
-      houses: []
+      houses: [],
     }
-    this.toggleActive = this.toggleActive.bind(this)
+    this.activate = this.activate.bind(this)
   }
 
   componentDidMount(){
@@ -33,10 +35,10 @@ class Hogwarts extends Component {
   }
 
   enter = () => {
-    this.toggleActive()
+    this.activate()
   }
   
-  toggleActive = () => {
+  activate = () => {
     this.setState(prevState => ({
       active : !prevState.active
     }))
@@ -57,7 +59,7 @@ class Hogwarts extends Component {
             <Bar 
               buttonText={'Mischief Managed'} 
               onClick={this.enter.bind(this)} />
-            <CastleDash houses={this.state.houses}/>              
+            <CastleDash houses={this.state.houses} />
           </div>
         )}
       </div>
