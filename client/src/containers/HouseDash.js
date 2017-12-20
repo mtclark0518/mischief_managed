@@ -51,12 +51,12 @@ class HouseDash extends Component {
     })
     return (
     <div className="HouseDash">
-          <div className="flexColumn">
+      <div className="flexColumn">
 
         { this.state.focused !== null && (
           <div>
             <Heading details={this.state.focused}/>
-            <HouseRoster primary={this.state.focused.primaryColor} secondary={this.state.focused.secondaryColor} title={this.state.focused.mascot} students={this.state.focused.Students} />
+            <StudentContainer type={'house'} from={this.state.focused.id}/>
           </div>
         )}
         { this.state.focused === null && (
@@ -64,7 +64,7 @@ class HouseDash extends Component {
             <h1>House Cup Standings</h1>
           </div>
         )}
-          </div>
+      </div>
 
       <div className="houseArray">
         {houseArray}

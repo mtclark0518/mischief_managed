@@ -119,13 +119,18 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-              <StudentContainer from={this.state.focused.id}/>
+              <StudentContainer type={'location'} from={this.state.focused.id}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}
 
 
-        { this.state.focused === null && this.state.classrooms !== true && this.state.houseRooms !== true && this.state.commonAreas !== true && this.state.restrictedAreas !== true && (
+        { this.state.focused === null && 
+          this.state.classrooms !== true && 
+          this.state.houseRooms !== true && 
+          this.state.commonAreas !== true && 
+          this.state.restrictedAreas !== true && 
+        (
           <div>
             <Panel data={'Classrooms'} onClick={this.searchClasses}/>
             <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
@@ -199,3 +204,4 @@ return(
 }
 
 export default LocationDash;
+

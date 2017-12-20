@@ -6,20 +6,20 @@ class StudentContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-        students: []
-        // expanded: false,
-        // focused: null
+        students: [],
+        expanded: false,
+        focused: null
     }
-    // this.expand = this.expand.bind(this)
+    this.expand = this.expand.bind(this)
   }
     componentDidMount(){
-    this.getData(this.props.from)
+    this.getData(this.props.type, this.props.from)
   }
 
-  getData = id => {
+  getData(type, id){
     axios({
       method: "GET",
-      url: "api/students/location/" + id
+      url: "api/students/" + type + "/" + id
     })
   .then( students => {
       console.log(students)  
@@ -40,54 +40,35 @@ class StudentContainer extends Component {
           key={student.id}
           student={student}
           houseColors={houseColors}
-          // expanded={this.state.expanded}
-          // expand={this.expand}
-          // focused={this.state.focused}
-          // focus={this.focus}
+          expanded={this.state.expanded}
+          expand={this.expand}
+          focused={this.state.focused}
+          focus={this.focus}
         />
       )
     
     })
     return (
         <div className="Container">
-            {students}
+        { this.state.expanded === false && (
+            <div>{students}</div>
+        )}
+        { this.state.expanded === true && (
+            <div>expanded {students}</div>
+        )}
         </div>
     )
   }
+  expand = () => {
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }))
+  }
+  focus = house => {
+    this.setState({
+      focused: house
+    })
+  }
+
 }
 export default StudentContainer;
-
-    // <div className="HouseDash">
-    
-    //   <div className="houseDisplay">
-    //     { this.state.focused !== null && (
-    //       <div className="houseInFocus">
-    //         <h1>{this.state.focused.name}</h1>
-    //         <Staff view={'house'} staff={this.state.focused.Staff}/>
-    //         <Roster title={'Roster:'} people={this.state.focused.Students}/>            
-    //       </div>
-    //     )}
-    //     { this.state.focused === null && (
-    //       <div className="scoreboard">
-    //         <h1>scoreboard</h1>
-    //       </div>
-    //     )}
-    //   </div>
-
-    //   <div className="houseArray">
-    //     {houseArray}
-    //   </div>
-
-    // </div>
-//   }
-//   expand = () => {
-//     this.setState(prevState => ({
-//       expanded: !prevState.expanded
-//     }))
-//   }
-//   focus = house => {
-//     this.setState({
-//       focused: house
-//     })
-//   }
-

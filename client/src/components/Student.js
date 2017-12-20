@@ -19,18 +19,45 @@ class Student extends Component {
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
         return(
             <div className="Student" style={studentStyles}>
-                <Panel data={name} onClick={this.props.onClick}/>
+            {this.props.student.expanded !== true && (
+                <div>
+                    <Panel onClick={this.expandStudent} data={name} />
+                </div>
+            )}
+            {this.props.expanded === true && (
+                // <div className="">
+                //     {this.props.focused === this.props.student && (
+                        <div className="">
+                             <Panel onClick={this.closeStudent} data={name} />
+                         </div>
+                //     )}
+                //     {this.props.focused !== this.props.student && (
+                //         <div className="">
+                //             <Panel onClick={this.switchFocus} data={name} />            
+                //         </div>
+                //     )}
+                // </div>
+            )}
             </div>
+
+            
         )
     }
-    // switchFocus = () => {
-    // }
+    switchFocus = () => {
+        let student = this.props.student
+        // this.props.focus(student)
+    }
 
-    // expandStudent = () => {
-    // }
+    expandStudent = () => {
+        this.props.expand()
+        let student = this.props.student
+        // this.props.focus(student)
+    }
 
-    // closeStudent = () => {
-    // }
+    closeStudent = () => {
+        this.props.expand()
+        // this.props.focus(null)
+    }
 }
 export default Student;
 

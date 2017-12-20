@@ -12,7 +12,6 @@ const HouseRoster = props => {
             primary: props.primary,
             secondary: props.secondary
         }
-
         return(
             <Student key={student.id} student={student} houseColors={houseColors} onClick={props.onClick} />
         );

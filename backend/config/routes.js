@@ -16,6 +16,7 @@ router.get('/api/staff/location/:id', controller.staffByLocation)
 
 //STUDENT
 router.get('/api/students', controller.showStudents)
+router.get('/api/students/house/:id', controller.studentsByHouse)
 router.get('/api/students/location/:id', controller.studentsByLocation)
 
 //SUBJECT
