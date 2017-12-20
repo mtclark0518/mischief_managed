@@ -15,6 +15,7 @@ class HouseDash extends Component {
     super(props)
     this.state = {
         houses: [],
+        students:[],
         expanded: false,
         focused: null
     }

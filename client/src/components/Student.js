@@ -7,9 +7,6 @@ class Student extends Component {
         this.state = {
         }
     }
-    componentDidMount(){
-
-    }
     render(){
         let studentStyles = {
             border:'1px solid ' + this.props.houseColors.primary,
@@ -25,18 +22,18 @@ class Student extends Component {
                 </div>
             )}
             {this.props.expanded === true && (
-                // <div className="">
-                //     {this.props.focused === this.props.student && (
+                <div className="">
+                     {this.props.focused === this.props.student && (
                         <div className="">
                              <Panel onClick={this.closeStudent} data={name} />
                          </div>
-                //     )}
-                //     {this.props.focused !== this.props.student && (
-                //         <div className="">
-                //             <Panel onClick={this.switchFocus} data={name} />            
-                //         </div>
-                //     )}
-                // </div>
+                    )}
+                    {this.props.focused !== this.props.student && (
+                        <div className="">
+                            <Panel onClick={this.switchFocus} data={name} />            
+                        </div>
+                    )}
+                </div>
             )}
             </div>
 
@@ -45,18 +42,18 @@ class Student extends Component {
     }
     switchFocus = () => {
         let student = this.props.student
-        // this.props.focus(student)
+        this.props.focus(student)
     }
 
     expandStudent = () => {
         this.props.expand()
         let student = this.props.student
-        // this.props.focus(student)
+        this.props.focus(student)
     }
 
     closeStudent = () => {
         this.props.expand()
-        // this.props.focus(null)
+        this.props.focus(null)
     }
 }
 export default Student;

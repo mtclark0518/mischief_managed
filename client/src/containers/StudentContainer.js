@@ -12,17 +12,25 @@ class StudentContainer extends Component {
     }
     this.expand = this.expand.bind(this)
   }
-    componentDidMount(){
+
+componentDidMount(){
     this.getData(this.props.type, this.props.from)
   }
 
-  getData(type, id){
+componentWillUpdate(nextProps, nextState){
+  if(nextProps.from !== this.props.from){
+    this.update(nextProps.type, nextProps.from)
+  }
+}
+update(type,id){
+  this.getData(type, id);
+}
+getData(type, id){
     axios({
       method: "GET",
       url: "api/students/" + type + "/" + id
     })
   .then( students => {
-      console.log(students)  
     this.setState({ 
         students: students.data
       })
@@ -64,9 +72,9 @@ class StudentContainer extends Component {
       expanded: !prevState.expanded
     }))
   }
-  focus = house => {
+  focus = student => {
     this.setState({
-      focused: house
+      focused: student
     })
   }
 
