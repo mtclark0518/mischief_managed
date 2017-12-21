@@ -57,7 +57,7 @@ class HouseDash extends Component {
         { this.state.focused !== null && (
           <div>
             <Heading details={this.state.focused}/>
-            <StudentContainer type={'house'} from={this.state.focused.id}/>
+            <StudentContainer focused={this.state.focused} type={'house'} from={this.state.focused.id}/>
           </div>
         )}
         { this.state.focused === null && (

@@ -1,7 +1,7 @@
 const express = require('express')
 const http = require('http')
 const app = express();
-// const server = http.createServer(app)
+const server = http.createServer(app)
 const PORT = process.env.PORT || 1979
 
 const log = (stuff) => console.log(stuff)
@@ -14,10 +14,10 @@ client.connect( (error) => {
 });
 
 
-
-const bodyParser = require('body-parser')
+//body-parser functionality
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : true }));
+app.use(bodyParser.urlencoded({ extended : false }));
 
 
 const path = require('path')

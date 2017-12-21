@@ -8,41 +8,26 @@ class Student extends Component {
         }
     }
     render(){
-        let studentStyles = {
-            border:'1px solid ' + this.props.houseColors.primary,
-            boxShadow: '0 0 2px 1px ' + this.props.houseColors.secondary,
-            color: this.props.houseColors.primary,
-        }
+        // let studentStyles = {
+        //     border:'1px solid ' + this.props.houseColors.primary,
+        //     boxShadow: '0 0 2px 1px ' + this.props.houseColors.secondary,
+        //     color: this.props.houseColors.primary,
+        // }
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
         return(
-            <div className="Student" style={studentStyles}>
-            {this.props.student.expanded !== true && (
-                <div>
+            <div className="Student" 
+            // style={studentStyles}
+            >
+                {this.props.student.expanded !== true && (
                     <Panel onClick={this.expandStudent} data={name} />
-                </div>
-            )}
-            {this.props.expanded === true && (
-                <div className="">
-                     {this.props.focused === this.props.student && (
-                        <div className="">
-                             <Panel onClick={this.closeStudent} data={name} />
-                         </div>
-                    )}
-                    {this.props.focused !== this.props.student && (
-                        <div className="">
-                            <Panel onClick={this.switchFocus} data={name} />            
-                        </div>
-                    )}
-                </div>
-            )}
+                )}
+                {this.props.student.expanded === true && this.props.student.focused === this.props.student && (
+                    <Panel onClick={this.closeStudent} data={name} />
+                )}
             </div>
 
             
         )
-    }
-    switchFocus = () => {
-        let student = this.props.student
-        this.props.focus(student)
     }
 
     expandStudent = () => {
@@ -52,8 +37,7 @@ class Student extends Component {
     }
 
     closeStudent = () => {
-        this.props.expand()
-        this.props.focus(null)
+        this.props.close();
     }
 }
 export default Student;

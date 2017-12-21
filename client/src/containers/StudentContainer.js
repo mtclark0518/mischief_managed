@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Student from '../components/Student'
+import Bar from '../components/Bar'
 
 class StudentContainer extends Component {
   constructor(props){
@@ -58,23 +59,37 @@ getData(type, id){
     })
     return (
         <div className="Container">
-        { this.state.expanded === false && (
-            <div>{students}</div>
-        )}
-        { this.state.expanded === true && (
-            <div>expanded {students}</div>
-        )}
+          {  this.props.type === 'house' && this.state.focused !== null && this.state.expanded === true && this.props.focused.id === this.state.focused.House.id && (
+              <div>
+                <Student
+                  key={this.state.focused.id}
+                  student={this.state.focused}
+                  expand={this.expand}
+                  focus={this.focus}
+                  close={this.close} >
+                </Student>
+                    <Bar buttonText={'close'} onClick={this.close}/>
+
+              </div>
+          )}
+              <div>{students}</div>
         </div>
     )
   }
   expand = () => {
-    this.setState(prevState => ({
-      expanded: !prevState.expanded
-    }))
+    this.setState({
+      expanded: true
+    })
   }
   focus = student => {
     this.setState({
       focused: student
+    })
+  }
+  close = () => {
+    this.setState({
+      expanded: false,
+      focused: null
     })
   }
 
