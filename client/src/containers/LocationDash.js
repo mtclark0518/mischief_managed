@@ -119,7 +119,7 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-              <StudentContainer type={'location'} from={this.state.focused.id}/>
+              <StudentContainer focused={this.state.focused} type={'location'} from={this.state.focused.id}/>
               <Bar buttonText={'Back'} onClick={this.clear}/> 
           </div>
         )}

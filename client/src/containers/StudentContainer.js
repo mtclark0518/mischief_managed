@@ -53,26 +53,36 @@ getData(type, id){
           expand={this.expand}
           focused={this.state.focused}
           focus={this.focus}
+          close={this.close}
         />
       )
     
     })
     return (
         <div className="Container">
-          {  this.props.type === 'house' && this.state.focused !== null && this.state.expanded === true && this.props.focused.id === this.state.focused.House.id && (
+          { this.props.type === 'house' && this.state.focused !== null && this.state.expanded === true && this.props.focused.id === this.state.focused.House.id && (
               <div>
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  expanded={this.state.expanded}
                   expand={this.expand}
                   focus={this.focus}
-                  close={this.close} >
-                </Student>
-                    <Bar buttonText={'close'} onClick={this.close}/>
-
+                  close={this.close} />
               </div>
           )}
-              <div>{students}</div>
+          { this.props.type === 'location' && this.state.focused !== null && this.state.expanded === true && (
+            <div>
+                <Student
+                  key={this.state.focused.id}
+                  student={this.state.focused}
+                  expanded={this.state.expanded}
+                  expand={this.expand}
+                  focus={this.focus}
+                  close={this.close} />
+            </div>
+          )}
+          <div>{students}</div>
         </div>
     )
   }
