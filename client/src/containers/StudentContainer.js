@@ -33,7 +33,8 @@ getData(type, id){
     })
   .then( students => {
     this.setState({ 
-        students: students.data
+        students: students.data,
+        focused: null
       })
     });
   }
@@ -69,6 +70,7 @@ getData(type, id){
                   expand={this.expand}
                   focus={this.focus}
                   close={this.close} />
+                <Bar buttonText={'close'} onClick={this.close}/>
               </div>
           )}
           { this.props.type === 'location' && this.state.focused !== null && this.state.expanded === true && (
@@ -80,9 +82,12 @@ getData(type, id){
                   expand={this.expand}
                   focus={this.focus}
                   close={this.close} />
+                  <Bar buttonText={'close'} onClick={this.close}/>
             </div>
           )}
-          <div>{students}</div>
+          { this.state.focused === null && (
+            <div>{students}</div>
+          )}
         </div>
     )
   }
