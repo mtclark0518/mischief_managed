@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Student from '../components/Student'
 import Bar from '../components/Bar'
+import Button from '../components/Bar'
+import Panel from '../components/Panel'
+
 
 class StudentContainer extends Component {
   constructor(props){
@@ -11,21 +14,14 @@ class StudentContainer extends Component {
         expanded: false,
         focused: null
     }
-    this.expand = this.expand.bind(this)
   }
 
 componentDidMount(){
     this.getData(this.props.type, this.props.from)
   }
 
-componentWillUpdate(nextProps, nextState){
-  if(nextProps.from !== this.props.from){
-    this.update(nextProps.type, nextProps.from)
-  }
-}
-update(type,id){
-  this.getData(type, id);
-}
+
+
 getData(type, id){
     axios({
       method: "GET",
@@ -35,9 +31,20 @@ getData(type, id){
     this.setState({ 
         students: students.data,
         focused: null
-      })
+      });
     });
   }
+
+
+  update(type,id){
+    this.getData(type, id);
+  }
+componentWillUpdate(nextProps, nextState){
+  if(nextProps.from !== this.props.from){
+    this.update(nextProps.type, nextProps.from)
+  }
+}
+
 
   render() {
     let students = this.state.students.map( student => {
@@ -66,10 +73,10 @@ getData(type, id){
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
-                  expanded={this.state.expanded}
-                  expand={this.expand}
                   focus={this.focus}
                   close={this.close} />
+                  <Panel data={'Hex'}/>
+                  <Panel data={'Heart'}/>
                 <Bar buttonText={'close'} onClick={this.close}/>
               </div>
           )}
@@ -78,10 +85,10 @@ getData(type, id){
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
-                  expanded={this.state.expanded}
-                  expand={this.expand}
                   focus={this.focus}
                   close={this.close} />
+                  <Panel data={'Hex'}/>
+                  <Panel data={'Heart'}/>
                   <Bar buttonText={'close'} onClick={this.close}/>
             </div>
           )}
@@ -91,14 +98,11 @@ getData(type, id){
         </div>
     )
   }
-  expand = () => {
-    this.setState({
-      expanded: true
-    })
-  }
+
   focus = student => {
     this.setState({
-      focused: student
+      focused: student,
+      expanded: true
     })
   }
   close = () => {

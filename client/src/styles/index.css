@@ -35,10 +35,10 @@ button:hover {
 
 .HouseDash {
     box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
-    padding: 0 16px 99px;
+    padding: 0 0 100px;
 }
 
-.houseArray {
+.houseNavigation {
     position: fixed;
     background: rgba(235, 235, 235, 0.5);
     box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
@@ -46,7 +46,6 @@ button:hover {
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin-left: -16px;
     justify-content: space-evenly;
 }
 
@@ -55,6 +54,7 @@ button:hover {
 
 .House {
     padding: 0.3em 0;
+    text-align: center;
 }
 
 .hasFocus {
@@ -63,6 +63,32 @@ button:hover {
 
 .noFocus {
     font-weight: 400;
+}
+
+.scoreboard {
+    max-width: 640px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.innerScoreboardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+.outerScoreboardContainer {
+    padding: 1em;
+    margin: 0.6em;
+}
+
+.housePoints {
+    font-size: 2.5em;
 }
 
 
@@ -92,22 +118,6 @@ button:hover {
 .FormalTitle {
     padding: 0.5em;
     margin: 0.5em;
-}
-
-
-/* HouseRoster Component  */
-
-.HouseRoster {
-    margin: 1%;
-}
-
-.RosterTitle {
-    font-weight: 600;
-    font-size: 1.2em;
-}
-
-.RosterStudents {
-    text-align: center;
 }
 
 

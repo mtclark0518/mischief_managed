@@ -38,11 +38,25 @@ class HouseDash extends Component {
   }
 
   render() {
-    let houseArray = this.state.houses.map( house=>{
+    let houseNavigation = this.state.houses.map( house=>{
       return (
         <House
           key={house.id}
           house={house}
+          view={'navigation'}
+          expanded={this.state.expanded}
+          expand={this.expand}
+          focused={this.state.focused}
+          focus={this.focus}
+        />
+      )
+    })
+    let scoreboard = this.state.houses.map( house=>{
+      return (
+        <House
+          key={house.id}
+          house={house}
+          view={'scoreboard'}
           expanded={this.state.expanded}
           expand={this.expand}
           focused={this.state.focused}
@@ -52,24 +66,24 @@ class HouseDash extends Component {
     })
     return (
     <div className="HouseDash">
-      <div className="flexColumn">
-
+      <div className="houseNavigation">
+        {houseNavigation}
+      </div>
+      <div className="">
         { this.state.focused !== null && (
-          <div>
+          <div className="flexColumn">
             <Heading details={this.state.focused}/>
             <StudentContainer focused={this.state.focused} type={'house'} from={this.state.focused.id}/>
           </div>
         )}
         { this.state.focused === null && (
           <div className="scoreboard">
-            <h1>House Cup Standings</h1>
+            {scoreboard}
           </div>
         )}
       </div>
 
-      <div className="houseArray">
-        {houseArray}
-      </div>
+
 
     </div>
     );
