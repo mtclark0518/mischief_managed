@@ -25,24 +25,16 @@ class Location extends Component {
             {this.props.expanded !== true &&(
                 <div>
                     {this.state.type === 'Classroom' && (
-                        <div className="classroom">
                             <Panel data={this.props.name} onClick={this.expandLocation} />
-                        </div>
                     )}
                     {this.state.type==="Restricted" && this.props.location.name === 'Common Room' && (
-                        <div className="houseCommonRoom" >
                             <Panel data={this.props.name} onClick={this.expandLocation} />
-                        </div>
                     )}
                     {this.state.type==="Restricted" && this.props.location.name !== 'Common Room' && (
-                        <div className="restricted">
                             <Panel data={this.props.location.name} onClick={this.expandLocation} />
-                        </div>
                     )}
                     {this.state.type==="Common Area" && (
-                        <div className="commonArea">
                             <Panel data={this.props.location.name} onClick={this.expandLocation} />
-                        </div>
                     )}
                 </div>
             )}

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import House from '../components/House'
-import Panel from '../components/Panel'
-import Staff from '../components/Staff'
-import HouseRoster from '../components/HouseRoster'
-import '../styles/index.css'
 import StudentContainer from './StudentContainer'
 import Heading from '../components/Heading'
+import '../styles/index.css'
 
 
 

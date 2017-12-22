@@ -14,12 +14,6 @@ class Staff extends Component {
         });
     }
     render(){
-        let staffStyles = {
-            boxShadow:'0 0 3px 1px rgba(25,25,25,0.2)',
-            border:'1px solid rgba(25,25,25,0.2)',
-            color: 'black',
-            fontSize: '1.2em'
-        }
         let headofhouse = 'Head of House: ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         let formaltitle = this.props.staff.position + ' ' + this.props.staff.firstName + ' ' + this.props.staff.lastName
         return(
@@ -30,7 +24,7 @@ class Staff extends Component {
                     </div>
                 )}
                 {this.state.view === 'location' && (
-                    <div style={staffStyles} className="FormalTitle">
+                    <div className="FormalTitle">
                         <Panel data={formaltitle} />
                     </div>
                 )}

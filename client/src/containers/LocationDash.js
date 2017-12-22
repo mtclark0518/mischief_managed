@@ -102,7 +102,7 @@ return(
     <div className="flexColumn">
         { this.state.focused !== null && (
 
-          <div>
+          <div className="focusedLocation">
   {/*  formats the heading  */}
             { this.state.focused.type !== 'Classroom' && this.state.focused.name !== 'Common Room' &&(
               <h1>{this.state.focused.name}</h1>
@@ -129,37 +129,40 @@ return(
           this.state.classrooms !== true && 
           this.state.houseRooms !== true && 
           this.state.commonAreas !== true && 
-          this.state.restrictedAreas !== true && 
-        (
-          <div>
-            <Panel data={'Classrooms'} onClick={this.searchClasses}/>
-            <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
-            <Panel data={'Public Spaces'} onClick={this.searchCommonAreas}/>
-            <Panel data={'Restricted Areas'} onClick={this.searchRestricedAreas}/>
-          </div>
+          this.state.restrictedAreas !== true && (
+            <div className="locationCategories">
+              <Panel data={'Classrooms'} onClick={this.searchClasses}/>
+              <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
+              <Panel data={'Public Spaces'} onClick={this.searchCommonAreas}/>
+              <Panel data={'Restricted Areas'} onClick={this.searchRestricedAreas}/>
+            </div>
         )}
-        { this.state.classrooms === true && this.state.expanded === false && (
-          <div>
-            <div>{classroomArray}</div>
-            <Bar buttonText={'Back'} onClick={this.searchClasses}/>
-          </div>
-        )}
-        { this.state.houseRooms === true && this.state.expanded === false && (
-          <div>
-            <div>{houseRoomArray}</div>
-            <Bar buttonText={'Back'} onClick={this.searchHouseRooms}/>            
-          </div>
-        )}
-        { this.state.commonAreas === true && this.state.expanded === false && (
-          <div>
-            <div>{commonPlacesArray}</div>
-            <Bar buttonText={'Back'} onClick={this.searchCommonAreas}/>
-          </div>
-        )}
-        { this.state.restrictedAreas === true && this.state.expanded === false && (
-          <div>
-            <div>{restrictedAreasArray}</div>
-            <Bar buttonText={'Back'} onClick={this.searchRestricedAreas}/>
+        {this.state.expanded === false && (
+          <div className="locationArrayContainer">
+            { this.state.classrooms === true && (
+                <div>
+                  {classroomArray}
+                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+                </div>
+            )}
+            { this.state.houseRooms === true && (
+                <div>
+                  {houseRoomArray}
+                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+                </div>
+            )}
+            { this.state.commonAreas === true && (
+                <div>
+                  {commonPlacesArray}
+                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+                </div>
+            )}
+            { this.state.restrictedAreas === true && (
+                <div>
+                  {restrictedAreasArray}
+                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+                </div>
+            )}
           </div>
         )}
     </div>
@@ -185,6 +188,14 @@ return(
       restrictedAreas: !prevState.restrictedAreas
     }))
   }
+  clearSearch = () => {
+    this.setState({
+      classrooms: false,
+      houseRooms: false,
+      commonAreas: false,
+      restrictedAreas: false,
+    })
+  }
   expand = () => {
     this.setState(prevState => ({
       expanded: !prevState.expanded
@@ -196,10 +207,10 @@ return(
     })
   }
   clear = () => {
+    this.expand();    
     this.setState({
       focused: null
     })
-  this.expand();
   }
 }
 
