@@ -48,15 +48,11 @@ componentWillUpdate(nextProps, nextState){
 
   render() {
     let students = this.state.students.map( student => {
-      let houseColors = {
-        primary: student.House.primaryColor,
-        secondary: student.House.secondaryColor
-      }
+
       return (
         <Student
           key={student.id}
           student={student}
-          houseColors={houseColors}
           expanded={this.state.expanded}
           expand={this.expand}
           focused={this.state.focused}
@@ -69,7 +65,7 @@ componentWillUpdate(nextProps, nextState){
     return (
         <div className="Container">
           { this.props.type === 'house' && this.state.focused !== null && this.state.expanded === true && this.props.focused.id === this.state.focused.House.id && (
-              <div>
+              <div className="focusContainer">
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
@@ -77,11 +73,11 @@ componentWillUpdate(nextProps, nextState){
                   close={this.close} />
                   <Panel data={'Hex'}/>
                   <Panel data={'Heart'}/>
-                <Bar buttonText={'close'} onClick={this.close}/>
+                <button onClick={this.close}>close</button>
               </div>
           )}
           { this.props.type === 'location' && this.state.focused !== null && this.state.expanded === true && (
-            <div>
+            <div className="focusContainer">
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
@@ -89,7 +85,7 @@ componentWillUpdate(nextProps, nextState){
                   close={this.close} />
                   <Panel data={'Hex'}/>
                   <Panel data={'Heart'}/>
-                  <Bar buttonText={'close'} onClick={this.close}/>
+                <button onClick={this.close}>close</button>
             </div>
           )}
           { this.state.focused === null && (

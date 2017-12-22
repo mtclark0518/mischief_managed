@@ -5,10 +5,17 @@ import Bar from './Bar'
 class Student extends Component {
 
     render(){
+        let styles = {
+            color: this.props.student.House.primaryColor,
+            border: '1px solid ' + this.props.student.House.primaryColor,
+            boxShadow: '0 0 2px 0px ' + this.props.student.House.secondaryColor,
 
+        }
+        let house = this.props.student.House.primaryColor;
+        console.log(house)
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
         return(
-            <div className="Student">
+            <div style={styles} className="Student">
                 <Panel onClick={this.expandStudent} data={name} />
             </div>
 

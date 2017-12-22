@@ -63,9 +63,7 @@ class HouseDash extends Component {
     })
     return (
     <div className="HouseDash">
-      <div className="houseNavigation">
-        {houseNavigation}
-      </div>
+
       <div className="">
         { this.state.focused !== null && (
           <div className="flexColumn">
@@ -78,9 +76,12 @@ class HouseDash extends Component {
             {scoreboard}
           </div>
         )}
+
       </div>
 
-
+      <div className="houseNavigation">
+        {houseNavigation}
+      </div>
 
     </div>
     );

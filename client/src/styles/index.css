@@ -75,8 +75,8 @@ button:hover {
 }
 
 .outerScoreboardContainer {
-    padding: 1em;
-    margin: 0.6em;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 .innerScoreboardContainer {
@@ -85,7 +85,7 @@ button:hover {
     align-items: center;
     padding: 1em;
     font-size: 1.2em;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .housePoints {
@@ -119,13 +119,23 @@ button:hover {
     text-align: center;
 }
 
+.focusContainer {
+    margin: 0.1em auto;
+    width: 50%;
+    min-width: 200px;
+    padding: 0.1em;
+    box-shadow: 0 0 2px 0 rgba(25, 25, 25, 0.2);
+}
+
 
 /* Student Component  */
 
 .Student {
     display: inline-block;
-    margin: 0.7em;
-    padding: 0.7em;
+    margin: 0.4em;
+    padding: 0.4em;
+    font-size: 1.3em;
+    font-weight: 700;
 }
 
 
@@ -133,13 +143,16 @@ button:hover {
 
 .Staff {
     display: inline-block;
-    margin: 0.7em;
-    padding: 0.7em;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    font-size: 1.0em;
+    font-weight: 600;
 }
 
 .HeadOfHouse {
-    font-weight: 600;
-    /* font-size: 1.0em; */
+    font-weight: 700;
+    font-size: 1.0em;
+    margin: 0;
 }
 
 
@@ -180,7 +193,7 @@ button:hover {
 .flexColumn {
     display: flex;
     width: 94%;
-    max-width: 750px;
+    max-width: 680px;
     margin: auto;
     flex-direction: column;
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
@@ -192,10 +205,10 @@ button:hover {
 
 .Heading {
     padding: 20px 5px 5px;
+    margin-bottom: 12px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(25, 25, 25, 0.3);
 }
 
 .emboldened {
