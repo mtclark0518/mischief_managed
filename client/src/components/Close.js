@@ -3,7 +3,7 @@ import '../styles/index.css'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import icons from '@fortawesome/fontawesome-free-regular'
 
-Close : props => {
+const Close = props => {
 let icon = icons.faTimesCircle
 
     return(
