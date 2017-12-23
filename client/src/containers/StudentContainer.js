@@ -4,6 +4,7 @@ import Student from '../components/Student'
 import Bar from '../components/Bar'
 import Button from '../components/Bar'
 import Panel from '../components/Panel'
+import Close from '../components/Close'
 
 
 class StudentContainer extends Component {
@@ -60,7 +61,6 @@ componentWillUpdate(nextProps, nextState){
           close={this.close}
         />
       )
-    
     })
     return (
         <div className="Container">
@@ -71,9 +71,7 @@ componentWillUpdate(nextProps, nextState){
                   student={this.state.focused}
                   focus={this.focus}
                   close={this.close} />
-                  <Panel data={'Hex'}/>
-                  <Panel data={'Heart'}/>
-                <button onClick={this.close}>close</button>
+                <Close onClick={this.close} />
               </div>
           )}
           { this.props.type === 'location' && this.state.focused !== null && this.state.expanded === true && (
@@ -83,9 +81,7 @@ componentWillUpdate(nextProps, nextState){
                   student={this.state.focused}
                   focus={this.focus}
                   close={this.close} />
-                  <Panel data={'Hex'}/>
-                  <Panel data={'Heart'}/>
-                <button onClick={this.close}>close</button>
+                <Close onClick={this.close} />
             </div>
           )}
           { this.state.focused === null && (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Panel from '../components/Panel'
-import Bar from '../components/Bar'
+import Close from '../components/Close'
 import Location from '../components/Location'
 import Staff from '../components/Staff'
 import StudentContainer from './StudentContainer'
@@ -120,7 +120,7 @@ return(
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
               <StudentContainer focused={this.state.focused} type={'location'} from={this.state.focused.id}/>
-              <Bar buttonText={'Back'} onClick={this.clear}/> 
+              <Close onClick={this.clear} />
           </div>
         )}
 
@@ -142,25 +142,25 @@ return(
             { this.state.classrooms === true && (
                 <div>
                   {classroomArray}
-                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+                  <Close onClick={this.clearSearch} />
                 </div>
             )}
             { this.state.houseRooms === true && (
                 <div>
                   {houseRoomArray}
-                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+              <Close onClick={this.clearSearch} />
                 </div>
             )}
             { this.state.commonAreas === true && (
                 <div>
                   {commonPlacesArray}
-                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+              <Close onClick={this.clearSearch} />
                 </div>
             )}
             { this.state.restrictedAreas === true && (
                 <div>
                   {restrictedAreasArray}
-                  <Bar buttonText={'Back'} onClick={this.clearSearch}/>
+              <Close onClick={this.clearSearch} />
                 </div>
             )}
           </div>

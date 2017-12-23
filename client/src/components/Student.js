@@ -12,7 +12,6 @@ class Student extends Component {
 
         }
         let house = this.props.student.House.primaryColor;
-        console.log(house)
         let name = this.props.student.firstName + ' ' + this.props.student.lastName
         return(
             <div style={styles} className="Student">

@@ -35,7 +35,7 @@ class HouseDash extends Component {
   }
 
   render() {
-    let houseNavigation = this.state.houses.map( house=>{
+    let houseNavigation = this.state.houses.map( house => {
       return (
         <House
           key={house.id}

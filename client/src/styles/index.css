@@ -182,6 +182,14 @@ button:hover {
     justify-content: space-evenly;
 }
 
+.footerSVG {
+    height: 100%;
+}
+
+.deathly_hallows {
+    padding: 4px;
+}
+
 
 /* Panel Component  */
 
