@@ -248,6 +248,12 @@ button:hover {
     font-size: 2em;
 }
 
+.hex,
+.heart {
+    height: 20px;
+    vertical-align: middle;
+}
+
 @media (max-height: 480px) {}
 
 @media (max-width: 374px) {
