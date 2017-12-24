@@ -6,6 +6,28 @@ const Subject = db.models.Subject;
 const Staff = db.models.Staff;
 const Student = db.models.Student;
 
+
+
+//utility function that updates house points
+const updateHousePoints = houseId => {
+    House.findOne({
+        where: {id: houseId}, 
+        include: [ { model:Student }]})
+    .then(house => {
+        let students = house.Students;
+        let individualPoints = students.map( student => {
+            return student.points;
+        })
+        let totalPoints = individualPoints.reduce((acc, cv) => acc + cv);
+        
+        house.updateAttributes({
+            points : totalPoints
+        });
+    });
+};
+
+
+
 //CASTLE
 const showHogwarts = (req, res) => {
     Castle.findOne({ where: {id: 1},
@@ -102,7 +124,7 @@ const showStudent = (req, res) => {
 };
 //HEX A STUDENT
 const hexStudent = (req, res) => {
-    Student.findOne({where:{id:req.params.id}})
+    Student.findOne({where: { id:req.params.id} })
     .then( student => {
         let hex = student.points - 1;
         student.updateAttributes({
@@ -114,25 +136,20 @@ const hexStudent = (req, res) => {
         });
     });
 };
-const updateHousePoints = house => {
-    House.findOne({
-        where: {
-            id: house
-        }, 
-        include: [{ 
-            model:Student
-         }]
-    }).then(house => {
-        let x = house.Students;
-        let y = x.map(student=>{
-            return student.points;
+const honorStudent = (req, res) => {
+    Student.findOne({where: { id:req.params.id} })
+    .then( student => {
+        let honor = student.points + 2;
+        student.updateAttributes({
+            points: honor
         })
-        let r = (a, v) => a + v;
-        let z = y.reduce(r);
-        console.log(z)
-        
+        .then(student => {
+            updateHousePoints(student.HouseId)
+            res.json(student)
+        });
     });
 };
+
 //STUDENT BY HOUSE
 const studentsByHouse = (req, res) => {
     Student.findAll({
@@ -197,6 +214,7 @@ module.exports = {
     showStudent: showStudent,
     studentsByHouse: studentsByHouse,
     hexStudent: hexStudent,
+    honorStudent: honorStudent,
     studentsByLocation: studentsByLocation,
     showSubjects: showSubjects,
 };

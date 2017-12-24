@@ -64,6 +64,8 @@ componentWillReceiveProps(nextProps){
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  type={this.props.type}
+                  syncScoreboard={this.props.syncScoreboard}
                   expanded={this.state.expanded}
                   focused={this.state.focused}
                   focus={this.focus}
@@ -75,6 +77,8 @@ componentWillReceiveProps(nextProps){
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  type={this.props.type}
+                  syncScoreboard={this.props.syncScoreboard}
                   expanded={this.state.expanded}
                   focused={this.state.focused}
                   focus={this.focus}

@@ -4,6 +4,19 @@ import Panel from './Panel'
 import '../styles/index.css'
 
 class House extends Component {
+constructor(props){
+    super(props)
+    this.state={
+        points: null
+    }
+}
+componentDidMount(){
+    this.setState({points: this.props.points})
+}
+componentWillReceiveProps(nextProps){
+  console.log(nextProps.points)
+  console.log(this.props.points)
+}
     render(){
         let houseName = this.props.house.name;
         let primaryColor = this.props.house.primaryColor;
@@ -39,8 +52,8 @@ class House extends Component {
                 {this.props.view === 'scoreboard' && (
                     <div className="outerScoreboardContainer" style={outerSBStyles}>
                         <div className="innerScoreboardContainer" style={inSBStyles}>
-                            <div>{this.props.house.name}</div>
-                            <div className="housePoints">{this.props.house.points}</div>
+                            <div>{this.props.name}</div>
+                            <div className="housePoints">{this.state.points}</div>
                             <div>{this.props.house.mascot}s</div>
                         </div>
                     </div>

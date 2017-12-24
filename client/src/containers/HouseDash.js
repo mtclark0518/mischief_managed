@@ -11,35 +11,20 @@ class HouseDash extends Component {
   constructor(props){
     super(props)
     this.state = {
-        houses: [],
-        students:[],
         expanded: false,
         focused: null
     }
     this.expand = this.expand.bind(this)
   }
-    componentDidMount(){
-    this.getData()
-  }
 
-  getData(){
-    axios({
-      method: "GET",
-      url: "api/houses"
-    })
-  .then( response => {
-      this.setState({ 
-        houses: response.data
-      })
-    });
-  }
 
-  render() {
-    let houseNavigation = this.state.houses.map( house => {
+render() {
+    let houseNavigation = this.props.houses.map( house => {
       return (
         <House
           key={house.id}
           house={house}
+          points={house.points}
           view={'navigation'}
           expanded={this.state.expanded}
           expand={this.expand}
@@ -48,11 +33,12 @@ class HouseDash extends Component {
         />
       )
     })
-    let scoreboard = this.state.houses.map( house=>{
+    let scoreboard = this.props.houses.map( house=>{
       return (
         <House
           key={house.id}
           house={house}
+          points={house.points}
           view={'scoreboard'}
           expanded={this.state.expanded}
           expand={this.expand}
@@ -68,7 +54,7 @@ class HouseDash extends Component {
         { this.state.focused !== null && (
           <div className="flexColumn">
             <Heading details={this.state.focused}/>
-            <StudentContainer focused={this.state.focused} type={'house'} from={this.state.focused.id}/>
+            <StudentContainer syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'house'} from={this.state.focused.id}/>
           </div>
         )}
         { this.state.focused === null && (

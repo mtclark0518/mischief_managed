@@ -18,33 +18,8 @@ class Hogwarts extends Component {
     this.activate = this.activate.bind(this)
   }
 
-  componentDidMount(){
-    this.getData()
-  }
 
-  getData(){
-    axios({
-      method: "GET",
-      url: "api/castle"
-    })
-  .then( hogwarts => {
-    console.log(hogwarts.data.Houses)  
-    this.setState({ 
-        hogwarts: hogwarts.data.name,
-        houses: hogwarts.data.Houses
-      });
-    });
-  }
 
-  enter = () => {
-    this.activate()
-  }
-  
-  activate = () => {
-    this.setState(prevState => ({
-      active : !prevState.active
-    }))
-  }
 
   render() {
     const houseCupStandings = this.state.houses.map(house => {
@@ -64,11 +39,20 @@ class Hogwarts extends Component {
         { this.state.active === true && (
           <div className="active">
             <Bar buttonText={'Mischief Managed'} onClick={this.enter.bind(this)} />
-            <CastleDash houses={this.state.houses} />
+            <CastleDash />
           </div>
         )}
       </div>
     );
+  }
+  enter = () => {
+    this.activate()
+  }
+  
+  activate = () => {
+    this.setState(prevState => ({
+      active : !prevState.active
+    }))
   }
 }
 

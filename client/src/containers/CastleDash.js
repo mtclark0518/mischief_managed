@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import Hallows from '../components/Hallows'
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
@@ -11,12 +12,26 @@ class CastleDash extends Component {
         super(props)
         this.state = {
             searching: false,
-            exploring: false            
+            exploring: false,
+            houses: []            
         }
         this.search = this.search.bind(this)
         this.explore = this.explore.bind(this)
     }
-    
+    componentDidMount(){
+        this.getData()
+    }
+    getData(){
+        axios({
+            method: "GET",
+            url: "api/houses"
+        })
+        .then( response => {
+            this.setState({ 
+            houses: response.data
+            })
+        });
+    }
 
     render() {
         return (
@@ -25,10 +40,10 @@ class CastleDash extends Component {
                             <Hallows />
                     )}
                     {this.state.exploring === true && (
-                            <HouseDash />
+                            <HouseDash syncScoreboard={this.syncScoreboard} houses={this.state.houses}/>
                     )}
                     {this.state.searching === true && (
-                            <LocationDash />
+                            <LocationDash syncScoreboard={this.syncScoreboard}/>
                     )}
                 <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
@@ -54,6 +69,8 @@ class CastleDash extends Component {
         })
     }
 
-    
+    syncScoreboard = () => {
+        this.getData()
+    }
 }
 export default CastleDash;

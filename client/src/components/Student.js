@@ -23,7 +23,6 @@ class Student extends Component {
       url: "api/students/" + id
     })
   .then( student => {
-      console.log(student)
     this.setState({ 
         firstName: student.data.firstName,
         lastName: student.data.lastName,
@@ -42,8 +41,22 @@ class Student extends Component {
             this.setState({
                 points: student.data.points
             });
+            this.props.syncScoreboard();
         })
-        
+
+    }
+    honor = e => {
+        e.preventDefault();
+        axios({
+            method: "PUT",
+            url: "api/students/honor/" + this.state.id
+        }).then( student =>{
+            this.setState({
+                points: student.data.points
+            });
+            this.props.syncScoreboard();
+        })
+
     }
     render(){
         let styles = {
@@ -56,11 +69,19 @@ class Student extends Component {
         return(
             
             <div style={styles} className="Student">
-                {this.props.expanded && this.props.focused !== null &&(
-                    <div>
-                    <Label title={this.state.firstName + ' ' + this.state.lastName} onClick={this.props.close} />
+
+                {this.props.expanded && this.props.focused !== null && (
+                    <div> 
+                        <Label title={this.state.firstName + ' ' + this.state.lastName} onClick={this.props.close} />
                         <div>Points: {this.state.points}</div>
-                        <button onClick={e => this.hex(e)}>hex</button>
+                        
+                        {this.props.type === 'location' && (
+                            <div>
+                                <button onClick={e => this.hex(e)}>hex</button>
+                                <button onClick={e => this.honor(e)}>honor</button>
+                            </div>
+
+                        )}
                     </div>
                 )}
 
