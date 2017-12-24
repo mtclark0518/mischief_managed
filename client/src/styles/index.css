@@ -26,6 +26,10 @@ button:hover {
     background: rgba(220, 220, 230, 1);
 }
 
+.Hogwarts {
+    min-height: 100vh;
+}
+
 .CastleDash {
     width: 100%;
 }
@@ -35,14 +39,14 @@ button:hover {
 
 .HouseDash {
     box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
-    padding: 0 0 100px;
+    padding: 0 0 20vh;
 }
 
 .houseNavigation {
     position: fixed;
     background: rgba(235, 235, 235, 0.5);
     box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
-    bottom: 40px;
+    bottom: 10vh;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -72,6 +76,7 @@ button:hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding-top: 5vh;
 }
 
 .outerScoreboardContainer {
@@ -163,7 +168,7 @@ button:hover {
     top: 0;
     background: rgba(245, 245, 245, 0.8);
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
-    height: 30px;
+    height: 10vh;
     width: 100%;
 }
 
@@ -173,7 +178,7 @@ button:hover {
 .Footer {
     position: fixed;
     bottom: 0;
-    height: 40px;
+    height: 10vh;
     width: 100%;
     background: rgba(245, 245, 245, 0.8);
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
