@@ -15,9 +15,11 @@ router.get('/api/staff', controller.showStaff)
 router.get('/api/staff/location/:id', controller.staffByLocation)
 
 //STUDENT
-router.get('/api/students', controller.showStudents)
+router.put('/api/students/hex/:id/', controller.hexStudent)
 router.get('/api/students/house/:id', controller.studentsByHouse)
 router.get('/api/students/location/:id', controller.studentsByLocation)
+router.get('/api/students/:id', controller.showStudent)
+router.get('/api/students', controller.getStudents)
 
 //SUBJECT
 router.get('/api/subjects', controller.showSubjects)

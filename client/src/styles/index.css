@@ -121,10 +121,10 @@ button:hover {
 
 .focusContainer {
     margin: 0.1em auto;
-    width: 50%;
+    /* width: 50%; */
     min-width: 200px;
     padding: 0.1em;
-    box-shadow: 0 0 2px 0 rgba(25, 25, 25, 0.2);
+    /* box-shadow: 0 0 2px 0 rgba(25, 25, 25, 0.2); */
 }
 
 
@@ -234,6 +234,18 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.Label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.labelItem {}
+
+.labelTitle {
+    font-size: 2em;
 }
 
 @media (max-height: 480px) {}

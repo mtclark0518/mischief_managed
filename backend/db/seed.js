@@ -741,5 +741,5 @@ const createOrganizations = () => {
 
 //    createStaff()
     
-// createStudents()
+createStudents()
 .then( () => { process.exit() } )

@@ -4,7 +4,7 @@ import Student from '../components/Student'
 import Bar from '../components/Bar'
 import Button from '../components/Bar'
 import Panel from '../components/Panel'
-import Close from '../components/Close'
+import Icon from '../components/Icon'
 
 
 class StudentContainer extends Component {
@@ -35,21 +35,16 @@ getData(type, id){
       });
     });
   }
-
-
   update(type,id){
     this.getData(type, id);
   }
-componentWillUpdate(nextProps, nextState){
+componentWillReceiveProps(nextProps){
   if(nextProps.from !== this.props.from){
     this.update(nextProps.type, nextProps.from)
   }
 }
-
-
   render() {
     let students = this.state.students.map( student => {
-
       return (
         <Student
           key={student.id}
@@ -64,24 +59,26 @@ componentWillUpdate(nextProps, nextState){
     })
     return (
         <div className="Container">
-          { this.props.type === 'house' && this.state.focused !== null && this.state.expanded === true && this.props.focused.id === this.state.focused.House.id && (
+          { this.props.type === 'house' && this.state.focused !== null && this.state.expanded && this.props.focused.id === this.state.focused.House.id && (
               <div className="focusContainer">
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  expanded={this.state.expanded}
+                  focused={this.state.focused}
                   focus={this.focus}
                   close={this.close} />
-                <Close onClick={this.close} />
               </div>
           )}
-          { this.props.type === 'location' && this.state.focused !== null && this.state.expanded === true && (
+          { this.props.type === 'location' && this.state.focused !== null && this.state.expanded && (
             <div className="focusContainer">
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  expanded={this.state.expanded}
+                  focused={this.state.focused}
                   focus={this.focus}
                   close={this.close} />
-                <Close onClick={this.close} />
             </div>
           )}
           { this.state.focused === null && (
@@ -90,19 +87,17 @@ componentWillUpdate(nextProps, nextState){
         </div>
     )
   }
-
   focus = student => {
     this.setState({
-      focused: student,
-      expanded: true
+      expanded: true,
+      focused: student
     })
   }
   close = () => {
     this.setState({
       expanded: false,
-      focused: null
+      focused: null      
     })
   }
-
 }
 export default StudentContainer;

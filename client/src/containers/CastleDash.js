@@ -53,5 +53,7 @@ class CastleDash extends Component {
             searching: false
         })
     }
+
+    
 }
 export default CastleDash;

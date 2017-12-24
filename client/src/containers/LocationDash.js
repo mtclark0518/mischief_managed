@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Panel from '../components/Panel'
-import Close from '../components/Close'
+import Icon from '../components/Icon'
 import Location from '../components/Location'
 import Staff from '../components/Staff'
 import StudentContainer from './StudentContainer'
 import StaffContainer from './StaffContainer'
+import Label from '../components/Label'
 
 import '../styles/index.css'
 
@@ -23,7 +24,6 @@ class LocationDash extends Component {
         focused: null
     }
     this.expand = this.expand.bind(this)
-
   }
     componentDidMount(){
     this.getData()
@@ -105,31 +105,30 @@ return(
           <div className="focusedLocation">
   {/*  formats the heading  */}
             { this.state.focused.type !== 'Classroom' && this.state.focused.name !== 'Common Room' &&(
-              <h1>{this.state.focused.name}</h1>
+              <Label title={this.state.focused.name} onClick={this.clear}/>
             )}
             { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name !== 'Care of Magical Creatures' && (
-              <h1> {this.state.focused.Subject.name} {this.state.focused.name}</h1>
+              <Label title={this.state.focused.Subject.name + ' ' + this.state.focused.name} onClick={this.clear}/>
             )}
             { this.state.focused.type === 'Classroom' && this.state.focused.Subject.name === 'Care of Magical Creatures' && (
-              <h1>{this.state.focused.name}</h1>
+              <Label title={this.state.focused.name} onClick={this.clear}/>
             )}
             { this.state.focused.name === 'Common Room' && (
-              <h1>{this.state.focused.House.name } { this.state.focused.name}</h1>
+              <Label title={this.state.focused.House.name + ' ' + this.state.focused.name} onClick={this.clear}/>
             )}
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
               <StudentContainer focused={this.state.focused} type={'location'} from={this.state.focused.id}/>
-              <Close onClick={this.clear} />
           </div>
         )}
 
 
         { this.state.focused === null && 
-          this.state.classrooms !== true && 
-          this.state.houseRooms !== true && 
-          this.state.commonAreas !== true && 
-          this.state.restrictedAreas !== true && (
+          !this.state.classrooms && 
+          !this.state.houseRooms && 
+          !this.state.commonAreas && 
+          !this.state.restrictedAreas && (
             <div className="locationCategories">
               <Panel data={'Classrooms'} onClick={this.searchClasses}/>
               <Panel data={'Common Rooms'} onClick={this.searchHouseRooms}/>
@@ -137,30 +136,30 @@ return(
               <Panel data={'Restricted Areas'} onClick={this.searchRestricedAreas}/>
             </div>
         )}
-        {this.state.expanded === false && (
+        {!this.state.expanded && (
           <div className="locationArrayContainer">
-            { this.state.classrooms === true && (
-                <div>
+            { this.state.classrooms && (
+              <div>
+                  <Label title={"Classrooms:"}onClick={this.clearSearch}/>              
                   {classroomArray}
-                  <Close onClick={this.clearSearch} />
-                </div>
+              </div>
             )}
-            { this.state.houseRooms === true && (
+            { this.state.houseRooms && (
                 <div>
+                  <Label title={"Common Rooms:"}onClick={this.clearSearch}/>              
                   {houseRoomArray}
-              <Close onClick={this.clearSearch} />
                 </div>
             )}
-            { this.state.commonAreas === true && (
+            { this.state.commonAreas && (
                 <div>
+                  <Label title={"Public Spaces:"}onClick={this.clearSearch}/>              
                   {commonPlacesArray}
-              <Close onClick={this.clearSearch} />
                 </div>
             )}
-            { this.state.restrictedAreas === true && (
+            { this.state.restrictedAreas && (
                 <div>
+                  <Label title={"Restricted Areas:"}onClick={this.clearSearch}/>              
                   {restrictedAreasArray}
-              <Close onClick={this.clearSearch} />
                 </div>
             )}
           </div>

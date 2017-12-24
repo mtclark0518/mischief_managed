@@ -86,11 +86,51 @@ const staffByLocation = (req, res) => {
     });
 };
 
-//STUDENT
-const showStudents = (req, res) => {
+//INDEX STUDENTS
+const getStudents = (req, res) => {
     Student.findAll()
     .then( students => {
         res.json(students);
+    });
+};
+//SHOW A STUDENT
+const showStudent = (req, res) => {
+    Student.findOne({where:{id:req.params.id}, include:[{model: House}]})
+    .then( student => {
+        res.json(student);
+    });
+};
+//HEX A STUDENT
+const hexStudent = (req, res) => {
+    Student.findOne({where:{id:req.params.id}})
+    .then( student => {
+        let hex = student.points - 1;
+        student.updateAttributes({
+            points: hex
+        })
+        .then(student => {
+            updateHousePoints(student.HouseId)
+            res.json(student)
+        });
+    });
+};
+const updateHousePoints = house => {
+    House.findOne({
+        where: {
+            id: house
+        }, 
+        include: [{ 
+            model:Student
+         }]
+    }).then(house => {
+        let x = house.Students;
+        let y = x.map(student=>{
+            return student.points;
+        })
+        let r = (a, v) => a + v;
+        let z = y.reduce(r);
+        console.log(z)
+        
     });
 };
 //STUDENT BY HOUSE
@@ -103,9 +143,6 @@ const studentsByHouse = (req, res) => {
             {
                 model: House
             }
-            // {
-            //     model: School_Clubs
-            // }
         ]
     })
     .then( students => {
@@ -123,9 +160,6 @@ const studentsByLocation = (req, res) => {
             {
                 model: House
             }
-            // {
-            //     model: School_Clubs
-            // }
         ]
     })
     .then( students => {
@@ -133,6 +167,7 @@ const studentsByLocation = (req, res) => {
         res.json(students);
     });
 }
+
 
 //SUBJECT
 const showSubjects = (req, res) => {
@@ -158,9 +193,10 @@ module.exports = {
     showLocations: showLocations,
     showStaff: showStaff,
     staffByLocation: staffByLocation,
-    
-    showStudents: showStudents,
+    getStudents: getStudents,
+    showStudent: showStudent,
     studentsByHouse: studentsByHouse,
+    hexStudent: hexStudent,
     studentsByLocation: studentsByLocation,
     showSubjects: showSubjects,
 };

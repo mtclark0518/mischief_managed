@@ -4,9 +4,9 @@ import CastleDash from './CastleDash'
 import Bar from '../components/Bar'
 import Footer from '../components/Footer'
 import '../styles/index.css'
-import fontawesome from '@fortawesome/fontawesome'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import brands from '@fortawesome/fontawesome-free-brands'
+
+
+
 class Hogwarts extends Component {
   constructor(props){
     super(props)
@@ -20,7 +20,6 @@ class Hogwarts extends Component {
 
   componentDidMount(){
     this.getData()
-    fontawesome.library.add(brands)
   }
 
   getData(){
@@ -48,7 +47,12 @@ class Hogwarts extends Component {
   }
 
   render() {
-    
+    const houseCupStandings = this.state.houses.map(house => {
+      console.log(house)
+      return(
+        <div>kk</div>
+      )
+    })
     return (
       <div className="Hogwarts">
         { this.state.active !== true && (
@@ -59,10 +63,7 @@ class Hogwarts extends Component {
 
         { this.state.active === true && (
           <div className="active">
-
-            <Bar 
-              buttonText={'Mischief Managed'} 
-              onClick={this.enter.bind(this)} />
+            <Bar buttonText={'Mischief Managed'} onClick={this.enter.bind(this)} />
             <CastleDash houses={this.state.houses} />
           </div>
         )}
