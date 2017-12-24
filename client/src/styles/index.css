@@ -70,13 +70,13 @@ button:hover {
 }
 
 .scoreboard {
-    max-width: 640px;
+    max-width: 750px;
     margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-top: 5vh;
+    padding-top: 6vh;
 }
 
 .outerScoreboardContainer {
@@ -126,10 +126,8 @@ button:hover {
 
 .focusContainer {
     margin: 0.1em auto;
-    /* width: 50%; */
     min-width: 200px;
     padding: 0.1em;
-    /* box-shadow: 0 0 2px 0 rgba(25, 25, 25, 0.2); */
 }
 
 
@@ -247,23 +245,33 @@ button:hover {
     justify-content: space-between;
 }
 
-.labelItem {}
-
 .labelTitle {
     font-size: 2em;
 }
 
-.hex,
-.heart {
+.actionSVG {
     height: 20px;
     vertical-align: middle;
 }
 
+.changeLocation {
+    height: 40px;
+}
+
 @media (max-height: 480px) {}
+
+@media (max-width: 450px) {
+    .scoreboard {
+        max-width: 400px;
+    }
+}
 
 @media (max-width: 374px) {
     .Heading {
         flex-direction: column;
+    }
+    .HeadOfHouse {
+        margin: 0 0 0 -120px;
     }
     .flexSecondary {
         flex-direction: column;

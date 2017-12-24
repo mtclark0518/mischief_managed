@@ -22,12 +22,6 @@ class Hogwarts extends Component {
 
 
   render() {
-    const houseCupStandings = this.state.houses.map(house => {
-      console.log(house)
-      return(
-        <div>kk</div>
-      )
-    })
     return (
       <div className="Hogwarts">
         { this.state.active !== true && (

@@ -1,5 +1,6 @@
 .Hallows {
     /* height: 300px; */
+    padding-top: 3vh;
     display: flex;
     vertical-align: middle;
     justify-content: space-around;
@@ -38,7 +39,7 @@
 .wand {
     position: absolute;
     top: 0;
-    animation-name: introWand, spin;
+    animation-name: introWand;
     animation-delay: 0s, 3s;
     animation-duration: 3s, 4s;
     animation-direction: normal, reverse;
@@ -49,15 +50,12 @@
 @keyframes spin {
     0% {
         transform: rotateY(0deg);
-        opacity: 1.0;
     }
     50% {
         transform: rotateY(180deg);
-        opacity: 0.7;
     }
     100% {
         transform: rotateY(360deg);
-        opacity: 1.0;
     }
 }
 
@@ -68,7 +66,7 @@
     }
     100% {
         transform: rotateY(0deg);
-        opacity: 0.7;
+        opacity: 1.0;
     }
 }
 
@@ -105,14 +103,14 @@
 @keyframes rock {
     0% {
         transform: rotateY(0deg);
-        opacity: 0.7
+        opacity: 0.9
     }
     25% {
         transform: rotateY(-15deg);
         opacity: 1.0;
     }
     50% {
-        opacity: 0.6;
+        opacity: 0.9;
     }
     75% {
         transform: rotateY(15deg);
@@ -120,6 +118,6 @@
     }
     100% {
         transform: rotateY(0deg);
-        opacity: 0.7;
+        opacity: 0.9;
     }
 }

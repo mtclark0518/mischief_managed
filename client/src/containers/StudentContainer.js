@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import Student from '../components/Student'
+import Student from './Student'
 import Bar from '../components/Bar'
 import Button from '../components/Bar'
 import Panel from '../components/Panel'
