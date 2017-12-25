@@ -45,7 +45,6 @@ class LocationDash extends Component {
       
       if(classroom.type === 'Classroom'){
         let name = classroom.Subject.name
-        console.log(name)
         return (
         <Location
           key={classroom.id}
@@ -73,7 +72,6 @@ class LocationDash extends Component {
     const commonPlacesArray = 
     this.state.locations.map( place=>{
       if(place.type === 'Common Area'){
-        console.log('goobiddity goobitty goo')
         return (
         <Location
           key={place.id}
@@ -87,7 +85,6 @@ class LocationDash extends Component {
     this.state.locations.map( place=>{
       if(place.type === 'Restricted'){
           if(place.name !== 'Common Room'){
-        console.log('a coodle doodle doo')
         return (
         <Location
           key={place.id}

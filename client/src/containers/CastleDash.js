@@ -37,25 +37,15 @@ class CastleDash extends Component {
         return (
             <div className="CastleDash">
                     {this.state.searching !== true && this.state.exploring !== true &&(
-                        <div>
-                            <Hallows />
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
-
+                        <Hallows />
                     )}
                     {this.state.exploring === true && (
-                        <div>
-                            <HouseDash syncScoreboard={this.syncScoreboard} houses={this.state.houses}/>
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
-
+                        <HouseDash houses={this.state.houses}/>
                     )}
                     {this.state.searching === true && (
-                        <div>
-                            <LocationDash syncScoreboard={this.syncScoreboard}/>
-                            <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-                        </div>
+                        <LocationDash syncScoreboard={this.syncScoreboard}/>
                     )}
+                    <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
         )
     }

@@ -2,41 +2,40 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import Panel from '../components/Panel'
 import Label from '../components/Label'
-import ActionContainer from '../components/ActionContainer'
-
-
+import Socket from './Socket'
 class Student extends Component {
     constructor(props){
         super(props)
+
         this.state = {
             firstName: null,
             lastName: null,
             id: null,
             points: null,
             house: {},
-            moving: false
+            moving: false,
         }
     }
     componentDidMount(){
         this.getData(this.props.student.id)
     }
     getData(id){
-    axios({
-      method: "GET",
-      url: "api/students/" + id
-    })
-  .then( student => {
-    this.setState({ 
-        firstName: student.data.firstName,
-        lastName: student.data.lastName,
-        id: student.data.id,
-        points: student.data.points,
-        house: student.data.House
-      });
-    });
-  }
-    hex = e => {
-        e.preventDefault();
+        axios({
+        method: "GET",
+        url: "api/students/" + id
+        })
+        .then( student => {
+            this.setState({ 
+                firstName: student.data.firstName,
+                lastName: student.data.lastName,
+                id: student.data.id,
+                points: student.data.points,
+                house: student.data.House
+            });
+        });
+    }
+    hex = () => {
+        // e.preventDefault();
         axios({
             method: "PUT",
             url: "api/students/hex/" + this.state.id
@@ -48,8 +47,8 @@ class Student extends Component {
         })
 
     }
-    honor = e => {
-        e.preventDefault();
+    honor = () => {
+        // e.preventDefault();
         axios({
             method: "PUT",
             url: "api/students/honor/" + this.state.id
@@ -85,7 +84,7 @@ class Student extends Component {
                         <div>Points: {this.state.points}</div>
                         
                         {this.props.type === 'location' && (
-                            <ActionContainer honor={this.honor} hex={this.hex} showMovementForm={this.showMovementForm}/>
+                            <Socket syncScoreboard={this.props.syncScoreboard} student={this.state.id} honor={this.honor} hex={this.hex} showMovementForm={this.showMovementForm}/>
                         )}
                     </div>
                 )}

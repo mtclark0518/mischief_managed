@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Student from './Student'
-import Bar from '../components/Bar'
-import Button from '../components/Bar'
-import Panel from '../components/Panel'
-import Icon from '../components/Icon'
-
 
 class StudentContainer extends Component {
   constructor(props){
@@ -21,8 +16,6 @@ componentDidMount(){
     this.getData(this.props.type, this.props.from)
   }
 
-
-
 getData(type, id){
     axios({
       method: "GET",
@@ -30,18 +23,18 @@ getData(type, id){
     })
   .then( students => {
     this.setState({ 
-        students: students.data,
-        focused: null
-      });
+      students: students.data,
+      focused: null
     });
-  }
-  update(type,id){
+  });
+}
+update(type,id){
     this.getData(type, id);
   }
 componentWillReceiveProps(nextProps){
   if(nextProps.from !== this.props.from){
     this.update(nextProps.type, nextProps.from)
-  }
+  } 
 }
   render() {
     let students = this.state.students.map( student => {

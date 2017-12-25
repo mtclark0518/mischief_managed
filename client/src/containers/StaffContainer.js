@@ -7,10 +7,7 @@ class StaffContainer extends Component {
     super(props)
     this.state = {
         staff: []
-        // expanded: false,
-        // focused: null
     }
-    // this.expand = this.expand.bind(this)
   }
     componentDidMount(){
     this.getData(this.props.from)
@@ -22,7 +19,6 @@ class StaffContainer extends Component {
       url: "api/staff/location/" + id
     })
   .then( staff => {
-      console.log(staff)  
     this.setState({ 
         staff: staff.data
       })
@@ -36,10 +32,6 @@ class StaffContainer extends Component {
           key={staff.id}
           staff={staff}
           view={'location'}
-          // expanded={this.state.expanded}
-          // expand={this.expand}
-          // focused={this.state.focused}
-          // focus={this.focus}
         />
       )
     
@@ -49,18 +41,8 @@ class StaffContainer extends Component {
             {staff}
         </div>
     )
-}
+  }
 }
 
-//   expand = () => {
-//     this.setState(prevState => ({
-//       expanded: !prevState.expanded
-//     }))
-//   }
-//   focus = house => {
-//     this.setState({
-//       focused: house
-//     })
-//   }
 
 export default StaffContainer;

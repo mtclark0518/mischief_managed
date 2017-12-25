@@ -15,6 +15,7 @@ const updateHousePoints = houseId => {
         include: [ { model:Student }]})
     .then(house => {
         let students = house.Students;
+        console.log(students)
         let individualPoints = students.map( student => {
             return student.points;
         })
@@ -45,10 +46,6 @@ const showHouses = (req, res) => {
             {
                 model: Staff
             }
-            // {
-            //     model: Organization
-            // }
-
         ]
     })
     .then( houses => {
@@ -103,7 +100,6 @@ const staffByLocation = (req, res) => {
         ]
     })
     .then( staff => {
-        console.log(staff)
         res.json(staff);
     });
 };
@@ -163,7 +159,6 @@ const studentsByHouse = (req, res) => {
         ]
     })
     .then( students => {
-        console.log(students)
         res.json(students);
     });
 }
@@ -180,7 +175,6 @@ const studentsByLocation = (req, res) => {
         ]
     })
     .then( students => {
-        console.log(students)
         res.json(students);
     });
 }
@@ -215,6 +209,7 @@ module.exports = {
     studentsByHouse: studentsByHouse,
     hexStudent: hexStudent,
     honorStudent: honorStudent,
+    updateHousePoints: updateHousePoints,
     studentsByLocation: studentsByLocation,
     showSubjects: showSubjects,
 };
