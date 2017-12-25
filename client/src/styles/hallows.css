@@ -39,7 +39,7 @@
 .wand {
     position: absolute;
     top: 0;
-    animation-name: introWand;
+    animation-name: introWand, spin;
     animation-delay: 0s, 3s;
     animation-duration: 3s, 4s;
     animation-direction: normal, reverse;
