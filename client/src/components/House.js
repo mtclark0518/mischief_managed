@@ -52,7 +52,7 @@ componentWillReceiveProps(nextProps){
                 {this.props.view === 'scoreboard' && (
                     <div className="outerScoreboardContainer" style={outerSBStyles}>
                         <div className="innerScoreboardContainer" style={inSBStyles}>
-                            <div>{this.props.name}</div>
+                            <div>{this.props.house.name}</div>
                             <div className="housePoints">{this.state.points}</div>
                             <div>{this.props.house.mascot}s</div>
                         </div>

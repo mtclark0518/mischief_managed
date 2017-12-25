@@ -7,23 +7,19 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Reenie Beanie', cursive;
-    font-size: 0.9em;
+    font-family: 'Risque', cursive;
+    font-size: 0.8em;
 }
 
 button {
     height: 100%;
     font-family: 'Reenie Beanie', cursive;
-    background: rgba(250, 250, 250, 0.5);
     border: 2px solid transparent;
+    background: transparent;
     color: black;
-    padding: 0 2.1em;
-    font-size: 1.1em;
+    padding: 0 2em;
+    font-size: 1em;
     text-align: center;
-}
-
-button:hover {
-    background: rgba(220, 220, 230, 1);
 }
 
 .Hogwarts {
@@ -94,11 +90,11 @@ button:hover {
 }
 
 .housePoints {
-    font-size: 2.5em;
+    font-size: 2.0em;
     box-shadow: 0 0 3px 1px rgba(25, 25, 25, 0.4);
     padding: 0.2em;
     margin: 0.2em auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Black Ops One', cursive;
 }
 
 
@@ -107,6 +103,10 @@ button:hover {
 .locationCategories {
     font-size: 2em;
     line-height: 2em;
+}
+
+.locationArrayContainer {
+    padding-bottom: 10vh;
 }
 
 
@@ -135,6 +135,7 @@ button:hover {
 
 .Student {
     display: inline-block;
+    font-family: 'Reenie Beanie', cursive;
     margin: 0.4em;
     padding: 0.4em;
     font-size: 1.3em;
@@ -146,6 +147,8 @@ button:hover {
 
 .Staff {
     display: inline-block;
+    font-family: 'Reenie Beanie', cursive;
+    text-decoration: underline;
     margin: 0.5em auto;
     padding: 0.5em;
     font-size: 1.0em;
@@ -153,6 +156,7 @@ button:hover {
 }
 
 .HeadOfHouse {
+    text-decoration: none;
     font-weight: 700;
     font-size: 1.0em;
     margin: 0;
@@ -168,6 +172,7 @@ button:hover {
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
     height: 10vh;
     width: 100%;
+    font-size: 2.0em;
 }
 
 
@@ -187,6 +192,13 @@ button:hover {
 
 .footerSVG {
     height: 100%;
+    transition: all 250ms ease;
+}
+
+.footerSVG:hover {
+    fill: rgba(25, 25, 25, 1.0);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px 1px rgba(100, 100, 100, 1.0);
 }
 
 .deathly_hallows {
@@ -264,6 +276,9 @@ button:hover {
     .scoreboard {
         max-width: 400px;
     }
+    .Bar {
+        font-size: 1.0em;
+    }
 }
 
 @media (max-width: 374px) {
@@ -277,5 +292,9 @@ button:hover {
         flex-direction: column;
         padding: 10px 0;
         align-items: flex-start;
+    }
+    .houseNavigation {
+        width: 100%;
+        font-size: 0.7em;
     }
 }
