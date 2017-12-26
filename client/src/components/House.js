@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Button from './Button'
 import Panel from './Panel'
 import '../styles/index.css'
 
@@ -18,7 +17,6 @@ componentWillReceiveProps(nextProps){
   console.log(this.props.points)
 }
     render(){
-        let houseName = this.props.house.name;
         let primaryColor = this.props.house.primaryColor;
         let secondaryColor = this.props.house.secondaryColor;
         let houseStyles = {

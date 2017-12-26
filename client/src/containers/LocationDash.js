@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Panel from '../components/Panel'
-import Icon from '../components/Icon'
 import Location from '../components/Location'
-import Staff from '../components/Staff'
 import StudentContainer from './StudentContainer'
 import StaffContainer from './StaffContainer'
 import Label from '../components/Label'

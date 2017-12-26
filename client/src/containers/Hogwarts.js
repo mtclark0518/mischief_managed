@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import CastleDash from './CastleDash'
 import Bar from '../components/Bar'
-import Footer from '../components/Footer'
 import '../styles/index.css'
 
 

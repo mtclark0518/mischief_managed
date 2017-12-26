@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import Panel from './Panel'
-import Label from './Label'
-import StudentContainer from '../containers/StudentContainer'
-import StaffContainer from '../containers/StaffContainer'
 
 class Location extends Component {
     constructor(props){

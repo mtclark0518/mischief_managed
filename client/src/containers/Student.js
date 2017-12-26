@@ -3,6 +3,7 @@ import Panel from '../components/Panel'
 import Label from '../components/Label'
 import ActionContainer from '../components/ActionContainer'
 import UpdateForm from '../forms/UpdateForm'
+
 class Student extends Component {
     constructor(props){
         super(props)
@@ -54,14 +55,14 @@ class Student extends Component {
             boxShadow: '0 0 2px 0px ' + this.props.student.House.secondaryColor,
         }
         const name = this.props.student.firstName + ' ' + this.props.student.lastName;
-        
+        console.log(name)
         return(
             
             <div style={styles} className="Student">
 
                 {this.props.expanded && this.props.focused !== null && (
                     <div> 
-                        <Label title={this.state.firstName + ' ' + this.state.lastName} onClick={this.props.close} />
+                        <Label title={name} onClick={this.props.close} />
                         <div>Points: {this.state.points}</div>
                         
                         {this.props.type === 'location' && (

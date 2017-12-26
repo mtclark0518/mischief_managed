@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://TheTDrive@localhost:5432/mischiefmanaged')
+const sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://t@localhost:5432/mischiefmanaged')
 
 const Castle = sequelize.import('./Castle')
 const Subject = sequelize.import('./Subject')

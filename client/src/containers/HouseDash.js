@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import House from '../components/House'
 import StudentContainer from './StudentContainer'
 import Heading from '../components/Heading'
