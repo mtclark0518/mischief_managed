@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import Panel from '../components/Panel'
 import Icon from '../components/Icon'
 import Location from '../components/Location'
@@ -15,7 +14,6 @@ class LocationDash extends Component {
   constructor(props){
     super(props)
     this.state = {
-        locations: [],
         classrooms: false,
         houseRooms: false,
         commonAreas: false,
@@ -26,22 +24,11 @@ class LocationDash extends Component {
     this.expand = this.expand.bind(this)
   }
     componentDidMount(){
-    this.getData()
   }
-  getData(){
-    axios({
-      method: "GET",
-      url: "api/locations"
-    })
-  .then( locations => {
-      this.setState({ 
-        locations: locations.data
-      })
-    });
-  }
+
   render() {
     const classroomArray = 
-    this.state.locations.map( classroom => {
+    this.props.locations.map( classroom => {
       
       if(classroom.type === 'Classroom'){
         let name = classroom.Subject.name
@@ -56,7 +43,7 @@ class LocationDash extends Component {
       )}
     })
     let houseRoomArray = 
-    this.state.locations.map( commonroom=>{
+    this.props.locations.map( commonroom=>{
       if(commonroom.type === 'Restricted' && commonroom.name === 'Common Room'){
         let name = commonroom.House.name + ' ' + commonroom.name
         return (
@@ -70,7 +57,7 @@ class LocationDash extends Component {
       )}
     })
     const commonPlacesArray = 
-    this.state.locations.map( place=>{
+    this.props.locations.map( place=>{
       if(place.type === 'Common Area'){
         return (
         <Location
@@ -82,7 +69,7 @@ class LocationDash extends Component {
       )}
     })
     const restrictedAreasArray = 
-    this.state.locations.map( place=>{
+    this.props.locations.map( place=>{
       if(place.type === 'Restricted'){
           if(place.name !== 'Common Room'){
         return (
@@ -97,6 +84,7 @@ class LocationDash extends Component {
 return(
 
     <div className="flexColumn">
+    
         { this.state.focused !== null && (
 
           <div className="focusedLocation">
@@ -116,7 +104,7 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-              <StudentContainer syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'location'} from={this.state.focused.id}/>
+              <StudentContainer syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'location'} from={this.state.focused.id} hex={this.props.hex} honor={this.props.honor}/>
           </div>
         )}
 
@@ -192,19 +180,19 @@ return(
       restrictedAreas: false,
     })
   }
-  expand = () => {
-    this.setState(prevState => ({
-      expanded: !prevState.expanded
-    }))
-  }
-  focus = place => {
+  
+  expand = place => {
     this.setState({
+      expanded: true,
       focused: place
     })
+
   }
+
   clear = () => {
     this.expand();    
     this.setState({
+      expanded: false,
       focused: null
     })
   }

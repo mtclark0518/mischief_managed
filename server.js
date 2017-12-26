@@ -30,48 +30,58 @@ app.get('*', (req, res) => {
 
 server.listen(PORT, () => log('Shakedown ' + PORT));
 
+
+//SOCKET FUNCTIONALITY
 const db = require('./backend/models')
 const controller = require('./backend/controller/controller')
 const Student = db.models.Student
 const socketio = require('socket.io')
 const io = socketio(server)
+
+
+
     io.on('connection', socket => {
         console.log('socket connected')
 
 
-// const honorStudent = (req, res) => {
-//     Student.findOne({where: { id:req.params.id} })
-//     .then( student => {
-//         let honor = student.points + 2;
-//         student.updateAttributes({
-//             points: honor
-//         })
-//         .then(student => {
-//             updateHousePoints(student.HouseId)
-//             res.json(student)
-//         });
-//     });
-// };
-        socket.on('honor', student => {
+
+        socket.on('move', student => {
+
+            console.log(student)
+            let newLocation = student.to
             Student.findOne({where: {
-                id: student
+                id: student.who
             }})
             .then(student => {
-                let honor = student.points + 2;
                 student.updateAttributes({
-                    points: honor
+                    LocationId: newLocation
                 })
                 .then(student => {
-                    controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update score', {
-                        points: student.points
+                    io.sockets.emit('refresh', {
+                        student: student,
                     })
                 })
             })
         })
-        socket.on('hex', student => {
+        socket.on('honor', id => {
             Student.findOne({where: {
-                id: student
+                id: id
+            }})
+            .then(student => {
+                let honor = student.points + 2;
+                student.updateAttributes({
+                    points: honor,
+                })
+                .then(student => {
+                    controller.updateHousePoints(student.HouseId);
+                    io.sockets.emit('update');
+                })
+            })
+        })
+        socket.on('hex', id => {
+            console.log('dummy')
+            Student.findOne({where: {
+                id: id
             }})
             .then( student => {
                 let hex = student.points - 1;
@@ -80,7 +90,7 @@ const io = socketio(server)
                 })
                 .then(student => {
                     controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update score', {
+                    io.sockets.emit('update', {
                         points: student.points
                     })
                 })

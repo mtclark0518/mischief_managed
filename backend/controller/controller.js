@@ -132,6 +132,8 @@ const hexStudent = (req, res) => {
         });
     });
 };
+
+//HONOR A STUDENT
 const honorStudent = (req, res) => {
     Student.findOne({where: { id:req.params.id} })
     .then( student => {
@@ -162,6 +164,7 @@ const studentsByHouse = (req, res) => {
         res.json(students);
     });
 }
+
 //STUDENT BY LOCATION
 const studentsByLocation = (req, res) => {
     Student.findAll({
@@ -178,7 +181,6 @@ const studentsByLocation = (req, res) => {
         res.json(students);
     });
 }
-
 
 //SUBJECT
 const showSubjects = (req, res) => {

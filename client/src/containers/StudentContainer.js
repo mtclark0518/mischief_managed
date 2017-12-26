@@ -70,6 +70,8 @@ componentWillReceiveProps(nextProps){
                 <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
+                  hex={this.props.hex}
+                  honor={this.props.honor}
                   type={this.props.type}
                   syncScoreboard={this.props.syncScoreboard}
                   expanded={this.state.expanded}

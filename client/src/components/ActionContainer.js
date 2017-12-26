@@ -41,7 +41,7 @@ const ActionContainer = props => {
 
     return(
         <div className="ActionContainer">
-            <button onClick={e => props.showMovementForm(e)}>
+            <button onClick={e => props.move(e)}>
                 {changeLocation()}
             </button>
             <button onClick={e => props.hex(e)}>

@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 import Panel from './Panel'
+import Label from './Label'
+import StudentContainer from '../containers/StudentContainer'
+import StaffContainer from '../containers/StaffContainer'
 
 class Location extends Component {
     constructor(props){
         super(props)
         this.state = {
             type: null,
-            staff: [],
-            students: []
         }
     }
     componentDidMount(){
         this.setState({
             type: this.props.location.type,
-            staff: this.props.location.Staffs,
-            students: this.props.location.Students
         });
     }
 
@@ -22,7 +21,7 @@ class Location extends Component {
 
     return (
         <div className="Location">
-            {this.props.expanded !== true &&(
+            {!this.props.expanded &&(
                 <div>
                     {this.state.type === 'Classroom' && (
                         <Panel data={this.props.name} onClick={this.expandLocation} />
@@ -42,9 +41,8 @@ class Location extends Component {
     );
     }
     expandLocation = () => {
-        this.props.expand()
         let location = this.props.location
-        this.props.focus(location)
+        this.props.expand(location)
     }
 }
 export default Location;

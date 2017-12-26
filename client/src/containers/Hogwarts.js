@@ -6,48 +6,34 @@ import Footer from '../components/Footer'
 import '../styles/index.css'
 
 
-
 class Hogwarts extends Component {
   constructor(props){
     super(props)
     this.state = {
-      hogwarts: null,
       active: false,
-      houses: [],
     }
     this.activate = this.activate.bind(this)
   }
-
-
-
 
   render() {
     return (
       <div className="Hogwarts">
         { this.state.active !== true && (
-            <Bar 
-              buttonText={'I solemnly swear that i am up to no good'}
-              onClick={this.enter.bind(this)} />
+            <Bar buttonText={'I solemnly swear that i am up to no good'} onClick={this.activate} />
         )}
-
         { this.state.active === true && (
           <div className="active">
-            <Bar buttonText={'Mischief Managed'} onClick={this.enter.bind(this)} />
-            <CastleDash />
+            <Bar buttonText={'Mischief Managed'} onClick={this.activate} />
+            <CastleDash /> 
           </div>
         )}
       </div>
     );
   }
-  enter = () => {
-    this.activate()
-  }
-  
   activate = () => {
     this.setState(prevState => ({
       active : !prevState.active
     }))
   }
 }
-
 export default Hogwarts;
