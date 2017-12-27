@@ -23,8 +23,11 @@ class CastleDash extends Component {
     }
     componentDidMount(){
         this.getData()
-        this.socket.on('update', () => {
+        this.socket.on('update score', () => {
             this.syncScoreboard()
+        });
+        this.socket.on('update location', data => {
+            this.getData()
         })
     }
 
@@ -61,7 +64,7 @@ class CastleDash extends Component {
                         <HouseDash houses={this.state.houses}/>
                     )}
                     {this.state.searching === true && (
-                        <LocationDash locations={this.state.locations} hex={this.hex} syncScoreboard={this.syncScoreboard}/>
+                        <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} syncScoreboard={this.syncScoreboard}/>
                     )}
                     <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
@@ -94,6 +97,12 @@ class CastleDash extends Component {
     }
     honor = id => {
         this.socket.emit('honor', id)
+    }
+    moveStudent = (id, location) => {
+        this.socket.emit('move', {
+            student: id,
+            location: location
+        })
     }
 }
 export default CastleDash;

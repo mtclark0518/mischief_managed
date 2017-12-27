@@ -6,7 +6,7 @@ class UpdateForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            value: ''
+            value: 'Where to boss?'
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,19 +24,27 @@ class UpdateForm extends Component {
 
     handleSubmit(e){
         e.preventDefault();
-        console.log('fart in your jeans')
-        console.log(this.state.value)
-
+        this.props.moveStudent(this.props.student, this.state.value)
+        this.props.clear()
     }
     
 
     render(){
-
+        const locations = this.props.locations.map( location => {
+            console.log(location)
+            let name = location.name 
+            let value = location.id
+            return(
+                <option key={location.id} value={value}>{name}</option>
+            )
+        })
 
         return(
             <form onSubmit={ e => this.handleSubmit(e)} method={"PUT"}>
                 <Label title={'Update Location'} onClick={this.props.close} />
-                <input type='number' value={this.state.value} onChange={this.handleChange}/>
+                <select value={this.state.value} onChange={this.handleChange}> 
+                    {locations}
+                </select>
                 <input type="submit"  value={'Move'}/>
             </form>
         )

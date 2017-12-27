@@ -67,17 +67,19 @@ componentWillReceiveProps(nextProps){
           )}
           { this.props.type === 'location' && this.state.focused !== null && this.state.expanded && (
             <div className="focusContainer">
-                <Student
-                  key={this.state.focused.id}
-                  student={this.state.focused}
-                  hex={this.props.hex}
-                  honor={this.props.honor}
-                  type={this.props.type}
-                  syncScoreboard={this.props.syncScoreboard}
-                  expanded={this.state.expanded}
-                  focused={this.state.focused}
-                  focus={this.focus}
-                  close={this.close} />
+              <Student
+                key={this.state.focused.id}
+                student={this.state.focused}
+                moveStudent={this.props.moveStudent}
+                hex={this.props.hex}
+                honor={this.props.honor}
+                type={this.props.type}
+                locations={this.props.locations}
+                syncScoreboard={this.props.syncScoreboard}
+                expanded={this.state.expanded}
+                focused={this.state.focused}
+                focus={this.focus}
+                clear={this.clear} />
             </div>
           )}
           { this.state.focused === null && (
@@ -98,5 +100,13 @@ componentWillReceiveProps(nextProps){
       focused: null      
     })
   }
+  clear = () => {
+    this.setState({
+      expanded: false,
+      focused: null      
+    })
+    this.props.clear()
+  }
+  
 }
 export default StudentContainer;

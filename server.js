@@ -44,25 +44,6 @@ const io = socketio(server)
         console.log('socket connected')
 
 
-
-        socket.on('move', student => {
-
-            console.log(student)
-            let newLocation = student.to
-            Student.findOne({where: {
-                id: student.who
-            }})
-            .then(student => {
-                student.updateAttributes({
-                    LocationId: newLocation
-                })
-                .then(student => {
-                    io.sockets.emit('refresh', {
-                        student: student,
-                    })
-                })
-            })
-        })
         socket.on('honor', id => {
             Student.findOne({where: {
                 id: id
@@ -74,12 +55,11 @@ const io = socketio(server)
                 })
                 .then(student => {
                     controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update');
+                    io.sockets.emit('update score');
                 })
             })
         })
         socket.on('hex', id => {
-            console.log('dummy')
             Student.findOne({where: {
                 id: id
             }})
@@ -90,13 +70,31 @@ const io = socketio(server)
                 })
                 .then(student => {
                     controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update', {
+                    io.sockets.emit('update score', {
                         points: student.points
                     })
                 })
             })
         })
 
+        socket.on('move', student => {
+
+            console.log(student)
+            let update = student.location
+            Student.findOne({where: {
+                id: student.student
+            }})
+            .then(student => {
+                student.updateAttributes({
+                    LocationId: update
+                })
+                .then(student => {
+                    io.sockets.emit('update location', {
+                        student: student,
+                    })
+                })
+            })
+        })
         socket.on('disconnect', () => {
             console.log('user disconnected')
             socket.disconnect()

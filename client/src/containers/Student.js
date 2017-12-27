@@ -21,33 +21,6 @@ class Student extends Component {
 
     }
 
-    // hex = () => {
-    //     // e.preventDefault();
-    //     axios({
-    //         method: "PUT",
-    //         url: "api/students/hex/" + this.state.id
-    //     }).then( student =>{
-    //         this.setState({
-    //             points: student.data.points
-    //         });
-    //         this.props.syncScoreboard();
-    //     })
-
-    // }
-    // honor = () => {
-    //     // e.preventDefault();
-    //     axios({
-    //         method: "PUT",
-    //         url: "api/students/honor/" + this.state.id
-    //     }).then( student =>{
-    //         this.setState({
-    //             points: student.data.points
-    //         });
-    //         this.props.syncScoreboard();
-    //     })
-    // }
-
-
     render(){
         const styles = {
             color: this.props.student.House.primaryColor,
@@ -68,7 +41,11 @@ class Student extends Component {
                         {this.props.type === 'location' && (
                             <div>
                                 {this.state.moving && (
-                                    <UpdateForm close={this.close}/>
+                                    <UpdateForm 
+                                        moveStudent={this.props.moveStudent}
+                                        locations={this.props.locations} 
+                                        student={this.props.student.id} 
+                                        clear={this.clear}/>
                                 )}
                                 <ActionContainer 
                                     honor={this.honor} 
@@ -90,6 +67,10 @@ class Student extends Component {
     }
     showMovementForm = () => {
         this.setState({moving: true})
+    }
+    clear = () => {
+        this.setState({moving: false})
+        this.props.clear()       
     }
     close = () => {
         this.setState({moving: false})
