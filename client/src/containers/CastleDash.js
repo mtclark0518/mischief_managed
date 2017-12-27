@@ -64,7 +64,7 @@ class CastleDash extends Component {
                         <HouseDash houses={this.state.houses}/>
                     )}
                     {this.state.searching === true && (
-                        <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} syncScoreboard={this.syncScoreboard}/>
+                        <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} honor={this.honor} syncScoreboard={this.syncScoreboard}/>
                     )}
                     <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>

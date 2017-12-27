@@ -79,6 +79,7 @@ componentWillReceiveProps(nextProps){
                 expanded={this.state.expanded}
                 focused={this.state.focused}
                 focus={this.focus}
+                close={this.close}
                 clear={this.clear} />
             </div>
           )}

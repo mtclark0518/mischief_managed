@@ -102,7 +102,7 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-              <StudentContainer from={this.state.focused.id} moveStudent={this.props.moveStudent} syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'location'} locations={this.props.locations} hex={this.props.hex} honor={this.props.honor} clear={this.clearSearch}/>
+              <StudentContainer from={this.state.focused.id} moveStudent={this.props.moveStudent} syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'location'} locations={this.props.locations} hex={this.props.hex} honor={this.props.honor} clear={this.clearAll}/>
           </div>
         )}
 
@@ -192,6 +192,13 @@ return(
       expanded: false,
       focused: null
     })
+  }
+  clearAll = () => {
+    this.setState({
+      expanded: false,
+      focused: null
+    })
+    this.clearSearch()
   }
 }
 

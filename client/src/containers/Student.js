@@ -36,7 +36,7 @@ class Student extends Component {
                 {this.props.expanded && this.props.focused !== null && (
                     <div> 
                         <Label title={name} onClick={this.props.close} />
-                        <div>Points: {this.state.points}</div>
+                        <div>Points: {this.props.student.points}</div>
                         
                         {this.props.type === 'location' && (
                             <div>
@@ -68,10 +68,6 @@ class Student extends Component {
     showMovementForm = () => {
         this.setState({moving: true})
     }
-    clear = () => {
-        this.setState({moving: false})
-        this.props.clear()       
-    }
     close = () => {
         this.setState({moving: false})
     }
@@ -80,6 +76,11 @@ class Student extends Component {
     }
     hex = () => {
         this.props.hex(this.props.student.id)
+    }
+    clear = () => {
+        this.setState({moving: false})
+        this.props.clear()
+
     }
 
 
