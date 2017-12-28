@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Panel from './Panel'
+import Panel from '../components/Panel'
 class Staff extends Component {
     // constructor(props){
     //     super(props)

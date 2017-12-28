@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import House from '../components/House'
+import House from './House'
 import StudentContainer from './StudentContainer'
 import Heading from '../components/Heading'
 
@@ -16,7 +16,7 @@ class HouseDash extends Component {
 //   }
 
 
-// render() {
+render() {
 //     let houseNavigation = this.props.houses.map( house => {
 //       return (
 //         <House
@@ -45,7 +45,10 @@ class HouseDash extends Component {
 //         />
 //       )
 //     })
-//     return (
+    return (
+      <div>housedash
+        <House />
+      </div>
 //     <div className="HouseDash">
 
 //       <div className="">
@@ -72,8 +75,8 @@ class HouseDash extends Component {
 //       </div>
 
 //     </div>
-//     );
-//   }
+    );
+  }
   // expand = () => {
   //   this.setState(prevState => ({
   //     expanded: !prevState.expanded

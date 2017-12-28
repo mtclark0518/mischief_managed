@@ -1,5 +1,5 @@
 import React from 'react'
-import Staff from './Staff'
+import Staff from '../containers/Staff'
 const Heading = props => {
 
 let styles = {

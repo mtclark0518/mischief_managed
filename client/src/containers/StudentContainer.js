@@ -53,7 +53,7 @@ class StudentContainer extends Component {
   //   this.props.clear()
   // }
 
-  // render() {
+  render() {
   //   let students = this.state.students.map( student => {
   //     return (
   //       <Student
@@ -67,7 +67,10 @@ class StudentContainer extends Component {
   //       />
   //     )
   //   })
-  //   return (
+    return (
+      <div>student container
+        <Student />
+      </div>
   //       <div className="Container">
   //         { this.props.type === 'house' && this.state.focused !== null && this.state.expanded && this.props.focused.id === this.state.focused.House.id && (
   //             <div className="focusContainer">
@@ -104,8 +107,8 @@ class StudentContainer extends Component {
   //           <div>{students}</div>
   //         )}
   //       </div>
-  //   )
-  // }
+    )
+  }
   // componentDidMount(){
   //   this.getData(this.props.type, this.props.from)
   //   this.socket.on('update score', data => {

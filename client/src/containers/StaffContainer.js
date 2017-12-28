@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import Staff from '../components/Staff'
+import Staff from './Staff'
 
 class StaffContainer extends Component {
   // constructor(props){

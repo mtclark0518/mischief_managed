@@ -12,12 +12,12 @@ class Student extends Component {
     //     }
     // }
 
-    // render(){
+    render(){
 
     //     const name = this.props.student.firstName + ' ' + this.props.student.lastName;
     //     console.log(name)
-    //     return(
-            
+        return(
+            <div>student</div>
     //         <div className="Student">
 
     //             {this.props.expanded && this.props.focused !== null && (
@@ -47,8 +47,8 @@ class Student extends Component {
     //                 <Panel onClick={this.expandStudent} data={name} />
     //             )}
     //         </div>
-    //     )
-    // }
+        )
+    }
     // expandStudent = () => {
     //     this.props.focus(this.props.student)
     // }

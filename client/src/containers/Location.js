@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import Panel from './Panel'
+
+import StudentContainer from './StudentContainer'
+import Panel from '../components/Panel';
+
 
 class Location extends Component {
     // constructor(props){
@@ -14,9 +17,12 @@ class Location extends Component {
     //     });
     // }
 
-    // render() {
+    render() {
 
-    // return (
+    return (
+        <div>location
+            <StudentContainer />
+        </div>
     //     <div className="Location">
     //         {!this.props.expanded &&(
     //             <div>
@@ -35,8 +41,8 @@ class Location extends Component {
     //             </div>
     //         )}
     //     </div>
-    // );
-    // }
+    );
+    }
     // expandLocation = () => {
     //     let location = this.props.location
     //     this.props.expand(location)

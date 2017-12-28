@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Panel from '../components/Panel'
-import Location from '../components/Location'
+import Location from './Location'
 import StudentContainer from './StudentContainer'
 import StaffContainer from './StaffContainer'
 import Label from '../components/Label'
@@ -23,7 +23,7 @@ class LocationDash extends Component {
 
 
 
-//   render() {
+  render() {
 
 
 //   //   const classroomArray = 
@@ -87,8 +87,10 @@ class LocationDash extends Component {
 //   //     )}}
 //   //   })
 
-// return(
-
+return(
+    <div>locationDash
+      <Location />
+    </div>
 //     <div className="flexColumn">
     
 //         { this.state.focused !== null && (
@@ -155,8 +157,8 @@ class LocationDash extends Component {
 //           </div>
 //         )}
 //     </div>
-//     );
-//   }
+    ); 
+  }
   // searchClasses = () => {
   //   this.setState(prevState => ({
   //     classrooms: !prevState.classrooms

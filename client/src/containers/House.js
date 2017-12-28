@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Panel from './Panel'
-import '../styles/index.css'
+import StudentContainer from './StudentContainer'
+import Panel from '../components/Panel'
 
 class House extends Component {
 // constructor(props){
@@ -16,7 +16,7 @@ class House extends Component {
 //   console.log(nextProps.points)
 //   console.log(this.props.points)
 // }
-//     render(){
+    render(){
 //         let primaryColor = this.props.house.primaryColor;
 //         let secondaryColor = this.props.house.secondaryColor;
 //         let houseStyles = {
@@ -44,7 +44,10 @@ class House extends Component {
 //             border: "2px solid " + secondaryColor,
 
 //         }
-//         return(
+        return(
+            <div>house
+                <StudentContainer />
+            </div>
 //             <div className="House">
             
 //                 {this.props.view === 'scoreboard' && (
@@ -77,8 +80,8 @@ class House extends Component {
 //                     </div>
 //                 )}
 //             </div>
-//         )
-//     }
+        )
+    }
 //     switchFocus = () => {
 //         let house = this.props.house
 //         this.props.focus(house)

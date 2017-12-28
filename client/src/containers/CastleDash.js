@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import io from 'socket.io-client'
 import Hallows from '../components/Hallows'
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
@@ -44,8 +42,12 @@ class CastleDash extends Component {
     //     });
     // }
 
-    // render() {
-    //     return (
+    render() {
+        return (
+            <div>CastleDash
+                <LocationDash />
+                <HouseDash />
+            </div>
     //         <div className="CastleDash">
     //             {this.state.searching !== true && this.state.exploring !== true &&(
     //                 <Hallows />
@@ -58,8 +60,8 @@ class CastleDash extends Component {
     //             )}
     //             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
     //         </div>
-    //     )
-    // }
+        )
+    }
     // componentDidMount(){
     //     this.getData()
     //     this.socket.on('update location', data => {

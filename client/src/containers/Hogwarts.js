@@ -12,8 +12,11 @@ class Hogwarts extends Component {
   //   this.activate = this.activate.bind(this)
   // }
 
-  // render() {
-  //   return (
+  render() {
+    return (
+      <div>Hogwarts
+        <CastleDash/>
+      </div>
   //     <div className="Hogwarts">
   //       { this.state.active !== true && (
   //           <Bar buttonText={'I solemnly swear that i am up to no good'} onClick={this.activate} />
@@ -30,7 +33,8 @@ class Hogwarts extends Component {
   // activate = () => {
   //   this.setState(prevState => ({
   //     active : !prevState.active
-  //   }))
-  // }
+  //   })
+    )
+  }
 }
 export default Hogwarts;
