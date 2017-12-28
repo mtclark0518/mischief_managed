@@ -26,52 +26,52 @@ class StudentContainer extends Component {
     });
   }
 
-  update(type,id){
-    this.setState({focused: null})
-    this.getData(type, id);
-  }
+  // update(type,id){
+  //   this.setState({focused: null})
+  //   this.getData(type, id);
+  // }
 
-  focus = student => {
-    this.setState({
-      expanded: true,
-      focused: student
-    })
-  }
+  // focus = student => {
+  //   this.setState({
+  //     expanded: true,
+  //     focused: student
+  //   })
+  // }
 
-  close = () => {
-    this.setState({
-      expanded: false,
-      focused: null      
-    })
-  }
+  // close = () => {
+  //   this.setState({
+  //     expanded: false,
+  //     focused: null      
+  //   })
+  // }
 
-  clear = () => {
-    this.setState({
-      expanded: false,
-      focused: null      
-    })
-    this.props.clear()
-  }
+  // clear = () => {
+  //   this.setState({
+  //     expanded: false,
+  //     focused: null      
+  //   })
+  //   this.props.clear()
+  // }
 
   render() {
-    let students = this.state.students.map( student => {
-      return (
-        <Student
-          key={student.id}
-          student={student}
-          expanded={this.state.expanded}
-          expand={this.expand}
-          focused={this.state.focused}
-          focus={this.focus}
-          close={this.close}
-        />
-      )
-    })
+    // let students = this.state.students.map( student => {
+    //   return (
+    //     <Student
+    //       key={student.id}
+    //       student={student}
+    //       expanded={this.state.expanded}
+    //       expand={this.expand}
+    //       focused={this.state.focused}
+    //       focus={this.focus}
+    //       close={this.close}
+    //     />
+    //   )
+    // })
     return (
         <div className="Container">
           { this.props.type === 'house' && this.state.focused !== null && this.state.expanded && this.props.focused.id === this.state.focused.House.id && (
               <div className="focusContainer">
-                <Student
+                {/* <Student
                   key={this.state.focused.id}
                   student={this.state.focused}
                   type={this.props.type}
@@ -79,12 +79,12 @@ class StudentContainer extends Component {
                   expanded={this.state.expanded}
                   focused={this.state.focused}
                   focus={this.focus}
-                  close={this.close} />
+                  close={this.close} /> */}
               </div>
           )}
           { this.props.type === 'location' && this.state.focused !== null && this.state.expanded && (
             <div className="focusContainer">
-              <Student
+              {/* <Student
                 key={this.state.focused.id}
                 student={this.state.focused}
                 moveStudent={this.props.moveStudent}
@@ -97,7 +97,7 @@ class StudentContainer extends Component {
                 focused={this.state.focused}
                 focus={this.focus}
                 close={this.close}
-                clear={this.clear} />
+                clear={this.clear} /> */}
             </div>
           )}
           { this.state.focused === null && (
@@ -106,18 +106,18 @@ class StudentContainer extends Component {
         </div>
     )
   }
-  componentDidMount(){
-    this.getData(this.props.type, this.props.from)
-    this.socket.on('update score', data => {
-      this.focus(data.student)
-    })
-  }
+  // componentDidMount(){
+  //   this.getData(this.props.type, this.props.from)
+  //   this.socket.on('update score', data => {
+  //     this.focus(data.student)
+  //   })
+  // }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.from !== this.props.from){
-      this.update(nextProps.type, nextProps.from)
-    } 
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.from !== this.props.from){
+  //     this.update(nextProps.type, nextProps.from)
+  //   } 
+  // }
   
 }
 export default StudentContainer;
