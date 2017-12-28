@@ -8,12 +8,6 @@ class Student extends Component {
     constructor(props){
         super(props)
         this.state = {
-            firstName: null,
-            lastName: null,
-            id: null,
-            points: null,
-            house: {},
-            location: null,
             moving: false,
         }
     }
@@ -22,16 +16,12 @@ class Student extends Component {
     }
 
     render(){
-        const styles = {
-            color: this.props.student.House.primaryColor,
-            border: '1px solid ' + this.props.student.House.primaryColor,
-            boxShadow: '0 0 2px 0px ' + this.props.student.House.secondaryColor,
-        }
+
         const name = this.props.student.firstName + ' ' + this.props.student.lastName;
         console.log(name)
         return(
             
-            <div style={styles} className="Student">
+            <div className="Student">
 
                 {this.props.expanded && this.props.focused !== null && (
                     <div> 

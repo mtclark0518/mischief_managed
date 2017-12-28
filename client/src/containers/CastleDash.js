@@ -21,15 +21,6 @@ class CastleDash extends Component {
         this.search = this.search.bind(this)
         this.explore = this.explore.bind(this)
     }
-    componentDidMount(){
-        this.getData()
-        this.socket.on('update score', () => {
-            this.syncScoreboard()
-        });
-        this.socket.on('update location', data => {
-            this.getData()
-        })
-    }
 
     getData(){
         axios({
@@ -57,18 +48,25 @@ class CastleDash extends Component {
     render() {
         return (
             <div className="CastleDash">
-                    {this.state.searching !== true && this.state.exploring !== true &&(
-                        <Hallows />
-                    )}
-                    {this.state.exploring === true && (
-                        <HouseDash houses={this.state.houses}/>
-                    )}
-                    {this.state.searching === true && (
-                        <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} honor={this.honor} syncScoreboard={this.syncScoreboard}/>
-                    )}
-                    <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
+                {this.state.searching !== true && this.state.exploring !== true &&(
+                    <Hallows />
+                )}
+                {this.state.exploring === true && (
+                    <HouseDash houses={this.state.houses}/>
+                )}
+                {this.state.searching === true && (
+                    <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} honor={this.honor} syncScoreboard={this.syncScoreboard}/>
+                )}
+                <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
         )
+    }
+    componentDidMount(){
+        this.getData()
+        this.socket.on('update location', data => {
+            this.getData()
+        })
+
     }
 
     search = () => {

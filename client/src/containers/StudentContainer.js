@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import io from 'socket.io-client'
 import Student from './Student'
 
 class StudentContainer extends Component {
   constructor(props){
     super(props)
+    this.socket = io()    
     this.state = {
         students: [],
         expanded: false,
@@ -12,30 +14,45 @@ class StudentContainer extends Component {
     }
   }
 
-componentDidMount(){
-    this.getData(this.props.type, this.props.from)
-  }
-
-getData(type, id){
+  getData(type, id){
     axios({
       method: "GET",
       url: "api/students/" + type + "/" + id
     })
-  .then( students => {
-    this.setState({ 
-      students: students.data,
-      focused: null
+    .then( students => {
+      this.setState({ 
+        students: students.data
+      });
     });
-  });
-}
-update(type,id){
+  }
+
+  update(type,id){
+    this.setState({focused: null})
     this.getData(type, id);
   }
-componentWillReceiveProps(nextProps){
-  if(nextProps.from !== this.props.from){
-    this.update(nextProps.type, nextProps.from)
-  } 
-}
+
+  focus = student => {
+    this.setState({
+      expanded: true,
+      focused: student
+    })
+  }
+
+  close = () => {
+    this.setState({
+      expanded: false,
+      focused: null      
+    })
+  }
+
+  clear = () => {
+    this.setState({
+      expanded: false,
+      focused: null      
+    })
+    this.props.clear()
+  }
+
   render() {
     let students = this.state.students.map( student => {
       return (
@@ -89,24 +106,17 @@ componentWillReceiveProps(nextProps){
         </div>
     )
   }
-  focus = student => {
-    this.setState({
-      expanded: true,
-      focused: student
+  componentDidMount(){
+    this.getData(this.props.type, this.props.from)
+    this.socket.on('update score', data => {
+      this.focus(data.student)
     })
   }
-  close = () => {
-    this.setState({
-      expanded: false,
-      focused: null      
-    })
-  }
-  clear = () => {
-    this.setState({
-      expanded: false,
-      focused: null      
-    })
-    this.props.clear()
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.from !== this.props.from){
+      this.update(nextProps.type, nextProps.from)
+    } 
   }
   
 }

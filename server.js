@@ -35,72 +35,88 @@ server.listen(PORT, () => log('Shakedown ' + PORT));
 const db = require('./backend/models')
 const controller = require('./backend/controller/controller')
 const Student = db.models.Student
+const House = db.models.House
 const socketio = require('socket.io')
 const io = socketio(server)
 
 
+const updateHousePoints = houseId => {
+    House.findOne({
+        where: {id: houseId}, 
+        include: [ { model:Student }]})
+    .then(house => {
+        let students = house.Students;
+        let individualPoints = students.map( student => {
+            return student.points;
+        })
+        let totalPoints = individualPoints.reduce((acc, cv) => acc + cv);
+        house.updateAttributes({
+            points : totalPoints
+        });
+    });
+};
+io.on('connection', socket => {
+    console.log('socket connected')
 
-    io.on('connection', socket => {
-        console.log('socket connected')
 
-
-        socket.on('honor', id => {
-            Student.findOne({where: {
-                id: id
-            }})
+    socket.on('honor', id => {
+        Student.findOne({where: {
+            id: id
+        }})
+        .then(student => {
+            let honor = student.points + 2;
+            student.updateAttributes({
+                points: honor,
+            })
             .then(student => {
-                let honor = student.points + 2;
-                student.updateAttributes({
-                    points: honor,
-                })
-                .then(student => {
-                    controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update score');
-                })
+                updateHousePoints(student.HouseId);
+                io.sockets.emit('update score', {
+                    student: student
+                });
             })
         })
-        socket.on('hex', id => {
-            Student.findOne({where: {
-                id: id
-            }})
-            .then( student => {
-                let hex = student.points - 1;
-                student.updateAttributes({
-                    points: hex
-                })
-                .then(student => {
-                    controller.updateHousePoints(student.HouseId);
-                    io.sockets.emit('update score', {
-                        points: student.points
-                    })
-                })
-            })
-        })
-
-        socket.on('move', student => {
-
-            console.log(student)
-            let update = student.location
-            Student.findOne({where: {
-                id: student.student
-            }})
-            .then(student => {
-                student.updateAttributes({
-                    LocationId: update
-                })
-                .then(student => {
-                    io.sockets.emit('update location', {
-                        student: student,
-                    })
-                })
-            })
-        })
-        socket.on('disconnect', () => {
-            console.log('user disconnected')
-            socket.disconnect()
-        })
-    
     })
+    socket.on('hex', id => {
+        Student.findOne({where: {
+            id: id
+        }})
+        .then( student => {
+            let hex = student.points - 1;
+            student.updateAttributes({
+                points: hex
+            })
+            .then(student => {
+                updateHousePoints(student.HouseId);
+                io.sockets.emit('update score', {
+                    student: student
+                })
+            })
+        })
+    })
+
+    socket.on('move', student => {
+
+        let update = student.location
+        Student.findOne({where: {
+            id: student.student
+        }})
+        .then(student => {
+            student.updateAttributes({
+                LocationId: update
+            })
+            .then(student => {
+                io.sockets.emit('update location', {
+                    student: student,
+                })
+            })
+        })
+    })
+    socket.on('disconnect', () => {
+        console.log('user disconnected')
+        socket.disconnect()
+    })
+
+})
     // io.on('connection', socket => {
     //     console.log('socket connected')
 

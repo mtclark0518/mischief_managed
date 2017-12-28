@@ -67,18 +67,30 @@ class LocationDash extends Component {
       )}
     })
     const restrictedAreasArray = 
-    this.props.locations.map( place=>{
-      if(place.type === 'Restricted'){
-          if(place.name !== 'Common Room'){
-        return (
-        <Location
-          key={place.id}
-          location={place}
-          expand={this.expand}
-          focus={this.focus}
-        />
-      )}}
-    })
+      this.props.locations.map( place=>{
+        if(place.type === 'Restricted'){
+            if(place.name !== 'Common Room'){
+          return (
+          <Location
+            key={place.id}
+            location={place}
+            expand={this.expand}
+            focus={this.focus}
+          />
+        )}}
+      })
+  const roster = 
+  this.props.locations.map( place => {
+      return (
+      <Location
+        key={place.id}
+        location={place}
+        roster={place.Students}
+        expand={this.expand}
+        focus={this.focus}
+      />
+  )})
+
 return(
 
     <div className="flexColumn">
@@ -102,7 +114,17 @@ return(
 
   {/* consistent across all locations   */}
               <StaffContainer from={this.state.focused.id}/>
-              <StudentContainer from={this.state.focused.id} moveStudent={this.props.moveStudent} syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'location'} locations={this.props.locations} hex={this.props.hex} honor={this.props.honor} clear={this.clearAll}/>
+              <StudentContainer 
+                from={this.state.focused.id} 
+                moveStudent={this.props.moveStudent} 
+                syncScoreboard={this.props.syncScoreboard} 
+                focused={this.state.focused} 
+                type={'location'}
+                roster={this.state.focused.Students} 
+                locations={this.props.locations} 
+                hex={this.props.hex} 
+                honor={this.props.honor} 
+                clear={this.clearAll}/>
           </div>
         )}
 
