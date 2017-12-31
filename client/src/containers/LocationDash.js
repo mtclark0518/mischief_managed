@@ -8,21 +8,24 @@ import Label from '../components/Label'
 
 
 class LocationDash extends Component {
-  // constructor(props){
-    // super(props)
-    // this.state = {
+  constructor(props){
+    super(props)
+    this.state = {
         // classrooms: false,
         // houseRooms: false,
         // commonAreas: false,
         // restrictedAreas: false,
         // expanded: false,
         // focused: null
-    // }
-    // this.expand = this.expand.bind(this)
+    }
+  }
+
+  // expand = place => {
+  //   this.setState({
+  //     expanded: true,
+  //     focused: place
+  //   })
   // }
-
-
-
   render() {
 
 
@@ -186,14 +189,6 @@ return(
   //     commonAreas: false,
   //     restrictedAreas: false,
   //   })
-  // }
-  
-  // expand = place => {
-  //   this.setState({
-  //     expanded: true,
-  //     focused: place
-  //   })
-
   // }
   // clear = () => {
   //   this.setState({

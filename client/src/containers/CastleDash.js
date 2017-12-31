@@ -6,18 +6,34 @@ import Footer from '../components/Footer'
 
 
 class CastleDash extends Component {
-    // constructor(props){
-    //     super(props)
-    //     this.socket = io()
-    //     this.state = {
-    //         searching: false,
-    //         exploring: false,
-    //         houses: [],
-    //         locations: []            
-    //     }
-    //     this.search = this.search.bind(this)
-    //     this.explore = this.explore.bind(this)
-    // }
+    constructor(props){
+        super(props)
+        this.state = {
+            searching: false,
+            exploring: false,
+        }
+        this.search = this.search.bind(this)
+        this.explore = this.explore.bind(this)
+    }
+    search = () => {
+        this.setState({
+            searching : true,
+            exploring: false
+        })
+    }
+    explore = () => {
+        this.setState({
+            searching : false,
+            exploring: true
+        })
+    }
+    home = () => {
+        this.setState({
+            exploring: false,
+            searching: false
+        })
+    }
+
 
     // getData(){
     //     axios({
@@ -44,22 +60,18 @@ class CastleDash extends Component {
 
     render() {
         return (
-            <div>CastleDash
-                <LocationDash />
-                <HouseDash />
+            <div className="CastleDash">
+                {!this.state.searching && !this.state.exploring &&(
+                    <Hallows />
+                )}
+                {this.state.exploring && (
+                    <HouseDash />
+                )}
+                {this.state.searching && (
+                    <LocationDash />
+                )}
+                <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
             </div>
-    //         <div className="CastleDash">
-    //             {this.state.searching !== true && this.state.exploring !== true &&(
-    //                 <Hallows />
-    //             )}
-    //             {this.state.exploring === true && (
-    //                 <HouseDash houses={this.state.houses}/>
-    //             )}
-    //             {this.state.searching === true && (
-    //                 <LocationDash moveStudent={this.moveStudent} locations={this.state.locations} hex={this.hex} honor={this.honor} syncScoreboard={this.syncScoreboard}/>
-    //             )}
-    //             <Footer onHome={this.home} onExplore={this.explore} onSearch={this.search} />
-    //         </div>
         )
     }
     // componentDidMount(){
@@ -70,24 +82,9 @@ class CastleDash extends Component {
 
     // }
 
-    // search = () => {
-    //     this.setState({
-    //         searching : true,
-    //         exploring: false
-    //     })
-    // }
-    // explore = () => {
-    //     this.setState({
-    //         searching : false,
-    //         exploring: true
-    //     })
-    // }
-    // home = () => {
-    //     this.setState({
-    //         exploring: false,
-    //         searching: false
-    //     })
-    // }
+
+
+
     // syncScoreboard = () => {
     //     this.getData()
     // }

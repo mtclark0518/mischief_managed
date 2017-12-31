@@ -15,9 +15,10 @@ class Student extends Component {
     render(){
 
     //     const name = this.props.student.firstName + ' ' + this.props.student.lastName;
-    //     console.log(name)
         return(
-            <div>student</div>
+            <div>student
+                <ActionContainer />
+            </div>
     //         <div className="Student">
 
     //             {this.props.expanded && this.props.focused !== null && (
