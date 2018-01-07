@@ -32,51 +32,47 @@ const updateHousePoints = houseId => {
 //CASTLE
 const showHogwarts = (req, res) => {
     Castle.findOne({ where: {id: 1},
-    include:[{model: House}] })
-    .then( hogwarts => { res.json(hogwarts); } );
-}
-
-//HOUSE
-const showHouses = (req, res) => {
-    House.findAll({
         include:[
-            {
-                model: Student
-            },
-            {
-                model: Staff
-            }
+            {model: House},
+            {model: Student},
+            {model: Location},
+            {model: Staff}
         ]
     })
+    .then( hogwarts => { res.json(hogwarts); } );
+}
+//HOUSE
+const getHouses = (req, res) => {
+    House.findAll({include:[
+        {model: Student},
+        {model: Staff}
+    ]})
     .then( houses => {
         res.json(houses);
     });
 }
-
-
 //LOCATION
-const showLocations = (req, res) => {
-    Location.findAll({
-        include:[
-            {
-                model: Student
-            },
-            {
-                model: Staff
-            },
-            {
-                model: Subject
-            },
-            {
-                model: House
-            }
-        ]
-    })
+const getLocations = (req, res) => {
+    Location.findAll({include:[
+        {model: Student},
+        {model: Subject},
+        {model: House},
+        {model: Staff}
+    ]})
     .then( locations => {
         res.json(locations);
     });
 }
-
+//STUDENTS
+const getStudents = (req, res) => {
+    Student.findAll({include:[
+        {model:Location},
+        {model:House}
+    ]})
+    .then( students => {
+        res.json(students);
+    });
+};
 //STAFF
 const showStaff = (req, res) => {
     Staff.findAll()
@@ -104,13 +100,7 @@ const staffByLocation = (req, res) => {
     });
 };
 
-//INDEX STUDENTS
-const getStudents = (req, res) => {
-    Student.findAll()
-    .then( students => {
-        res.json(students);
-    });
-};
+
 //SHOW A STUDENT
 const showStudent = (req, res) => {
     Student.findOne({where:{id:req.params.id}, include:[{model: House}]})
@@ -202,11 +192,11 @@ const showSubjects = (req, res) => {
 
 module.exports = { 
     showHogwarts: showHogwarts,
-    showHouses: showHouses,
-    showLocations: showLocations,
+    getHouses: getHouses,
+    getLocations: getLocations,
+    getStudents: getStudents,    
     showStaff: showStaff,
     staffByLocation: staffByLocation,
-    getStudents: getStudents,
     showStudent: showStudent,
     studentsByHouse: studentsByHouse,
     hexStudent: hexStudent,
