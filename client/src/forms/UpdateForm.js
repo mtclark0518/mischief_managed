@@ -25,6 +25,7 @@ class UpdateForm extends Component {
         let amount = parseInt(this.state.value)
         let update = this.props.update;
         this.props.sendUpdate(update, amount)
+        this.props.closeForm()
     }
     
 

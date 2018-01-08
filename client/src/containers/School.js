@@ -58,13 +58,13 @@ class School extends Component {
       data: {
         amount: amount
       },
-    }).then(response =>{
-      console.log(response.data)
+    })
+    .then(response =>{
       let update = response.data
       this.setState(
         { students: this.state.students.map( student => {
           if( student.id === update.id ){ 
-            return Object.assign({}, student, {
+            return Object.assign( {}, student, {
               points: update.points,
               updatedAt: update.updatedAt
             })

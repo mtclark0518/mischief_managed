@@ -6,7 +6,6 @@ class Student extends Component {
         this.state = {
             updating: false
         }
-        this.update = this.update.bind(this)
     }
 
     update = () => {
@@ -19,12 +18,14 @@ class Student extends Component {
                 {this.props.name + ' ' + this.props.family + ': ' + this.props.score}
                 <button onClick={this.update}></button>
                 {this.state.updating && (
-                    <UpdateForm update={this.props.id}  sendUpdate={this.props.sendUpdate}/>
+                    <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
                 )}
             </div>
         )
     }
-  
+  close = () => {
+      this.setState({updating: false})
+  }
 
 
 }
