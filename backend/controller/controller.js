@@ -29,7 +29,7 @@ const updateHousePoints = houseId => {
 
 
 
-//CASTLE
+//CASTLE - index function that returns everything
 const showHogwarts = (req, res) => {
     Castle.findOne({ where: {id: 1},
         include:[
@@ -41,12 +41,13 @@ const showHogwarts = (req, res) => {
     })
     .then( hogwarts => { res.json(hogwarts); } );
 }
+
+
+
+
 //HOUSE
 const getHouses = (req, res) => {
-    House.findAll({include:[
-        {model: Student},
-        {model: Staff}
-    ]})
+    House.findAll()
     .then( houses => {
         res.json(houses);
     });
@@ -54,10 +55,8 @@ const getHouses = (req, res) => {
 //LOCATION
 const getLocations = (req, res) => {
     Location.findAll({include:[
-        {model: Student},
         {model: Subject},
         {model: House},
-        {model: Staff}
     ]})
     .then( locations => {
         res.json(locations);
@@ -73,6 +72,31 @@ const getStudents = (req, res) => {
         res.json(students);
     });
 };
+
+
+const updateStudent = ( req, res) => {
+    console.log(req.params.id)
+    console.log(req.body)
+    let amount = req.body.amount
+    Student.findOne({where: { id:req.params.id}, include:[{model: House}, {model: Location}]})
+    .then( student => {
+        console.log(student.points)
+        student.updateAttributes({
+            points: student.points + amount
+        }).then( student => {
+            console.log(student.points)
+            res.json(student)
+        })
+        // .then(student => {
+        //     updateHousePoints(student.HouseId)
+        //     res.json(student)
+        // });
+    });
+}
+
+
+
+
 //STAFF
 const showStaff = (req, res) => {
     Staff.findAll()
@@ -182,7 +206,6 @@ const showSubjects = (req, res) => {
             {
                 model: Location
             }
-
         ]
     })
     .then( subjects => {
@@ -194,7 +217,11 @@ module.exports = {
     showHogwarts: showHogwarts,
     getHouses: getHouses,
     getLocations: getLocations,
-    getStudents: getStudents,    
+    getStudents: getStudents,
+    
+    updateStudent: updateStudent,
+
+
     showStaff: showStaff,
     staffByLocation: staffByLocation,
     showStudent: showStudent,

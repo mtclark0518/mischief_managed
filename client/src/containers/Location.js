@@ -4,9 +4,11 @@ import StudentContainer from './StudentContainer'
 class Location extends Component {
 
     render() {
+
+        
         return(
             <div>
-                <StudentContainer students={this.props.students}/>
+                <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
             </div>
         )
     }

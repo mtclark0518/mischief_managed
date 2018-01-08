@@ -3,16 +3,22 @@ import Student from './Student'
 class StudentContainer extends Component {
     render(){
         const students = this.props.students.map( student => {
-            console.log(student)
+        console.log(student)
+            
             return(
                 <Student
-                    key={'Student' + student.id} 
+                    key={'stu' + student.id}
+                    id={student.id} 
                     name={student.firstName}
                     family={student.lastName}
                     score={student.points}
+                    house={student.House}
+                    location={student.Location}
+                    sendUpdate={this.props.sendUpdate}
                     />
             )
         })
+        console.log(this.props.students)
         return(
             <div>{students}</div>
         )

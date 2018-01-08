@@ -37,16 +37,45 @@ class School extends Component {
           <div onClick={this.activate}>click</div>
         )}
         {this.state.active && (
-          <div onClick={this.deactivate}>close
+          <div>
+            <div onClick={this.deactivate}>close</div>
             <CastleDash 
               students={this.state.students}
               locations={this.state.locations}
               houses={this.state.houses}
+              sendUpdate={this.onUpdateRequest}
               />
           </div>
         )}
       </div>
     )
   }
+  onUpdateRequest = ( update, amount) => {
+    console.log(update, amount)
+    axios({
+      method: 'PUT',
+      url: '/api/students/' + update,
+      data: {
+        amount: amount
+      },
+    }).then(response =>{
+      console.log(response.data)
+      let update = response.data
+      this.setState(
+        { students: this.state.students.map( student => {
+          if( student.id === update.id ){ 
+            return Object.assign({}, student, {
+              points: update.points,
+              updatedAt: update.updatedAt
+            })
+          } else {
+            return student
+          }
+        })}
+      )
+    })
+  }
+
+
 }
 export default School;
