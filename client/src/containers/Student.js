@@ -12,7 +12,7 @@ class Student extends Component {
         this.setState({updating:true})
     }
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <div>
                 {this.props.name + ' ' + this.props.family + ': ' + this.props.score}

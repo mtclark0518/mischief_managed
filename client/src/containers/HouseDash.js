@@ -10,6 +10,22 @@ import House from './House'
 // })
 
 class HouseDash extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      focus: null
+    }
+  }
+  focus = place => {
+    let myPlace = this.props.houses.filter(house => house.id === place)
+    console.log(myPlace[0])
+    this.setState({focus:myPlace[0]})
+
+  }
+  resetDash = () => {
+    this.setState({focus: null})
+  }
+
   render() {
     const houses = this.props.houses.map( house => {
       const colors = {
@@ -18,11 +34,23 @@ class HouseDash extends Component {
       }
       const houseRoster = this.props.students.filter(student => student.HouseId === house.id)
       return(
-        <House key={'hs' + house.id} id={house.id} name={house.name} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot}/>
+        <House key={'hs' + house.id} id={house.id} name={house.name} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
     return(
-      <div>{ houses }</div>
+      <div>
+        {this.props.castleView === 'house' &&(
+          <div>
+            <button value="home" onClick={e => this.props.changeView(e)}></button>
+            <button value='location' onClick={e => this.props.changeView(e)}>change view</button> 
+            <button onClick={this.resetDash}>reset</button>
+          </div>
+        )}
+
+        <div>
+          { houses }        
+        </div>
+      </div>
     )
   }
 }

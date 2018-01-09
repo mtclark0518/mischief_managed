@@ -3,7 +3,7 @@ import Student from './Student'
 class StudentContainer extends Component {
     render(){
         const students = this.props.students.map( student => {
-        console.log(student)
+        // console.log(student)
             
             return(
                 <Student
@@ -18,7 +18,7 @@ class StudentContainer extends Component {
                     />
             )
         })
-        console.log(this.props.students)
+        // console.log(this.props.students)
         return(
             <div>{students}</div>
         )
