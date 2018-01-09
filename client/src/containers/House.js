@@ -11,12 +11,12 @@ class House extends Component {
             <div>
                 {!this.props.infocus && (
                     <div onClick={this.giveFocus}>{this.props.name}</div>
-
                 )}
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
-
-                    <StudentContainer students={this.props.students}/>
-
+                    <div>
+                        <div onClick={this.giveFocus}>{this.props.name}</div>
+                        <StudentContainer students={this.props.students}/>
+                    </div>
                 )}
             </div>
         )

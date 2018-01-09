@@ -15,6 +15,8 @@ const getHouses = (req, res) => {
         res.json(houses);
     });
 }
+
+
 //LOCATION
 const getLocations = (req, res) => {
     Location.findAll({include:[
@@ -51,10 +53,45 @@ const updateStudent = ( req, res) => {
 
 
 
+// //utility function that updates house points
+const syncScoreboard = (req, res) => {
+    House.findAll({
+        include: [ { model:Student }]})
+    .then(houses => {
+        console.log(houses)
+        let houseUpdate = houses.map(house=>{
+            let students = house.Students
+            let individualPoints = students.map( student => {
+                return student.points;
+            })
+            console.log(individualPoints)
+            let totalPoints = individualPoints.reduce((acc, cv) => acc + cv);
+            house.updateAttributes({
+                points : totalPoints
+            });
+            return {house: house.id, points: totalPoints}
+        })
+        res.json(houseUpdate)
 
+        // console.log(house)
+        // let students = house.Students;
+        // console.log(students)
+        // let individualPoints = students.map( student => {
+        //     return student.points;
+        // })
+        // let totalPoints = individualPoints.reduce((acc, cv) => acc + cv);
+        
+        // house.updateAttributes({
+        //     points : totalPoints
+        // });
+    });
+};
 
 module.exports = { 
     getHouses: getHouses,
+    syncScoreboard: syncScoreboard,
+
+
     getLocations: getLocations,
     getStudents: getStudents,
     updateStudent: updateStudent,
@@ -259,24 +296,7 @@ module.exports = {
 //         res.json(subjects);
 //     });
 // }
-// //utility function that updates house points
-// const updateHousePoints = houseId => {
-//     House.findOne({
-//         where: {id: houseId}, 
-//         include: [ { model:Student }]})
-//     .then(house => {
-//         let students = house.Students;
-//         console.log(students)
-//         let individualPoints = students.map( student => {
-//             return student.points;
-//         })
-//         let totalPoints = individualPoints.reduce((acc, cv) => acc + cv);
-        
-//         house.updateAttributes({
-//             points : totalPoints
-//         });
-//     });
-// };
+
 
 
 

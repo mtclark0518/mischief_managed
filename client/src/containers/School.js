@@ -73,9 +73,19 @@ class School extends Component {
           }
         })}
       )
+    }).then(()=>{
+      this.syncScoreboard()
     })
   }
-
+  syncScoreboard = () => {
+    axios({
+      method: 'GET', 
+      url: '/api/houses/score'
+    }).then(response=>{
+      console.log(response.data)
+      this.setState()
+    })
+  }
 
 }
 export default School;

@@ -81,8 +81,8 @@ class LocationDash extends Component {
         {this.props.castleView === 'location' &&(
           <div>
           <button value="home" onClick={e => this.props.changeView(e)}></button>
-          <button value='house' onClick={e => this.props.changeView(e)}>change view</button> 
-          <button onClick={this.resetDash}>reset</button>
+          <button value='house' onClick={e => this.props.changeView(e)}>houses</button> 
+          <button onClick={this.resetDash}>location</button>
           </div>
         )}
 

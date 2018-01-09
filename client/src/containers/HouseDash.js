@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import House from './House'
-
+import Scoreboard from './Scoreboard'
 
 // const locations = this.props.locations.map( location => {
 //   const locationRoster = this.props.students.filter(student => student.LocationId === location.id)
@@ -37,19 +37,22 @@ class HouseDash extends Component {
         <House key={'hs' + house.id} id={house.id} name={house.name} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
+    
     return(
       <div>
         {this.props.castleView === 'house' &&(
           <div>
             <button value="home" onClick={e => this.props.changeView(e)}></button>
-            <button value='location' onClick={e => this.props.changeView(e)}>change view</button> 
-            <button onClick={this.resetDash}>reset</button>
+            <button onClick={this.resetDash}>houses</button>
+            <button value='location' onClick={e => this.props.changeView(e)}>location</button>             
           </div>
         )}
+        {!this.state.focus && (
+          <Scoreboard houses={houses} focus={this.focus}/>
 
-        <div>
-          { houses }        
-        </div>
+        )}
+        <div>{ houses }</div>
+
       </div>
     )
   }
