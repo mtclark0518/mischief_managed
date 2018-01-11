@@ -80,13 +80,11 @@ class LocationDash extends Component {
       <div>
         {this.props.castleView === 'location' &&(
           <div>
-          <button value="home" onClick={e => this.props.changeView(e)}></button>
-          <button value='house' onClick={e => this.props.changeView(e)}>houses</button> 
-          <button onClick={this.resetDash}>location</button>
+            <button value="home" onClick={e => this.props.changeView(e)}></button>
+            <button value='house' onClick={e => this.props.changeView(e)}>houses</button> 
+            <button onClick={this.resetDash}>location</button>
           </div>
         )}
-
-        {/* {!this.state.focus&& ( */}
           <div>
             {this.state.type === 'classrooms' && (
               <div>{ classrooms }</div>
@@ -101,8 +99,6 @@ class LocationDash extends Component {
               <div>{ publicSpace }</div>
             )}
           </div>
-        {/* )} */}
-
         <div>
           <div onClick={e => this.type('classrooms')}>Classrooms</div>
           <div onClick={e => this.type('common')}>Common Rooms</div>

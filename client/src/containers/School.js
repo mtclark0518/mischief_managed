@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import CastleDash from './CastleDash';
-
+import Schedule from './Schedule'
 
 class School extends Component {
   constructor(props){
@@ -10,7 +10,8 @@ class School extends Component {
       students: [],
       locations: [],
       houses: [],
-      active: false
+      active: false,
+      period: null
     }
   }
 
@@ -29,10 +30,13 @@ class School extends Component {
 
   activate = () => { this.setState( {active: true} ) }
   deactivate = () => { this.setState( {active: false} ) }
+  setPeriod = period => {this.setState( {period: period} ) }
 
   render() {
     return(
       <div>
+        <Schedule setPeriod={this.setPeriod}/>
+      
         {!this.state.active && (
           <div onClick={this.activate}>click</div>
         )}
@@ -83,10 +87,8 @@ class School extends Component {
       url: '/api/houses/score'
     }).then(response=>{
       let update = response.data
-      // console.log(update)
       this.setState({houses:update})
     })
   }
-
 }
 export default School;

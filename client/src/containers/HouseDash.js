@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import House from './House'
 import Scoreboard from './Scoreboard'
 
-// const locations = this.props.locations.map( location => {
-//   const locationRoster = this.props.students.filter(student => student.LocationId === location.id)
-//   return(
-//     <Location key={'loc' + location.id} id={location.id} name={location.name} type={location.type} students={locationRoster} house={location.House} subject={location.Subject}/>
-//   )
-// })
-
 class HouseDash extends Component {
   constructor(props){
     super(props)
@@ -48,8 +41,7 @@ class HouseDash extends Component {
           </div>
         )}
         {!this.state.focus && (
-          <Scoreboard houses={houses} focus={this.focus}/>
-
+          <Scoreboard houses={houses}/>
         )}
         <div>{ houses }</div>
 
