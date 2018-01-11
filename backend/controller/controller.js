@@ -69,7 +69,7 @@ const syncScoreboard = (req, res) => {
             house.updateAttributes({
                 points : totalPoints
             });
-            return {house: house.id, points: totalPoints}
+            return house
         })
         res.json(houseUpdate)
 

@@ -82,8 +82,9 @@ class School extends Component {
       method: 'GET', 
       url: '/api/houses/score'
     }).then(response=>{
-      console.log(response.data)
-      this.setState()
+      let update = response.data
+      // console.log(update)
+      this.setState({houses:update})
     })
   }
 
