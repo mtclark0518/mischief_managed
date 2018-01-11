@@ -6,21 +6,19 @@ class Schedule extends Component {
         this.state = {
             hour: null,
             min: null,
-            sec: null,
-            // day: ['sleep', 'meal', 'first', 'second', 'third', 'fourth','meal', 'fifth', 'sixth', 'seventh', 'study', 'meal', 'down', 'sleep' ]
         }
     
     }
     componentDidMount(){
         this.setTime()
-        setInterval( () => { this.setTime() },1000)
+        setInterval( () => { this.setTime() },60000)
     }
 
 
     render(){
         return(
             <div>
-                {this.state.hour}:{this.state.min}:{this.state.sec}
+                {this.state.hour}:{this.state.min}
             </div>
         )
     }
@@ -30,7 +28,6 @@ class Schedule extends Component {
         this.setState({
             hour: time.getUTCHours(),
             min: time.getUTCMinutes(),
-            sec: time.getUTCSeconds()
         })
         this.setPeriod()
     }
