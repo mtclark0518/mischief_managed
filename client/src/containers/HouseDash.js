@@ -10,15 +10,12 @@ class HouseDash extends Component {
     }
   }
   focus = place => {
-    let myPlace = this.props.houses.filter(house => house.id === place)
-    console.log(myPlace[0])
-    this.setState({focus:myPlace[0]})
-
+    const giveFocus = this.props.houses.filter(house => house.id === place)
+    this.setState({focus:giveFocus[0]})
   }
   resetDash = () => {
     this.setState({focus: null})
   }
-
   render() {
     const houses = this.props.houses.map( house => {
       const colors = {
@@ -30,7 +27,6 @@ class HouseDash extends Component {
         <House key={'hs' + house.id} id={house.id} name={house.name} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
-    
     return(
       <div>
         {this.props.castleView === 'house' &&(
@@ -44,7 +40,6 @@ class HouseDash extends Component {
           <Scoreboard houses={houses}/>
         )}
         <div>{ houses }</div>
-
       </div>
     )
   }

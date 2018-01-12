@@ -17,17 +17,17 @@ class CastleDash extends Component {
 
         return(
             <div>
-                {this.state.view === 'home' && (
-                    <div>
-                        <button value={'house'} onClick={e => this.changeView(e)}>houses</button>
-                        <button value={'location'} onClick={e => this.changeView(e)}>locations</button>
-                    </div>
-                )}
                 {this.state.view === 'location' && (
                     <LocationDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} locations={this.props.locations} sendUpdate={this.props.sendUpdate}/>
                 )}
                 {this.state.view === 'house' && (
                     <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} houses={this.props.houses}/>
+                )}
+                {this.state.view === 'home' && (
+                    <div>
+                        <button value={'house'} onClick={e => this.changeView(e)}>houses</button>
+                        <button value={'location'} onClick={e => this.changeView(e)}>locations</button>
+                    </div>
                 )}
             </div>
         )
