@@ -17,7 +17,7 @@ class School extends Component {
 
   componentDidMount(){
     axios( { method: 'GET', url: '/api/students'})
-    .then( response => { this.setState({students: response.data}) })
+    .then( response => { console.log(response.data); this.setState({students: response.data}) })
     .then( () => { 
       axios( { method: 'GET', url: '/api/locations' })
       .then( response => { this.setState({locations: response.data}) })
@@ -30,7 +30,9 @@ class School extends Component {
 
   activate = () => { this.setState( {active: true} ) }
   deactivate = () => { this.setState( {active: false} ) }
-  setPeriod = period => {this.setState( {period: period} ) }
+  setPeriod = period => {
+    this.state.period !== period ? this.updateSchedule(period) : console.log('nothin to see here')
+  }
 
   render() {
     return(
@@ -90,5 +92,22 @@ class School extends Component {
       this.setState({houses:update})
     })
   }
+  updateSchedule = block => {
+    this.setState({period: block})    
+    axios({
+      method: 'POST',
+      url: '/api/schedule',
+      data: {
+        block: block
+      }
+    }).then(response =>{
+      let students = response.data
+      console.log(students)
+      this.setState(
+        {students: students}
+      )
+    })
+  }
+
 }
 export default School;
