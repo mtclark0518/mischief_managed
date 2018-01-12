@@ -5,60 +5,36 @@ const Staff = db.models.Staff;
 const Student = db.models.Student;
 
 
-
-
 const schedule = (req, res) => {
     let block = req.body.block
-    switch(block){
-        case 'sleep':
-            console.log('fucking ffffffucker')
-            Student.findAll({include:[{model:House}, {model:Location}]}).
-                then(students => {
-                    students.forEach(student => {
-                        student.updateAttributes({
-                            LocationId: student.HouseId
-                        });
+    Student.findAll()
+    .then(students => {
+        students.forEach(student => {
+            switch(block){
+                case 'sleep':
+                    student.updateAttributes({
+                        LocationId: student.HouseId
                     });
-                }).
-                then(()=>{
-                    Student.findAll({include:[{model:House},{model:Location}]}).
-                    then(students=>{
-                        res.json(students);
-                    })
-                })
-        break;
-        case 'meal':
-        console.log('fucking ffffffucker')
-        Student.findAll({include:[{model:House}, {model:Location}]}).
-            then(students => {
-                students.forEach(student => {
+                    break;
+                case 'meal':
                     student.updateAttributes({
                         LocationId: 15
                     });
-                });
-            }).
-            then(()=>{
-                Student.findAll({include:[{model:House},{model:Location}]}).
-                then(students=>{
-                    res.json(students);
-                })
-            })
-        break;
-        case 'class':
-            console.log('fucking ffffffucker')
-            res.send('fart')
-        break;
-        case 'down':
-            console.log('fucking ffffffucker')
-            res.send('fart')
-        break;
-        default:
-            console.log('boner boner boner')
-            res.send('fart')
-    }
-
-
-
-}
+                    break;
+                default: console.log('uh this shouldnt happen')
+            }
+        });
+    })
+    .then( () => {
+        Student.findAll(
+            {include:[
+                {model:House},
+                {model:Location}
+            ]}
+        )
+        .then(students=>{
+            res.json(students);
+        });
+    });
+};
 module.exports = {schedule: schedule}
-
