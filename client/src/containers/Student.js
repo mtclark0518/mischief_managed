@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import UpdateForm from '../forms/UpdateForm'
+import Label from '../components/Label'
+import Panel from '../components/Panel'
 class Student extends Component {
     constructor(props){
         super(props)
@@ -7,18 +9,20 @@ class Student extends Component {
             updating: false
         }
     }
-
     update = () => {
         this.setState({updating:true})
     }
     render(){
-        // console.log(this.props)
         return(
             <div>
-                {this.props.name + ' ' + this.props.family + ': ' + this.props.score}
-                <button onClick={this.update}></button>
+                {!this.state.updating && (
+                    <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
+                )}
                 {this.state.updating && (
-                    <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                    <div>
+                        <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
+                        <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                    </div>
                 )}
             </div>
         )
@@ -26,8 +30,6 @@ class Student extends Component {
   close = () => {
       this.setState({updating: false})
   }
-
-
 }
 export default Student;
 

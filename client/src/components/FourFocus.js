@@ -14,12 +14,12 @@ const FourFocus = props => {
     
 
         return(
-            <div 
+            <button 
                 key={'ff'+data.key}
                 id={data.props.id}
                 onClick={e => giveFocus(e)}>
                 {data.props.name}
-            </div>
+            </button>
         )
     })
         return (

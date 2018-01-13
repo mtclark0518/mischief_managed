@@ -25,8 +25,8 @@ class CastleDash extends Component {
                 )}
                 {this.state.view === 'home' && (
                     <div>
-                        <button value={'house'} onClick={e => this.changeView(e)}>houses</button>
-                        <button value={'location'} onClick={e => this.changeView(e)}>locations</button>
+                        <button value={'house'} onClick={ e => this.changeView(e) }>houses</button>
+                        <button value={'location'} onClick={ e => this.changeView(e) }>locations</button>
                     </div>
                 )}
             </div>

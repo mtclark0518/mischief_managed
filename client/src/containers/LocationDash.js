@@ -82,7 +82,6 @@ class LocationDash extends Component {
       }
     })
 
-
     return(
       <div>
         {this.props.castleView === 'location' &&(
@@ -106,16 +105,15 @@ class LocationDash extends Component {
               <div>{ publicSpace }</div>
             )}
           </div>
+
         <div>
-          <div onClick={e => this.type('classrooms')}>Classrooms</div>
-          <div onClick={e => this.type('common')}>Common Rooms</div>
-          <div onClick={e => this.type('restricted')}>Restricted</div>
-          <div onClick={e => this.type('publicSpace')}>Public Spaces</div>
+          <button onClick={e => this.type('classrooms')}>Classrooms</button>
+          <button onClick={e => this.type('common')}>Common Rooms</button>
+          <button onClick={e => this.type('restricted')}>Restricted</button>
+          <button onClick={e => this.type('publicSpace')}>Public Spaces</button>
         </div>
+
       </div>
-
-
-
     )
   }
 }

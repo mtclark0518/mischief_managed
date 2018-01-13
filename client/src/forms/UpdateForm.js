@@ -10,8 +10,6 @@ class UpdateForm extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-
     handleChange(e){
         console.log(e.target.value)
         this.setState({
@@ -19,7 +17,6 @@ class UpdateForm extends Component {
         })
 
     }
-
     handleSubmit(e){
         e.preventDefault();
         let amount = parseInt(this.state.value)
@@ -27,27 +24,13 @@ class UpdateForm extends Component {
         this.props.sendUpdate(update, amount)
         this.props.closeForm()
     }
-    
-
     render(){
-        // const choices = this.props.locations.map( location => {
-        //     return(
-        //         <option key={location.id} value={location.id}>{location.name}</option>
-        //     )
-        // })
-
         return(
-
-
             <form onSubmit={ e => this.handleSubmit(e)} method={"PUT"}>
                 <input value={this.state.value} type='number' onChange={this.handleChange} /> 
                 <input type="submit"  value={'amount'}/>
             </form>
         )
     }
-
-
-
-
 }
 export default UpdateForm
