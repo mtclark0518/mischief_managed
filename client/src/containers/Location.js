@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import StudentContainer from './StudentContainer'
 import StaffContainer from './StaffContainer'
 import Panel from '../components/Panel'
-import Bar from '../components/Bar'
+import Label from '../components/Label'
 
 class Location extends Component {
     giveFocus = () => {
@@ -16,7 +16,7 @@ class Location extends Component {
                 )}
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
                     <div>
-                        <Bar buttonText={this.props.name}/>
+                        <Label title={this.props.name} onClick={this.props.clear}/>
                         <StaffContainer staff={this.props.staff}/>
                         <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
                     </div>

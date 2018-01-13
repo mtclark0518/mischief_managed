@@ -16,12 +16,12 @@ class LocationDash extends Component {
     this.setState({focus:myPlace[0]})
 
   }
-
   type = category => {
     this.setState({focus: null, type: category})
   }
-
-
+  clearFocus = () => {
+    this.setState({focus: null})
+  }
   resetDash = () => {
     this.setState({focus: null, type: null})
   }
@@ -47,7 +47,7 @@ class LocationDash extends Component {
         const roster = this.props.students.filter(student => student.LocationId === location.id)
         const name = format(location)
         return(
-          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
         )
       }
     })
@@ -57,7 +57,7 @@ class LocationDash extends Component {
         const roster = this.props.students.filter(student => student.LocationId === location.id)
         const name = format(location)
         return(
-          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
         )
       }
     })
@@ -67,7 +67,7 @@ class LocationDash extends Component {
         const roster = this.props.students.filter(student => student.LocationId === location.id)
         const name = format(location)
           return(
-            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
           )
       }
     })
@@ -77,7 +77,7 @@ class LocationDash extends Component {
         const roster = this.props.students.filter(student => student.LocationId === location.id)
         const name = format(location)
           return(
-            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
           )
       }
     })
