@@ -1,12 +1,12 @@
 import React from 'react'
-const Heading = props => {
+const HouseHeading = props => {
 
 let styles = {
   color: props.details.colors.primary,
   borderBottom: '1px solid' + props.details.colors.secondary
 }
   return(
-    <div className="Heading" style={styles}>
+    <div className="HouseHeading" style={styles}>
       <div className="flexPrimary">
         <div className="emboldened">{props.details.name} {props.details.mascot}s</div>
         <div>Head of House: {props.details.headOfHouse.firstName} {props.details.headOfHouse.lastName}</div>
@@ -18,4 +18,4 @@ let styles = {
     </div>
   )
 }
-export default Heading
+export default HouseHeading

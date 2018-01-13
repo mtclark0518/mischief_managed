@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import StudentContainer from './StudentContainer'
 import StaffContainer from './StaffContainer'
-class Location extends Component {
 
+class Location extends Component {
     giveFocus = () => {
         this.props.focus(this.props.id)
     }
     render() {
-        
         return(
             <div>
                 {!this.props.infocus && (
@@ -15,8 +14,8 @@ class Location extends Component {
                 )}
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
                     <div>
-                    <StaffContainer staff={this.props.staff}/>
-                    <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
+                        <StaffContainer staff={this.props.staff}/>
+                        <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
                     </div>
                 )}
             </div>

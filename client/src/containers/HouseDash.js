@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import House from './House'
 import Scoreboard from './Scoreboard'
+import FourFocus from '../components/FourFocus';
 
 class HouseDash extends Component {
   constructor(props){
@@ -10,11 +11,11 @@ class HouseDash extends Component {
     }
   }
   focus = place => {
-    const giveFocus = this.props.houses.filter(house => house.id === place)
-    this.setState({focus:giveFocus[0]})
+    const giveFocus = this.props.houses.filter(house => house.id == place)
+    this.setState( {focus:giveFocus[0]} )
   }
   resetDash = () => {
-    this.setState({focus: null})
+    this.setState( {focus: null} )
   }
   render() {
     const houses = this.props.houses.map( house => {
@@ -38,9 +39,10 @@ class HouseDash extends Component {
           </div>
         )}
         {!this.state.focus && (
-          <Scoreboard houses={houses}/>
+          <Scoreboard houses={houses} />
         )}
-        <div>{ houses }</div>
+        <div> {houses} </div>
+        <FourFocus focus={this.focus} content={houses}/>
       </div>
     )
   }
