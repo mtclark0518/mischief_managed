@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 
-
 const FourFocus = props => {
-
-
     const giveFocus = event => {
         event.preventDefault()
         console.log(event.target)
         props.focus(event.target.id)
     }
-
     const data = props.content.map(data => {
-    
-
         return(
             <button 
                 key={'ff'+data.key}
