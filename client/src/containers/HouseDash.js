@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import House from './House'
 import Scoreboard from './Scoreboard'
-import FourFocus from '../components/FourFocus';
+import HouseFocus from '../components/HouseFocus';
+import FooterNav from '../components/FooterNav';
 
 class HouseDash extends Component {
   constructor(props){
@@ -31,18 +32,18 @@ class HouseDash extends Component {
     })
     return(
       <div>
-        {this.props.castleView === 'house' &&(
-          <div>
-            <button value="home" onClick={e => this.props.changeView(e)}></button>
-            <button onClick={this.resetDash}>houses</button>
-            <button value='location' onClick={e => this.props.changeView(e)}>location</button>             
-          </div>
-        )}
         {!this.state.focus && (
           <Scoreboard houses={houses} />
         )}
         <div> {houses} </div>
-        <FourFocus focus={this.focus} content={houses}/>
+        <HouseFocus focus={this.focus} content={houses}/>
+        {this.props.castleView === 'house' &&(
+          <FooterNav 
+            home={e=>this.props.changeView('home')}
+            house={this.resetDash}
+            location={e => this.props.changeView('location')}
+            />
+        )}
       </div>
     )
   }

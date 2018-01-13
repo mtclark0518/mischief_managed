@@ -1,7 +1,6 @@
 //renders evenly spaced list items that span the full width of the screen
 //items have a click function 
 import React from 'react'
-import '../styles/index.css'
 const Panel = props => {
     
 

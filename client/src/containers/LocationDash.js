@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Location from './Location'
+import FooterNav from '../components/FooterNav'
 
 
 class LocationDash extends Component {
@@ -81,16 +82,15 @@ class LocationDash extends Component {
           )
       }
     })
-
+    const types = {
+      classrooms: classrooms,
+      common: common,
+      restricted: restricted,
+      publicSpace: publicSpace
+    }
     return(
       <div>
-        {this.props.castleView === 'location' &&(
-          <div>
-            <button value="home" onClick={e => this.props.changeView(e)}></button>
-            <button value='house' onClick={e => this.props.changeView(e)}>houses</button> 
-            <button onClick={this.resetDash}>location</button>
-          </div>
-        )}
+
           <div>
             {this.state.type === 'classrooms' && (
               <div>{ classrooms }</div>
@@ -112,7 +112,13 @@ class LocationDash extends Component {
           <button onClick={e => this.type('restricted')}>Restricted</button>
           <button onClick={e => this.type('publicSpace')}>Public Spaces</button>
         </div>
-
+        {this.props.castleView === 'location' &&(
+          <FooterNav 
+            home={e=>this.props.changeView('home')}
+            house={e => this.props.changeView('house')}
+            location={this.resetDash}
+            />
+        )}
       </div>
     )
   }

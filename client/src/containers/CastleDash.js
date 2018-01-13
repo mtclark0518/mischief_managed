@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
-import Student from './Student'
+
+
 class CastleDash extends Component {
     constructor(props){
         super(props)
@@ -9,14 +10,13 @@ class CastleDash extends Component {
             view : 'home'
         }
     }
-    changeView = e => {
-        console.log(e.target.value)
-        this.setState({view: e.target.value})
+    changeView = newView => {
+        this.setState({view: newView})
     }
     render() {
 
         return(
-            <div>
+            <div className="CastleDash">
                 {this.state.view === 'location' && (
                     <LocationDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} locations={this.props.locations} sendUpdate={this.props.sendUpdate}/>
                 )}
@@ -25,8 +25,8 @@ class CastleDash extends Component {
                 )}
                 {this.state.view === 'home' && (
                     <div>
-                        <button value={'house'} onClick={ e => this.changeView(e) }>houses</button>
-                        <button value={'location'} onClick={ e => this.changeView(e) }>locations</button>
+                        <button onClick={ e => this.changeView('house') }>houses</button>
+                        <button onClick={ e => this.changeView('location') }>locations</button>
                     </div>
                 )}
             </div>

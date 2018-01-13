@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const FourFocus = props => {
+const HouseFocus = props => {
     const giveFocus = event => {
         event.preventDefault()
         console.log(event.target)
@@ -22,4 +22,4 @@ const FourFocus = props => {
             </div>
         );
     }
-export default FourFocus;
+export default HouseFocus;
