@@ -113,11 +113,7 @@ class LocationDash extends Component {
           <button onClick={e => this.type('publicSpace')}>Public Spaces</button>
         </div>
         {this.props.castleView === 'location' &&(
-          <FooterNav 
-            home={e=>this.props.changeView('home')}
-            house={e => this.props.changeView('house')}
-            location={this.resetDash}
-            />
+          <FooterNav home={e=>this.props.changeView('home')} house={e => this.props.changeView('house')} location={this.resetDash} />
         )}
       </div>
     )

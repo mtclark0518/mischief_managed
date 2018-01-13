@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import CastleDash from './CastleDash';
+
 import Schedule from './Schedule'
+import '../styles/index.css'
 
 class School extends Component {
   constructor(props){
@@ -44,15 +46,18 @@ class School extends Component {
 
   render() {
     return(
-      <div>
-        <Schedule setPeriod={this.setPeriod}/>
-      
+      <div className="School">
+      <Schedule setPeriod={this.setPeriod} />
         {!this.state.active && (
-          <div onClick={this.activate}>click</div>
+          <div className="appHeading">
+            <button onClick={this.activate}>click</button>
+          </div>
         )}
         {this.state.active && (
           <div>
-            <div onClick={this.deactivate}>close</div>
+          <div className="appHeading">
+            <button onClick={this.deactivate}>close</button>
+          </div>
             <CastleDash 
               students={this.state.students}
               staff={this.state.staff}

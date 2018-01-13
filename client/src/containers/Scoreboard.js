@@ -7,7 +7,7 @@ class Scoreboard extends Component {
             let score = house.props.score;
             console.log(house.props)
             return(
-                <div key={'sb'+house.props.id} className="sbIntWrapper">
+                <div key={'sb'+house.props.id} className="sbOutWrap">
                     <div className="sbSection">
                         <div className="sbHouse">{house.props.name}</div>
                     </div>
@@ -21,7 +21,7 @@ class Scoreboard extends Component {
             )
         })
         return(
-            <div className="sbOutWrap">{scores}</div>
+            <div className="scoreboard">{scores}</div>
         )
     }
 }

@@ -14,9 +14,7 @@ class Schedule extends Component {
     }
     render(){
         return(
-            <div>
-                {this.state.hour}:{this.state.min}
-            </div>
+            false
         )
     }
 
