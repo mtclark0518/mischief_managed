@@ -8,6 +8,7 @@ class School extends Component {
     super(props)
     this.state = {
       students: [],
+      staff: [],
       locations: [],
       houses: [],
       active: false,
@@ -19,11 +20,18 @@ class School extends Component {
     axios( { method: 'GET', url: '/api/students'})
     .then( response => { console.log(response.data); this.setState({students: response.data}) })
     .then( () => { 
-      axios( { method: 'GET', url: '/api/locations' })
-      .then( response => { this.setState({locations: response.data}) })
-      .then( () => {
-        axios({ method: 'GET', url: '/api/houses'})
-        .then( response => { this.setState({houses: response.data}) })
+
+      axios( { method: 'GET', url: '/api/staff' })
+      .then( response => { this.setState({staff: response.data}) })
+      .then( () => { 
+
+        axios( { method: 'GET', url: '/api/locations' })
+        .then( response => { this.setState({locations: response.data}) })
+        .then( () => {
+
+          axios({ method: 'GET', url: '/api/houses'})
+          .then( response => { this.setState({houses: response.data}) })
+        })
       })
     })
   }
@@ -47,6 +55,7 @@ class School extends Component {
             <div onClick={this.deactivate}>close</div>
             <CastleDash 
               students={this.state.students}
+              staff={this.state.staff}
               locations={this.state.locations}
               houses={this.state.houses}
               sendUpdate={this.onUpdateRequest}

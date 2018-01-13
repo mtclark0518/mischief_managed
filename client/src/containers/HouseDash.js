@@ -22,9 +22,10 @@ class HouseDash extends Component {
         primary: house.primaryColor,
         secondary: house.secondaryColor
       }
+      const headOfHouse = this.props.staff.filter(staff => staff.HouseId === house.id)
       const houseRoster = this.props.students.filter(student => student.HouseId === house.id)
       return(
-        <House key={'hs' + house.id} id={house.id} name={house.name} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
+        <House key={'hs' + house.id} id={house.id} name={house.name} headOfHouse={headOfHouse[0]} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
     return(

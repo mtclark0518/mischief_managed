@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import StudentContainer from './StudentContainer'
-
+import StaffContainer from './StaffContainer'
 class Location extends Component {
 
     giveFocus = () => {
@@ -14,7 +14,10 @@ class Location extends Component {
                     <div onClick={this.giveFocus}>{this.props.name}</div>
                 )}
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
+                    <div>
+                    <StaffContainer staff={this.props.staff}/>
                     <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
+                    </div>
                 )}
             </div>
         )

@@ -14,7 +14,6 @@ class LocationDash extends Component {
   focus = place => {
     let myPlace = this.props.locations.filter(location => location.id === place)
     this.setState({focus:myPlace[0]})
-    console.log(this.state.focus)
 
   }
 
@@ -44,36 +43,44 @@ class LocationDash extends Component {
 
     const classrooms = this.props.locations.map( location => {
       if(location.type === 'Classroom'){
-      const roster = this.props.students.filter(student => student.LocationId === location.id)
-      const name = format(location)
-      return(
-        <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
-      )
-    }})
+        const staff = this.props.staff.filter(staff => staff.LocationId === location.id)
+        const roster = this.props.students.filter(student => student.LocationId === location.id)
+        const name = format(location)
+        return(
+          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+        )
+      }
+    })
     const restricted = this.props.locations.map( location => {
       if(location.type === 'Restricted' && location.name !== 'Common Room'){
-      const roster = this.props.students.filter(student => student.LocationId === location.id)
-      const name = format(location)
-      return(
-        <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
-      )
-    }})
+        const staff = this.props.staff.filter(staff => staff.LocationId === location.id)
+        const roster = this.props.students.filter(student => student.LocationId === location.id)
+        const name = format(location)
+        return(
+          <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+        )
+      }
+    })
     const common = this.props.locations.map( location => {
       if(location.type === 'Restricted' && location.name === 'Common Room'){
+        const staff = this.props.staff.filter(staff => staff.LocationId === location.id)
         const roster = this.props.students.filter(student => student.LocationId === location.id)
-      const name = format(location)
-      return(
-        <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
-      )
-    }})
+        const name = format(location)
+          return(
+            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+          )
+      }
+    })
     const publicSpace = this.props.locations.map( location => {
       if(location.type === 'Common Area'){
-      const roster = this.props.students.filter(student => student.LocationId === location.id)
-      const name = format(location)
-      return(
-        <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
-      )
-    }})
+        const staff = this.props.staff.filter(staff => staff.LocationId === location.id)
+        const roster = this.props.students.filter(student => student.LocationId === location.id)
+        const name = format(location)
+          return(
+            <Location key={'loc' + location.id} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} sendUpdate={this.props.sendUpdate}/>
+          )
+      }
+    })
 
 
     return(

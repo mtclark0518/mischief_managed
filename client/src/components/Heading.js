@@ -9,6 +9,7 @@ let styles = {
     <div className="Heading" style={styles}>
       <div className="flexPrimary">
         <div className="emboldened">{props.details.name} {props.details.mascot}s</div>
+        <div>Head of House: {props.details.headOfHouse.firstName} {props.details.headOfHouse.lastName}</div>
       </div>
       <div className="flexSecondary">
         <div>Founder: {props.details.founder}</div>

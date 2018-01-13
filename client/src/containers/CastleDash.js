@@ -18,10 +18,10 @@ class CastleDash extends Component {
         return(
             <div>
                 {this.state.view === 'location' && (
-                    <LocationDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} locations={this.props.locations} sendUpdate={this.props.sendUpdate}/>
+                    <LocationDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} locations={this.props.locations} sendUpdate={this.props.sendUpdate}/>
                 )}
                 {this.state.view === 'house' && (
-                    <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} houses={this.props.houses}/>
+                    <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} houses={this.props.houses}/>
                 )}
                 {this.state.view === 'home' && (
                     <div>

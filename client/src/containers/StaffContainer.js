@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
-
+import Staff from './Staff'
 class StaffContainer extends Component {
 
-render(){}
-}
-
-
-export default StaffContainer;
-import React, { Component } from 'react';
-import Student from './Student'
-class StudentContainer extends Component {
     render(){
-        const students = this.props.students.map( student => {
-        console.log(student)
-            
+        const staff = this.props.staff.map( staff => {
+            console.log(staff)
             return(
                 <Staff
                     key={'sta' + staff.id} 
                     name={staff.firstName}
                     family={staff.lastName}
                     role={staff.role}
-                    house={student.House}
-                    location={student.Location}
+                    house={staff.House}
+                    location={staff.Location}
+                    subject={staff.Subject}
                     />
             )
-        })
-        console.log(this.props.students)
+        })    
         return(
-            <div>{students}</div>
+            <div>{staff}</div>
         )
     }  
 }
-export default StudentContainer;
+export default StaffContainer;

@@ -8,6 +8,7 @@ router.get('/api/houses', controller.getHouses)
 router.get('/api/houses/score', controller.syncScoreboard)
 router.get('/api/locations', controller.getLocations)
 router.get('/api/students', controller.getStudents)
+router.get('/api/staff', controller.getStaff)
 router.put('/api/students/:id', controller.updateStudent)
 
 

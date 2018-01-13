@@ -51,7 +51,17 @@ const updateStudent = ( req, res) => {
     });
 };
 
-
+//STAFF
+const getStaff = (req, res) => {
+    Staff.findAll({include:[
+        {model:Location},
+        {model:House},
+        {model: Subject}
+    ]})
+    .then( staff => {
+        res.json(staff);
+    });
+};
 
 // //utility function that updates house points
 const syncScoreboard = (req, res) => {
@@ -80,6 +90,7 @@ module.exports = {
     syncScoreboard: syncScoreboard,
     getLocations: getLocations,
     getStudents: getStudents,
+    getStaff: getStaff,
     updateStudent: updateStudent,
 };
 
