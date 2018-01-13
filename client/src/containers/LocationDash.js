@@ -106,7 +106,7 @@ class LocationDash extends Component {
             )}
           </div>
 
-        <div>
+        <div className="secondaryNav">
           <button onClick={e => this.type('classrooms')}>Classrooms</button>
           <button onClick={e => this.type('common')}>Common Rooms</button>
           <button onClick={e => this.type('restricted')}>Restricted</button>

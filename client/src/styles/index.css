@@ -45,15 +45,6 @@ button {
     padding: 0.3em 0;
     text-align: center;
 }
-
-.hasFocus {
-    font-weight: 400;
-}
-
-.noFocus {
-    font-weight: 400;
-}
-
 .scoreboard {
     max-width: 750px;
     margin: auto;
@@ -64,10 +55,6 @@ button {
     padding-top: 6vh;
 }
 
-.scoreboard {
-    padding: 0.5em;
-    margin: 0.5em;
-}
 
 .sbOutWrap {
     display: flex;
@@ -78,7 +65,7 @@ button {
     font-weight: 600;
 }
 
-.housePoints {
+.sbScore {
     font-size: 2.0em;
     box-shadow: 0 0 3px 1px rgba(25, 25, 25, 0.4);
     padding: 0.2em;
@@ -86,73 +73,11 @@ button {
     font-family: 'Black Ops One', cursive;
 }
 
-
-/*  LocationDash Component  */
-
-.locationCategories {
-    font-size: 2em;
-    line-height: 2em;
+.secondaryNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
-
-.locationArrayContainer {
-    padding-bottom: 5vh;
-}
-
-
-/*  Location Component  */
-
-.Location {
-    font-size: 1.5em;
-    margin: 0.8em auto;
-}
-
-
-/* StudentContainer && StaffContainer Component  */
-
-.Container {
-    text-align: center;
-}
-
-.focusContainer {
-    margin: 0.1em auto;
-    min-width: 200px;
-    padding: 0.1em;
-}
-
-
-/* Student Component  */
-
-.Student {
-    display: inline-block;
-    font-family: 'Reenie Beanie', cursive;
-    margin: 0.5em;
-    padding: 0.4em;
-    font-size: 1.3em;
-    font-weight: 700;
-}
-
-
-/* Staff Component  */
-
-.Staff {
-    display: inline-block;
-    font-family: 'Reenie Beanie', cursive;
-    text-decoration: underline;
-    margin: 0.5em auto;
-    padding: 0.5em;
-    font-size: 1.0em;
-    font-weight: 600;
-}
-
-.HeadOfHouse {
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.0em;
-    margin: 0;
-}
-
-
-
 
 /* Footer Component  */
 

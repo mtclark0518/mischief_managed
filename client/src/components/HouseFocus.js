@@ -17,7 +17,7 @@ const HouseFocus = props => {
         )
     })
         return (
-            <div className="FourFocus">
+            <div className="secondaryNav">
                 {data}
             </div>
         );

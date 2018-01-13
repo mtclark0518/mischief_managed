@@ -50,13 +50,13 @@ class School extends Component {
       <Schedule setPeriod={this.setPeriod} />
         {!this.state.active && (
           <div className="appHeading">
-            <button onClick={this.activate}>click</button>
+            <button onClick={this.activate}>I solemnly swear that I am up to no good</button>
           </div>
         )}
         {this.state.active && (
           <div>
           <div className="appHeading">
-            <button onClick={this.deactivate}>close</button>
+            <button onClick={this.deactivate}>Mischief Managed</button>
           </div>
             <CastleDash 
               students={this.state.students}
