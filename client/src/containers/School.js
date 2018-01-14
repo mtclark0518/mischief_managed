@@ -4,6 +4,7 @@ import CastleDash from './CastleDash';
 
 import Schedule from './Schedule'
 import '../styles/index.css'
+import Hallows from '../components/Hallows';
 
 class School extends Component {
   constructor(props){
@@ -55,9 +56,9 @@ class School extends Component {
         )}
         {this.state.active && (
           <div>
-          <div className="appHeading">
-            <button onClick={this.deactivate}>Mischief Managed</button>
-          </div>
+            <div className="appHeadingActive">
+              <button onClick={this.deactivate}>Mischief Managed</button>
+            </div>
             <CastleDash 
               students={this.state.students}
               staff={this.state.staff}

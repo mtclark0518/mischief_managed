@@ -12,8 +12,7 @@ class StudentContainer extends Component {
                     score={student.points}
                     house={student.House}
                     location={student.Location}
-                    sendUpdate={this.props.sendUpdate}
-                    />
+                    sendUpdate={this.props.sendUpdate} />
             )
         })
         return(

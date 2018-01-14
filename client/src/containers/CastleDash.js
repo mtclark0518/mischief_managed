@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
-
+import Panel from '../components/Panel'
+import Hallows from '../components/Hallows';
 
 class CastleDash extends Component {
     constructor(props){
@@ -24,9 +25,9 @@ class CastleDash extends Component {
                     <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} houses={this.props.houses}/>
                 )}
                 {this.state.view === 'home' && (
-                    <div>
-                        <button onClick={ e => this.changeView('house') }>houses</button>
-                        <button onClick={ e => this.changeView('location') }>locations</button>
+                    <div className="homeView">
+                        <Panel onClick={ e => this.changeView('house')} data={'houses'}/>
+                        <Panel onClick={ e => this.changeView('location')} data={'locations'}/>
                     </div>
                 )}
             </div>
