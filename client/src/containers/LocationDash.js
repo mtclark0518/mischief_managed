@@ -89,7 +89,7 @@ class LocationDash extends Component {
       publicSpace: publicSpace
     }
     return(
-      <div>
+      <div className="Dash">
 
           <div>
             {this.state.type === 'classrooms' && (

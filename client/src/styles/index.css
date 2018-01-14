@@ -22,17 +22,20 @@ button {
 .appHeading{
     display: flex;
     flex-direction: row;
+    height: 10vh;
+    position: fixed;
 }
 
 .CastleDash {
     width: 100%;
+    padding-top:10vh;
 }
 
 
 
-.HouseDash {
+.Dash {
     /* box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1); */
-    padding: 0 0 20vh;
+    padding: 10vh 0 18vh;
 }
 
 /* House  */
@@ -48,7 +51,6 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-top: 6vh;
 }
 
 .sbOutWrap {
@@ -73,7 +75,8 @@ button {
     position: fixed;
     text-align: center;
     bottom:10vh;
-
+    height: 8vh;
+    background: rgba(250, 250, 250, 0.543);
 }
 
 /* Footer Component  */
