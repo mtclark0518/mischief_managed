@@ -17,7 +17,7 @@ class StudentContainer extends Component {
             )
         })
         return(
-            <div>{students}</div>
+            <div className="StudentContainer">{students}</div>
         )
     }  
 }
