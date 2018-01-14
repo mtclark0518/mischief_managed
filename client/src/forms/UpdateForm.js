@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Label from '../components/Label'
 
 
 class UpdateForm extends Component {
@@ -11,47 +10,27 @@ class UpdateForm extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
-
-    handleChange(event){
-        console.log('fuck off')
-        console.log(event.target.value)
+    handleChange(e){
+        console.log(e.target.value)
         this.setState({
-            value: event.target.value
+            value: e.target.value
         })
 
     }
-
     handleSubmit(e){
         e.preventDefault();
-        this.props.moveStudent(this.props.student, this.state.value)
-        this.props.clear()
+        let amount = parseInt(this.state.value)
+        let update = this.props.update;
+        this.props.sendUpdate(update, amount)
+        this.props.closeForm()
     }
-    
-
     render(){
-        const locations = this.props.locations.map( location => {
-            console.log(location)
-            let name = location.name 
-            let value = location.id
-            return(
-                <option key={location.id} value={value}>{name}</option>
-            )
-        })
-
         return(
             <form onSubmit={ e => this.handleSubmit(e)} method={"PUT"}>
-                <Label title={'Update Location'} onClick={this.props.close} />
-                <select value={this.state.value} onChange={this.handleChange}> 
-                    {locations}
-                </select>
-                <input type="submit"  value={'Move'}/>
+                <input value={this.state.value} type='number' onChange={this.handleChange} /> 
+                <input type="submit"  value={'amount'}/>
             </form>
         )
     }
-
-
-
-
 }
 export default UpdateForm

@@ -6,24 +6,22 @@
 
 body {
     margin: 0;
-    padding: 0;
     font-family: 'Risque', cursive;
-    font-size: 0.8em;
 }
 
 button {
     height: 100%;
     font-family: 'Reenie Beanie', cursive;
-    border: 2px solid transparent;
     background: transparent;
-    color: black;
-    padding: 0 2em;
-    font-size: 1em;
     text-align: center;
 }
 
-.Hogwarts {
+.School {
     min-height: 100vh;
+}
+.appHeading{
+    display: flex;
+    flex-direction: row;
 }
 
 .CastleDash {
@@ -31,24 +29,11 @@ button {
 }
 
 
-/* House Dash  */
 
 .HouseDash {
-    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
+    /* box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1); */
     padding: 0 0 20vh;
 }
-
-.houseNavigation {
-    position: fixed;
-    background: rgba(235, 235, 235, 0.5);
-    box-shadow: 0 0 6px 1px rgba(25, 25, 25, 0.1);
-    bottom: 10vh;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-}
-
 
 /* House  */
 
@@ -56,15 +41,6 @@ button {
     padding: 0.3em 0;
     text-align: center;
 }
-
-.hasFocus {
-    font-weight: 400;
-}
-
-.noFocus {
-    font-weight: 400;
-}
-
 .scoreboard {
     max-width: 750px;
     margin: auto;
@@ -75,12 +51,7 @@ button {
     padding-top: 6vh;
 }
 
-.outerScoreboardContainer {
-    padding: 0.5em;
-    margin: 0.5em;
-}
-
-.innerScoreboardContainer {
+.sbOutWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,7 +60,7 @@ button {
     font-weight: 600;
 }
 
-.housePoints {
+.sbScore {
     font-size: 2.0em;
     box-shadow: 0 0 3px 1px rgba(25, 25, 25, 0.4);
     padding: 0.2em;
@@ -97,84 +68,13 @@ button {
     font-family: 'Black Ops One', cursive;
 }
 
-
-/*  LocationDash Component  */
-
-.locationCategories {
-    font-size: 2em;
-    line-height: 2em;
-}
-
-.locationArrayContainer {
-    padding-bottom: 5vh;
-}
-
-
-/*  Location Component  */
-
-.Location {
-    font-size: 1.5em;
-    margin: 0.8em auto;
-}
-
-
-/* StudentContainer && StaffContainer Component  */
-
-.Container {
-    text-align: center;
-}
-
-.focusContainer {
-    margin: 0.1em auto;
-    min-width: 200px;
-    padding: 0.1em;
-}
-
-
-/* Student Component  */
-
-.Student {
-    display: inline-block;
-    font-family: 'Reenie Beanie', cursive;
-    margin: 0.5em;
-    padding: 0.4em;
-    font-size: 1.3em;
-    font-weight: 700;
-}
-
-
-/* Staff Component  */
-
-.Staff {
-    display: inline-block;
-    font-family: 'Reenie Beanie', cursive;
-    text-decoration: underline;
-    margin: 0.5em auto;
-    padding: 0.5em;
-    font-size: 1.0em;
-    font-weight: 600;
-}
-
-.HeadOfHouse {
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.0em;
-    margin: 0;
-}
-
-
-/* Bar Component  */
-
-.Bar {
-    position: sticky;
-    top: 0;
-    background: rgba(245, 245, 245, 0.8);
-    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
-    height: 10vh;
+.secondaryNav{
     width: 100%;
-    font-size: 2.0em;
-}
+    position: fixed;
+    text-align: center;
+    bottom:10vh;
 
+}
 
 /* Footer Component  */
 
@@ -184,7 +84,6 @@ button {
     height: 10vh;
     width: 100%;
     background: rgba(245, 245, 245, 0.8);
-    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -195,19 +94,11 @@ button {
     transition: all 250ms ease;
 }
 
-.footerSVG:hover {
-    fill: rgba(25, 25, 25, 1.0);
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 8px 1px rgba(100, 100, 100, 1.0);
-}
-
 .deathly_hallows {
     padding: 4px;
 }
 
-
 /* Panel Component  */
-
 .Panel {
     margin: 0.2em auto;
     padding: 3px 4px;
@@ -226,7 +117,7 @@ button {
 
 /* Heading Component */
 
-.Heading {
+.HouseHeading {
     padding: 20px 5px 5px;
     margin-bottom: 12px;
     display: flex;
@@ -257,18 +148,6 @@ button {
     justify-content: space-between;
 }
 
-.labelTitle {
-    font-size: 2em;
-}
-
-.actionSVG {
-    height: 20px;
-    vertical-align: middle;
-}
-
-.changeLocation {
-    height: 40px;
-}
 
 @media (max-height: 480px) {}
 
@@ -276,25 +155,17 @@ button {
     .scoreboard {
         max-width: 400px;
     }
-    .Bar {
-        font-size: 1.0em;
-    }
 }
 
 @media (max-width: 374px) {
-    .Heading {
+    .HouseHeading {
         flex-direction: column;
-    }
-    .HeadOfHouse {
-        margin: 0 0 0 -120px;
     }
     .flexSecondary {
         flex-direction: column;
-        padding: 10px 0;
         align-items: flex-start;
     }
     .houseNavigation {
         width: 100%;
-        font-size: 0.7em;
     }
 }

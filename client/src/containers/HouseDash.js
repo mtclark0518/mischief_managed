@@ -1,86 +1,52 @@
 import React, { Component } from 'react';
-import House from '../components/House'
-import StudentContainer from './StudentContainer'
-import Heading from '../components/Heading'
-import '../styles/index.css'
-
-
+import House from './House'
+import Scoreboard from './Scoreboard'
+import HouseFocus from '../components/HouseFocus';
+import FooterNav from '../components/FooterNav';
 
 class HouseDash extends Component {
   constructor(props){
     super(props)
-    this.state = {
-        expanded: false,
-        focused: null
+    this.state={
+      focus: null
     }
-    this.expand = this.expand.bind(this)
   }
-
-
-render() {
-    let houseNavigation = this.props.houses.map( house => {
-      return (
-        <House
-          key={house.id}
-          house={house}
-          points={house.points}
-          view={'navigation'}
-          expanded={this.state.expanded}
-          expand={this.expand}
-          focused={this.state.focused}
-          focus={this.focus}
-        />
+  focus = place => {
+    const giveFocus = this.props.houses.filter(house => house.id == place)
+    this.setState( {focus:giveFocus[0]} )
+  }
+  resetDash = () => {
+    this.setState( {focus: null} )
+  }
+  render() {
+    const houses = this.props.houses.map( house => {
+      const colors = {
+        primary: house.primaryColor,
+        secondary: house.secondaryColor
+      }
+      const headOfHouse = this.props.staff.filter(staff => staff.HouseId === house.id)
+      const houseRoster = this.props.students.filter(student => student.HouseId === house.id)
+      return(
+        <House key={'hs' + house.id} id={house.id} name={house.name} headOfHouse={headOfHouse[0]} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
-    let scoreboard = this.props.houses.map( house=>{
-      return (
-        <House
-          key={house.id}
-          house={house}
-          points={house.points}
-          view={'scoreboard'}
-          expanded={this.state.expanded}
-          expand={this.expand}
-          focused={this.state.focused}
-          focus={this.focus}
-        />
-      )
-    })
-    return (
-    <div className="HouseDash">
-
-      <div className="">
-        { this.state.focused !== null && (
-          <div className="flexColumn">
-            <Heading details={this.state.focused}/>
-            <StudentContainer syncScoreboard={this.props.syncScoreboard} focused={this.state.focused} type={'house'} from={this.state.focused.id}/>
-          </div>
+    return(
+      <div className="HouseDash">
+        {!this.state.focus && (
+          <Scoreboard houses={houses} />
         )}
-        { this.state.focused === null && (
-          <div className="scoreboard">
-            {scoreboard}
-          </div>
+        <div> {houses} </div>
+        <HouseFocus focus={this.focus} content={houses}/>
+        {this.props.castleView === 'house' &&(
+          <FooterNav 
+            home={e=>this.props.changeView('home')}
+            house={this.resetDash}
+            location={e => this.props.changeView('location')}
+            />
         )}
-
       </div>
-
-      <div className="houseNavigation">
-        {houseNavigation}
-      </div>
-
-    </div>
-    );
-  }
-  expand = () => {
-    this.setState(prevState => ({
-      expanded: !prevState.expanded
-    }))
-  }
-  focus = house => {
-    this.setState({
-      focused: house
-    })
+    )
   }
 }
-
 export default HouseDash;
+

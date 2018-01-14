@@ -1,89 +1,35 @@
 import React, {Component} from 'react'
-import Panel from '../components/Panel'
-import Label from '../components/Label'
-import ActionContainer from '../components/ActionContainer'
 import UpdateForm from '../forms/UpdateForm'
-
+import Label from '../components/Label'
+import Panel from '../components/Panel'
 class Student extends Component {
     constructor(props){
         super(props)
         this.state = {
-            firstName: null,
-            lastName: null,
-            id: null,
-            points: null,
-            house: {},
-            location: null,
-            moving: false,
+            updating: false
         }
     }
-    componentDidMount(){
-
+    update = () => {
+        this.setState({updating:true})
     }
-
     render(){
-        const styles = {
-            color: this.props.student.House.primaryColor,
-            border: '1px solid ' + this.props.student.House.primaryColor,
-            boxShadow: '0 0 2px 0px ' + this.props.student.House.secondaryColor,
-        }
-        const name = this.props.student.firstName + ' ' + this.props.student.lastName;
-        console.log(name)
         return(
-            
-            <div style={styles} className="Student">
-
-                {this.props.expanded && this.props.focused !== null && (
-                    <div> 
-                        <Label title={name} onClick={this.props.close} />
-                        <div>Points: {this.props.student.points}</div>
-                        
-                        {this.props.type === 'location' && (
-                            <div>
-                                {this.state.moving && (
-                                    <UpdateForm 
-                                        moveStudent={this.props.moveStudent}
-                                        locations={this.props.locations} 
-                                        student={this.props.student.id} 
-                                        clear={this.clear}/>
-                                )}
-                                <ActionContainer 
-                                    honor={this.honor} 
-                                    hex={this.hex} 
-                                    move={this.showMovementForm}/>
-                            </div>
-                        )}
-                    </div>
+            <div>
+                {!this.state.updating && (
+                    <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
                 )}
-
-                {this.props.focused === null && (
-                    <Panel onClick={this.expandStudent} data={name} />
+                {this.state.updating && (
+                    <div>
+                        <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
+                        <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                    </div>
                 )}
             </div>
         )
     }
-    expandStudent = () => {
-        this.props.focus(this.props.student)
-    }
-    showMovementForm = () => {
-        this.setState({moving: true})
-    }
-    close = () => {
-        this.setState({moving: false})
-    }
-    honor = () => {
-        this.props.honor(this.props.student.id)
-    }
-    hex = () => {
-        this.props.hex(this.props.student.id)
-    }
-    clear = () => {
-        this.setState({moving: false})
-        this.props.clear()
-
-    }
-
-
+  close = () => {
+      this.setState({updating: false})
+  }
 }
 export default Student;
 
