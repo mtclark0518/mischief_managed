@@ -111,7 +111,6 @@ button {
     margin: auto;
     flex-direction: column;
     box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
-    border: 3px solid transparent;
 }
 
 
