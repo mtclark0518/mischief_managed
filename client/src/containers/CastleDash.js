@@ -3,7 +3,7 @@ import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
 import Panel from '../components/Panel'
 import Hallows from '../components/Hallows';
-
+import FooterNav from '../components/FooterNav'
 class CastleDash extends Component {
     constructor(props){
         super(props)
@@ -25,10 +25,7 @@ class CastleDash extends Component {
                     <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} houses={this.props.houses}/>
                 )}
                 {this.state.view === 'home' && (
-                    <div className="homeView">
-                        <Panel onClick={ e => this.changeView('house')} data={'houses'}/>
-                        <Panel onClick={ e => this.changeView('location')} data={'locations'}/>
-                    </div>
+                    <FooterNav home={e=>this.changeView('home')} house={e => this.changeView('house')} location={e => this.changeView('location')} />
                 )}
             </div>
         )

@@ -6,16 +6,17 @@
 
 body {
     margin: 0;
-    /* font-family: 'Risque', cursive; */
+    font-family: 'Risque', cursive;
 }
 
 button {
     height: 100%;
-    /* font-family: 'Reenie Beanie', cursive; */
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 1.2em;
     background: transparent;
     text-align: center;
 }
-
+/* School Component Styles */
 .School {
     min-height: 100vh;
 }
@@ -26,23 +27,15 @@ button {
     height: 6vh;
     position: fixed;
     width:100%;
+    background: rgba(245, 245, 245, 0.5);
 }
 .appHeading{
     height:100vh;
     justify-content: center;
 }
-
+/* CastleDash Component Styles */
 .CastleDash {
     width: 100%;
-    padding-top:6vh;
-}
-
-
-.homeView{
-    display: flex;
-    flex-direction: row;
-    height:50vh;
-    align-items: center;
 }
 
 .Dash {
@@ -118,16 +111,9 @@ button {
     margin: 0.2em auto;
     padding: 3px 4px;
 }
-
-.flexColumn {
-    display: flex;
-    width: 94%;
-    max-width: 680px;
-    margin: auto;
-    flex-direction: column;
-    box-shadow: 0 0 2px 1px rgba(25, 25, 25, 0.2);
+.panelData{
+    
 }
-
 
 /* Heading Component */
 
@@ -155,7 +141,7 @@ button {
     flex-direction: column;
     align-items: flex-end;
 }
-
+/* Label Component */
 .Label {
     display: flex;
     flex-direction: row;
@@ -165,9 +151,9 @@ button {
 
 @media (max-height: 480px) {}
 
-@media (max-width: 450px) {
+@media (max-width: 490px) {
     .scoreboard {
-        max-width: 400px;
+        max-width: 300px;
     }
 }
 

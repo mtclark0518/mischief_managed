@@ -9,12 +9,19 @@ class Student extends Component {
             updating: false
         }
     }
-    update = () => {
-        this.setState({updating:true})
-    }
+    update = () => {this.setState({updating:true})}
     render(){
+        const colors = {
+            primary: this.props.house.primaryColor,
+            secondary: this.props.house.secondaryColor
+        }
+
+        const styles = {
+            color: colors.primary
+        }
+        console.log(this.props.house)
         return(
-            <div>
+            <div style={styles}>
                 {!this.state.updating && (
                     <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
                 )}
@@ -27,9 +34,7 @@ class Student extends Component {
             </div>
         )
     }
-  close = () => {
-      this.setState({updating: false})
-  }
+  close = () => {this.setState({updating: false})}
 }
 export default Student;
 

@@ -6,7 +6,7 @@ const Panel = props => {
 
     return(
         <div className="Panel" onClick={props.onClick}>
-            {props.data}
+            <div className="panelData">{props.data}</div>
         </div>
     )
 }
