@@ -127,7 +127,7 @@ button {
 
 .emboldened {
     font-weight: 800;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 .flexPrimary {
@@ -149,15 +149,15 @@ button {
 }
 
 
-@media (max-height: 480px) {}
 
 @media (max-width: 490px) {
     .scoreboard {
         max-width: 300px;
     }
 }
+@media (max-height: 450px) {}
 
-@media (max-width: 374px) {
+@media (max-width: 439px) {
     .HouseHeading {
         flex-direction: column;
     }
