@@ -11,6 +11,7 @@ const HouseFocus = props => {
             <button 
                 key={'ff'+data.key}
                 id={data.props.id}
+                className="secondaryItem"
                 onClick={e => giveFocus(e)}>
                 {data.props.name}
             </button>

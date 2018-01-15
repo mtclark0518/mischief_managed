@@ -107,10 +107,10 @@ class LocationDash extends Component {
           </div>
 
         <div className="secondaryNav">
-          <button onClick={e => this.type('classrooms')}>Classrooms</button>
-          <button onClick={e => this.type('common')}>Common Rooms</button>
-          <button onClick={e => this.type('restricted')}>Restricted</button>
-          <button onClick={e => this.type('publicSpace')}>Public Spaces</button>
+          <button className='secondaryItem' onClick={e => this.type('classrooms')}>Classrooms</button>
+          <button className='secondaryItem' onClick={e => this.type('common')}>Common Rooms</button>
+          <button className='secondaryItem' onClick={e => this.type('restricted')}>Restricted</button>
+          <button className='secondaryItem' onClick={e => this.type('publicSpace')}>Public Spaces</button>
         </div>
         {this.props.castleView === 'location' &&(
           <FooterNav home={e=>this.props.changeView('home')} house={e => this.props.changeView('house')} location={this.resetDash} />
