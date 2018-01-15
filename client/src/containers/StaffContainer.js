@@ -10,7 +10,7 @@ class StaffContainer extends Component {
                     key={'sta' + staff.id} 
                     name={staff.firstName}
                     family={staff.lastName}
-                    role={staff.role}
+                    position={staff.position}
                     house={staff.House}
                     location={staff.Location}
                     subject={staff.Subject}
