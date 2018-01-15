@@ -15,7 +15,6 @@ button {
     font-size: 0.6em;
     background: transparent;
     text-align: center;
-    /* margin: 0 0.5em; */
 }
 /* School Component Styles */
 .School {
@@ -129,7 +128,7 @@ button {
 /* Heading Component */
 
 .HouseHeading {
-    /* padding: 20px 5px 5px; */
+    padding: 10px 5px 5px;
     margin-bottom: 12px;
     display: flex;
     flex-direction: row;
@@ -155,6 +154,7 @@ button {
 /* Label Component */
 .Label {
     display: flex;
+    font-size: 1.5em;
     flex-direction: row;
     justify-content: space-between;
 }
