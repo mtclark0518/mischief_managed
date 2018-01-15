@@ -159,7 +159,11 @@ button {
     justify-content: space-between;
 }
 
-
+@media(min-width:700px){
+    .scoreboard{
+        margin-top: 5%;
+    }
+}
 
 @media (max-width: 490px) {
     .scoreboard {
