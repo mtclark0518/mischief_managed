@@ -18,7 +18,7 @@ class Location extends Component {
                     <div>
                         <Label title={this.props.name} onClick={this.props.clear}/>
                         <StaffContainer staff={this.props.staff}/>
-                        <StudentContainer sendUpdate={this.props.sendUpdate} students={this.props.students}/>
+                        <StudentContainer castleView={this.props.castleView} sendUpdate={this.props.sendUpdate} students={this.props.students}/>
                     </div>
                 )}
             </div>

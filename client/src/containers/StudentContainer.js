@@ -7,6 +7,7 @@ class StudentContainer extends Component {
                 <Student
                     key={'stu' + student.id}
                     id={student.id} 
+                    castleView={this.props.castleView} 
                     name={student.firstName}
                     family={student.lastName}
                     score={student.points}

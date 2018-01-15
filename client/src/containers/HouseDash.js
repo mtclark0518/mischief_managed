@@ -15,9 +15,8 @@ class HouseDash extends Component {
     const giveFocus = this.props.houses.filter(house => house.id == place)
     this.setState( {focus:giveFocus[0]} )
   }
-  resetDash = () => {
-    this.setState( {focus: null} )
-  }
+  resetDash = () => {this.setState( {focus: null} )}
+
   render() {
     const houses = this.props.houses.map( house => {
       const colors = {
@@ -27,7 +26,7 @@ class HouseDash extends Component {
       const headOfHouse = this.props.staff.filter(staff => staff.HouseId === house.id)
       const houseRoster = this.props.students.filter(student => student.HouseId === house.id)
       return(
-        <House key={'hs' + house.id} id={house.id} name={house.name} headOfHouse={headOfHouse[0]} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
+        <House key={'hs' + house.id} id={house.id} castleView={this.props.castleView} name={house.name} headOfHouse={headOfHouse[0]} students={houseRoster} colors={colors} score={house.points} founder={house.founder} mascot={house.mascot} focus={this.focus} infocus={this.state.focus}/>
       )
     })
     return(

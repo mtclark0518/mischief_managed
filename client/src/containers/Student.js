@@ -19,18 +19,27 @@ class Student extends Component {
         const styles = {
             color: colors.primary
         }
-        console.log(this.props.house)
+        console.log(this.props)
         return(
             <div style={styles}>
-                {!this.state.updating && (
-                    <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
+                {this.props.castleView === 'house' && (
+                    <Panel data={this.props.name + ' ' + this.props.family}/>
                 )}
-                {this.state.updating && (
+                {this.props.castleView === 'location' && (
                     <div>
-                        <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
-                        <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                        {!this.state.updating && (
+                            <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
+                        )}
+                        {this.state.updating && (
+                            <div>
+                                <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
+                                <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                            </div>
+                        )}                    
                     </div>
                 )}
+
+
             </div>
         )
     }

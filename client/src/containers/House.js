@@ -13,7 +13,7 @@ class House extends Component {
                         {this.props.infocus.id == this.props.id && (
                             <div>
                                 <HouseHeading details={this.props}/>
-                                <StudentContainer students={this.props.students}/>
+                                <StudentContainer castleView={this.props.castleView} students={this.props.students}/>
                             </div>
                         )}
                     </div>
