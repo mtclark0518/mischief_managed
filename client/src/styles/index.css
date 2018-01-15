@@ -91,7 +91,7 @@ button {
 }
 .secondaryItem{
     width:25%;
-    font-size: 0.6em;
+    /* font-size: 0.6em; */
 }
 
 /* FooterNav Component  */
@@ -162,6 +162,9 @@ button {
 @media(min-width:700px){
     .scoreboard{
         margin-top: 5%;
+    }
+    button{
+        font-size: 1.5em;
     }
 }
 
