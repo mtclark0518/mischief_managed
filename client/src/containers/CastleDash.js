@@ -25,7 +25,10 @@ class CastleDash extends Component {
                     <HouseDash castleView={this.state.view} changeView={this.changeView} students={this.props.students} staff={this.props.staff} houses={this.props.houses}/>
                 )}
                 {this.state.view === 'home' && (
+                    <div>
+                    <Hallows />
                     <FooterNav home={e=>this.changeView('home')} house={e => this.changeView('house')} location={e => this.changeView('location')} />
+                    </div>
                 )}
             </div>
         )
