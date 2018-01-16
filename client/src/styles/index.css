@@ -27,7 +27,7 @@ button {
     height: 6vh;
     position: fixed;
     width:100%;
-    background: rgba(245, 245, 245, 0.5);
+    background: rgba(245, 245, 245, 0.8);
 }
 .appHeading{
     height:100vh;
