@@ -204,6 +204,10 @@ button {
 @media (max-width: 579px) {
     .scoreboard {
         max-width: 310px;
+
+    }
+    .sbOutWrap{
+        font-size: 0.8em;
     }
 
 }
@@ -214,7 +218,7 @@ button {
         flex-direction: column;
     }
     .studentView, .staffView{
-        font-size: 0.5em;
+        font-size: 0.6em;
     }
     .flexSecondary {
         flex-direction: column;
