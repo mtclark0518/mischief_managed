@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import StudentContainer from './StudentContainer'
-import StaffContainer from './StaffContainer'
+import Container from './Container'
 import Panel from '../components/Panel'
 import Label from '../components/Label'
 
@@ -17,8 +16,12 @@ class Location extends Component {
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
                     <div>
                         <Label title={this.props.name} onClick={this.props.clear}/>
-                        <StaffContainer staff={this.props.staff}/>
-                        <StudentContainer castleView={this.props.castleView} sendUpdate={this.props.sendUpdate} students={this.props.students}/>
+                        <Container 
+                            castleView={this.props.castleView} 
+                            sendUpdate={this.props.sendUpdate} 
+                            students={this.props.students}
+                            staff={this.props.staff} 
+                            />
                     </div>
                 )}
             </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import StudentContainer from './StudentContainer'
+import Container from './Container'
 import HouseHeading from '../components/HouseHeading';
 class House extends Component {
     giveFocus = () => {
@@ -13,7 +13,10 @@ class House extends Component {
                         {this.props.infocus.id == this.props.id && (
                             <div>
                                 <HouseHeading details={this.props}/>
-                                <StudentContainer castleView={this.props.castleView} students={this.props.students}/>
+                                <Container 
+                                    castleView={this.props.castleView} 
+                                    students={this.props.students}
+                                    staff={this.props.staff}/>
                             </div>
                         )}
                     </div>
