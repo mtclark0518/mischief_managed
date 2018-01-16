@@ -91,7 +91,7 @@ class LocationDash extends Component {
     return(
       <div className="Dash">
 
-          <div>
+          <div className="dashItem">
             {this.state.type === 'classrooms' && (
               <div>{ classrooms }</div>
             )}

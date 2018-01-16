@@ -34,7 +34,7 @@ class HouseDash extends Component {
         {!this.state.focus && (
           <Scoreboard houses={houses} />
         )}
-        <div> {houses} </div>
+        <div className="dashItem"> {houses} </div>
         <HouseFocus focus={this.focus} content={houses}/>
         {this.props.castleView === 'house' &&(
           <FooterNav 

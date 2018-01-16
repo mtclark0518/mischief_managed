@@ -16,12 +16,14 @@ class Student extends Component {
             secondary: this.props.house.secondaryColor
         }
 
-        const styles = {
-            color: colors.primary
+        const border = {
+            border: '1px solid ' + colors.primary,
+            color: colors.primary,
+            boxShadow:' 0 0 3px 1px' + colors.secondary
         }
         console.log(this.props)
         return(
-            <div style={styles}>
+            <div className='studentView' style={border}>
                 {this.props.castleView === 'house' && (
                     <Panel data={this.props.name + ' ' + this.props.family}/>
                 )}
@@ -31,7 +33,7 @@ class Student extends Component {
                             <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
                         )}
                         {this.state.updating && (
-                            <div>
+                            <div className="updatingStudent">
                                 <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
                                 <UpdateForm update={this.props.id}  closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
                             </div>
