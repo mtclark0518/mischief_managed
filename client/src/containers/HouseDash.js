@@ -32,7 +32,7 @@ class HouseDash extends Component {
     return(
       <div className="Dash">
         {!this.state.focus && (
-          <Scoreboard houses={houses} />
+          <Scoreboard focus={this.focus} houses={houses} />
         )}
         <div className="dashItem"> {houses} </div>
         <HouseFocus focus={this.focus} content={houses}/>

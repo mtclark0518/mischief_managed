@@ -3,7 +3,7 @@ import Panel from '../components/Panel'
 class Staff extends Component {
     render(){
         return(
-            <div>{this.props.position + ' ' + this.props.name + ' ' + this.props.family}</div>
+            <div className="staffView">{this.props.position + ' ' + this.props.name + ' ' + this.props.family}</div>
         )
     }
 }

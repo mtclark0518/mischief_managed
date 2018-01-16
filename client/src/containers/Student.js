@@ -23,14 +23,14 @@ class Student extends Component {
         }
         console.log(this.props)
         return(
-            <div className='studentView' style={border}>
+            <div className="studentView" style={border}>
                 {this.props.castleView === 'house' && (
-                    <Panel data={this.props.name + ' ' + this.props.family}/>
+                    <div>{this.props.name + ' ' + this.props.family}</div>
                 )}
                 {this.props.castleView === 'location' && (
                     <div>
                         {!this.state.updating && (
-                            <Panel data={this.props.name + ' ' + this.props.family} onClick={this.update}/>
+                            <div onClick={this.update}>{this.props.name + ' ' + this.props.family}</div>
                         )}
                         {this.state.updating && (
                             <div className="updatingStudent">

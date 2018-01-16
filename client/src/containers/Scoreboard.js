@@ -20,8 +20,12 @@ class Scoreboard extends Component {
             }
             let score = house.props.score;
             console.log(house.props)
+            let giveFocus = e => {
+                e.preventDefault()
+                this.props.focus(house.props.id)
+            }
             return(
-                <div key={'sb'+house.props.id} className="sbOutWrap" style={colorInverse}>
+                <div key={'sb'+house.props.id} className="sbOutWrap" style={colorInverse} onClick={e => giveFocus(e)}>
                     <div className="sbSection">
                         <div className="sbHouse">{house.props.name}</div>
                     </div>

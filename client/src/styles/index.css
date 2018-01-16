@@ -147,7 +147,7 @@ button {
 
 .emboldened {
     font-weight: 800;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .flexPrimary {
@@ -177,8 +177,15 @@ button {
 }
 .studentView{
     text-align: center;
-    padding: 2px;
-    margin: 3px;
+    padding: 3px;
+    margin: 7px;
+}
+.staffView{
+    text-align: center;
+    padding: 3px;
+    margin: 7px;
+    font-weight: 800;
+    border: 1px solid rgba(25, 25, 25, 0.4);
 }
 .updatingStudent{
     padding: 1em;
@@ -194,16 +201,20 @@ button {
 
 }
 
-@media (max-width: 490px) {
+@media (max-width: 579px) {
     .scoreboard {
         max-width: 310px;
     }
+
 }
 @media (max-height: 450px) {}
 
 @media (max-width: 464px) {
     .HouseHeading {
         flex-direction: column;
+    }
+    .studentView, .staffView{
+        font-size: 0.5em;
     }
     .flexSecondary {
         flex-direction: column;
