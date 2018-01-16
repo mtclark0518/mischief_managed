@@ -5,6 +5,14 @@ const Staff = db.models.Staff;
 const Student = db.models.Student;
 
 
+
+function randomBtwnRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+
 const schedule = (req, res) => {
     let block = req.body.block
     Student.findAll()
@@ -19,6 +27,16 @@ const schedule = (req, res) => {
                 case 'meal':
                     student.updateAttributes({
                         LocationId: 15
+                    });
+                    break;
+                case 'class':
+                    student.updateAttributes({
+                        LocationId: randomBtwnRange(5, 14)
+                    });
+                    break;
+                case 'down':
+                    student.updateAttributes({
+                        LocationId: randomBtwnRange(16, 19)
                     });
                     break;
                 default: console.log('uh this shouldnt happen')
@@ -37,4 +55,8 @@ const schedule = (req, res) => {
         });
     });
 };
+
+
+
+
 module.exports = {schedule: schedule}
