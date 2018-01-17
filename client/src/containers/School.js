@@ -21,7 +21,7 @@ class School extends Component {
 
   componentDidMount(){
     axios( { method: 'GET', url: '/api/students'})
-    .then( response => { console.log(response.data); this.setState({students: response.data}) })
+    .then( response => { this.setState({students: response.data}) })
     .then( () => { 
 
       axios( { method: 'GET', url: '/api/staff' })
@@ -42,7 +42,7 @@ class School extends Component {
   activate = () => { this.setState( {active: true} ) }
   deactivate = () => { this.setState( {active: false} ) }
   setPeriod = period => {
-    this.state.period !== period ? this.updateSchedule(period) : console.log('nothin to see here')
+    this.state.period !== period ? this.sendStudents(period) : console.log('nothin to see here')
   }
 
   render() {
@@ -60,11 +60,11 @@ class School extends Component {
               <button onClick={this.deactivate}>Mischief Managed</button>
             </div>
             <CastleDash 
-              students={this.state.students}
-              staff={this.state.staff}
-              locations={this.state.locations}
               houses={this.state.houses}
+              locations={this.state.locations}              
               sendUpdate={this.onUpdateRequest}
+              staff={this.state.staff}
+              students={this.state.students}  
               />
           </div>
         )}
@@ -107,7 +107,8 @@ class School extends Component {
       this.setState({houses:update})
     })
   }
-  updateSchedule = block => {
+  sendStudents = block => {
+    if (block === 'class') { this.sendStaff(block) }
     this.setState({period: block})    
     axios({
       method: 'POST',
@@ -124,5 +125,17 @@ class School extends Component {
     })
   }
 
+
+
+  sendStaff = block => {
+    console.log('sending staff')
+    axios({
+      method: 'POST',
+      url: '/api/schedule/staff',
+      data: {
+        block: block
+      }
+    })
+  }
 }
 export default School;

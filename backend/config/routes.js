@@ -14,7 +14,7 @@ router.put('/api/students/:id', controller.updateStudent)
 
 //Schedule Routes
 router.post('/api/schedule', schedule.schedule)
-
+router.post('/api/schedule/staff', schedule.staffToClass);
 
 
 module.exports = router;

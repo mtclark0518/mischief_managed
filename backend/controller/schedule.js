@@ -31,12 +31,12 @@ const schedule = (req, res) => {
                     break;
                 case 'class':
                     student.updateAttributes({
-                        LocationId: randomBtwnRange(5, 14)
+                        LocationId: randomBtwnRange(5, 15)
                     });
                     break;
                 case 'down':
                     student.updateAttributes({
-                        LocationId: randomBtwnRange(16, 19)
+                        LocationId: randomBtwnRange(16, 20)
                     });
                     break;
                 default: console.log('uh this shouldnt happen')
@@ -56,7 +56,41 @@ const schedule = (req, res) => {
     });
 };
 
+const staffToClass = (req,res) => {
+    console.log(req.body)
+    Staff.findAll({where: {position: "Professor"}}).then(staff=>{
+        let teachers = staff.map(staff=>{
+            return staff.dataValues;
+        })
+        Location.findAll({where: {type: "Classroom"}}).then(location=>{
+            let classrooms = location.map(location=>{
+                return location.dataValues;
+            })
+            teachers.forEach( teacher => {
+                classrooms.forEach(classroom=>{
+                    if(teacher.SubjectId == classroom.SubjectId){
+                        updateTheTeacher(teacher.id , classroom.id)
+                    }
+                })
+            })    
+        })
+    })
+}
+const practice = ( ) => {
 
-
-
-module.exports = {schedule: schedule}
+}
+updateTheTeacher = (who, where) => {
+    console.log(who, where)
+    Staff.findOne({where:{id: who}}).then(staff=>{
+        staff.updateAttributes({
+            LocationId: where
+        }).then(staff=>{
+            console.log('updated the staff')
+        })
+    })
+}
+practice()
+module.exports = {
+    schedule: schedule,
+    staffToClass: staffToClass
+}
