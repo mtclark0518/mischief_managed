@@ -3,7 +3,7 @@ const Location = db.models.Location;
 const House = db.models.House;
 const Staff = db.models.Staff;
 const Student = db.models.Student;
-
+const Subject = db.models.Schedule;
 
 
 function randomBtwnRange(min, max) {
@@ -71,8 +71,13 @@ const staffToClass = (req,res) => {
                     if(teacher.SubjectId == classroom.SubjectId){
                         updateTheTeacher(teacher.id , classroom.id)
                     }
+
                 })
             })    
+        })
+    }).then(()=>{
+        Staff.findAll({include: [ { model: House}, {model: Location}, {model: Subject}]}).then(staff=>{
+            res.json(staff)
         })
     })
 }
@@ -89,7 +94,6 @@ updateTheTeacher = (who, where) => {
         })
     })
 }
-practice()
 module.exports = {
     schedule: schedule,
     staffToClass: staffToClass

@@ -42,7 +42,7 @@ class School extends Component {
   activate = () => { this.setState( {active: true} ) }
   deactivate = () => { this.setState( {active: false} ) }
   setPeriod = period => {
-    this.state.period !== period ? this.sendStudents(period) : console.log('nothin to see here')
+    this.state.period !== period ? this.sendAll(period) : console.log('nothin to see here')
   }
 
   render() {
@@ -103,11 +103,10 @@ class School extends Component {
       method: 'GET', 
       url: '/api/houses/score'
     }).then(response=>{
-      let update = response.data
-      this.setState({houses:update})
+      this.setState({houses:response.data})
     })
   }
-  sendStudents = block => {
+  sendAll = block => {
     if (block === 'class') { this.sendStaff(block) }
     this.setState({period: block})    
     axios({
@@ -117,10 +116,8 @@ class School extends Component {
         block: block
       }
     }).then(response =>{
-      let students = response.data
-      console.log(students)
       this.setState(
-        {students: students}
+        {students: response.data}
       )
     })
   }
@@ -135,6 +132,10 @@ class School extends Component {
       data: {
         block: block
       }
+    }).then(response =>{
+      this.setState(
+        {staff: response.data}
+      )
     })
   }
 }
