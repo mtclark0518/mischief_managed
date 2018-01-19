@@ -107,7 +107,7 @@ class School extends Component {
     })
   }
   sendAll = block => {
-    if (block === 'class') { this.sendStaff(block) }
+    this.sendStaff(block)
     this.setState({period: block})    
     axios({
       method: 'POST',

@@ -58,28 +58,57 @@ const schedule = (req, res) => {
 
 const staffToClass = (req,res) => {
     console.log(req.body)
-    Staff.findAll({where: {position: "Professor"}}).then(staff=>{
-        let teachers = staff.map(staff=>{
-            return staff.dataValues;
-        })
-        Location.findAll({where: {type: "Classroom"}}).then(location=>{
-            let classrooms = location.map(location=>{
-                return location.dataValues;
-            })
-            teachers.forEach( teacher => {
-                classrooms.forEach(classroom=>{
-                    if(teacher.SubjectId == classroom.SubjectId){
-                        updateTheTeacher(teacher.id , classroom.id)
-                    }
-
+    let block = req.body.block;
+    switch(block){
+        case 'class':
+            Staff.findAll({where: {position: "Professor"}}).then(staff=>{
+                let teachers = staff.map(staff=>{
+                    return staff.dataValues;
                 })
-            })    
-        })
-    }).then(()=>{
+                Location.findAll({where: {type: "Classroom"}}).then(location=>{
+                    let classrooms = location.map(location=>{
+                        return location.dataValues;
+                    })
+                    teachers.forEach( teacher => {
+                        classrooms.forEach(classroom=>{
+                            if(teacher.SubjectId == classroom.SubjectId){
+                                updateTheTeacher(teacher.id , classroom.id)
+                            }
+        
+                        })
+                    })    
+                })
+            }).then(()=>{
+                Staff.findAll({include: [ { model: House}, {model: Location}, {model: Subject}]}).then(staff=>{
+                    res.json(staff)
+                })
+            })
+        break;
+        case 'meal':
+            Staff.findAll().then(staff=>{
+                staff.forEach(staff=>{
+                    updateTheTeacher(staff.dataValues.id , 15)
+                })
+            })
+            .then(()=>{
+                Staff.findAll({include: [ { model: House}, {model: Location}, {model: Subject}]}).then(staff=>{
+                    res.json(staff)
+                })
+            })
+        break;
+        case 'sleep':
         Staff.findAll({include: [ { model: House}, {model: Location}, {model: Subject}]}).then(staff=>{
             res.json(staff)
         })
-    })
+        break;
+        case 'down':
+        Staff.findAll({include: [ { model: House}, {model: Location}, {model: Subject}]}).then(staff=>{
+            res.json(staff)
+        })
+        break;
+        default: console.log('ruh roh datsa not good')
+    }
+
 }
 const practice = ( ) => {
 
