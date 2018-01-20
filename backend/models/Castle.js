@@ -7,6 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         name: {
             type: Sequelize.STRING
+        },
+        block: {
+            type: Sequelize.STRING
         }
     });
     return model

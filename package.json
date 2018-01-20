@@ -27,7 +27,6 @@
         "express": "^4.16.2",
         "nodemon": "^1.14.11",
         "pg": "^7.4.0",
-        "sequelize": "^4.22.9",
-        "socket.io": "^2.0.4"
+        "sequelize": "^4.22.9"
     }
 }
