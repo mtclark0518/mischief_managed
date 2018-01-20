@@ -4,6 +4,10 @@ import Student from './Student'
 import Staff from './Staff'
 class Container extends Component {
     render(){
+        let people = {
+            students: this.props.students,
+            staff: this.props.staff
+        }
         const students = this.props.students.map( student => {
             return(
                 <Student
@@ -15,7 +19,9 @@ class Container extends Component {
                     score={student.points}
                     house={student.House}
                     location={student.Location}
-                    sendUpdate={this.props.sendUpdate} />
+                    sendUpdate={this.props.sendUpdate}
+                    interaction={people}
+                      />
             )
         })
         const staff = this.props.staff.map( staff => {

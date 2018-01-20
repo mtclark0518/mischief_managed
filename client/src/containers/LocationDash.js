@@ -48,7 +48,11 @@ class LocationDash extends Component {
         const roster = this.props.students.filter(student => student.LocationId === location.id)
         const name = format(location)
         return(
-          <Location key={'loc' + location.id} castleView={this.props.castleView} type={location.type} id={location.id} name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
+          <Location 
+            key={'loc' + location.id} castleView={this.props.castleView} 
+            type={location.type} id={location.id} 
+            name={name} staff={staff} students={roster} house={location.House} subject={location.Subject} 
+            focus={this.focus} infocus={this.state.focus} clear={this.clearFocus} sendUpdate={this.props.sendUpdate}/>
         )
       }
     })

@@ -20,7 +20,7 @@ class Location extends Component {
                             castleView={this.props.castleView} 
                             sendUpdate={this.props.sendUpdate} 
                             students={this.props.students}
-                            staff={this.props.staff} 
+                            staff={this.props.staff}
                             />
                     </div>
                 )}
