@@ -5,7 +5,7 @@ import CastleDash from './CastleDash';
 import Schedule from './Schedule'
 import '../styles/index.css'
 import Hallows from '../components/Hallows';
-
+import { CSSTransitionGroup } from 'react-transition-group'
 class School extends Component {
   constructor(props){
     super(props)
@@ -50,9 +50,10 @@ class School extends Component {
       <div className="School">
       <Schedule setPeriod={this.setPeriod} />
         {!this.state.active && (
-          <div className="appHeading">
-            <button onClick={this.activate}>I solemnly swear that I am up to no good</button>
-          </div>
+   
+            <div className="appHeading">
+              <button onClick={this.activate}>I solemnly swear that I am up to no good</button>
+            </div>
         )}
         {this.state.active && (
           <div>

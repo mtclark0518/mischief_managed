@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {CSSTransitionGroup} from 'react-transition-group';
 import Student from './Student'
 import Staff from './Staff'
 class Container extends Component {
@@ -33,10 +34,15 @@ class Container extends Component {
         return(
             <div>
                 {this.props.castleView === 'location' && (
-                    <div className="STContainer">{staff} {students}</div>
+                    <div className="STContainer">
+                        {staff} 
+                        {students}
+                    </div>
                 )}
                 {this.props.castleView === 'house' && (
-                    <div className="STContainer">{students}</div>
+                    <div className="STContainer">
+                        {students}
+                    </div>
                 )}
             </div>
         )
