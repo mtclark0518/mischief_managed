@@ -7,16 +7,13 @@ class Scoreboard extends Component {
             let styles = {
 
             }
-            let colorNormal = {
+            let color = {
                 color: house.props.colors.primary,
-                background: house.props.colors.secondary,
 
             }
-            let colorInverse = {
-                color: house.props.colors.secondary,
-                background: house.props.colors.primary,
+            let colorBorder = {
+                color: house.props.colors.primary,
                 border: '2px solid ' + house.props.colors.secondary,
-                boxShadow: '0 0 5px 2px ' + house.props.colors.secondary 
             }
             let score = house.props.score;
             console.log(house.props)
@@ -25,12 +22,12 @@ class Scoreboard extends Component {
                 this.props.focus(house.props.id)
             }
             return(
-                <div key={'sb'+house.props.id} className="sbOutWrap" style={colorInverse} onClick={e => giveFocus(e)}>
+                <div key={'sb'+house.props.id} className="sbOutWrap" style={colorBorder} onClick={e => giveFocus(e)}>
                     <div className="sbSection">
                         <div className="sbHouse">{house.props.name}</div>
                     </div>
                     <div className="sbSection">
-                        <div className="sbScore" style={colorNormal}>{score}</div>
+                        <div className="sbScore" style={color}>{score}</div>
                     </div>
                     <div className="sbSection">
                         <div className="sbTeam">{house.props.mascot}s</div>

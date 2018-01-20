@@ -10,7 +10,8 @@ const HouseFocus = props => {
     const data = props.content.map(data => {
         let style = {
             boxShadow: '0 0 1px 0 ' + data.props.colors.primary,
-            color: data.props.colors.primary
+            color: data.props.colors.secondary,
+            background: data.props.colors.primary
         }
         return(
             <button 

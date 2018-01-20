@@ -57,7 +57,7 @@ class School extends Component {
         {this.state.active && (
           <div>
             <div className="appHeadingActive">
-              <button onClick={this.deactivate}>Mischief Managed</button>
+              <button className="logoutButton" onClick={this.deactivate}>Mischief Managed</button>
             </div>
             <CastleDash 
               houses={this.state.houses}
