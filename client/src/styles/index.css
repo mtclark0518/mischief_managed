@@ -251,7 +251,8 @@ button {
         width: 100%;
     }
     .secondaryItem{
-        font-size: 0.6em;
+        font-size: 0.7em;
+        padding: 1px;
     }
     .logoutButton{
         margin-right: 1vh;
