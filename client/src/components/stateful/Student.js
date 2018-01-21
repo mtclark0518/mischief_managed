@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import UpdateForm from '../forms/UpdateForm'
-import Label from '../components/Label'
-import Panel from '../components/Panel'
+import Label from '../presentation/Label'
+import Panel from '../presentation/Panel'
 class Student extends Component {
     constructor(props){
         super(props)

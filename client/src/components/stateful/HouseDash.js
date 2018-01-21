@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import House from './House'
-import Scoreboard from './Scoreboard'
-import HouseFocus from '../components/HouseFocus';
-import FooterNav from '../components/FooterNav';
+import House from '../presentation/House'
+import Scoreboard from '../presentation/Scoreboard'
+import HouseFocus from '../presentation/HouseFocus';
+import FooterNav from '../presentation/FooterNav';
 
 class HouseDash extends Component {
   constructor(props){

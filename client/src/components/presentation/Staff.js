@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Panel from '../components/Panel'
+import Panel from './Panel'
 class Staff extends Component {
     render(){
         return(

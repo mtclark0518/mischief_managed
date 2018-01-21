@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Container from './Container'
-import Panel from '../components/Panel'
-import Label from '../components/Label'
+import Panel from './Panel'
+import Label from './Label'
 
 class Location extends Component {
     giveFocus = () => {

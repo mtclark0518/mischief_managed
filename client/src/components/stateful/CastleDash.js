@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import HouseDash from './HouseDash'
 import LocationDash from './LocationDash'
-import Panel from '../components/Panel'
-import Hallows from '../components/Hallows';
-import FooterNav from '../components/FooterNav'
+import Panel from '../presentation/Panel'
+import Hallows from '../presentation/Hallows';
+import FooterNav from '../presentation/FooterNav'
 class CastleDash extends Component {
     constructor(props){
         super(props)

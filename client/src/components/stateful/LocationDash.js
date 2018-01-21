@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Location from './Location'
-import FooterNav from '../components/FooterNav'
+import Location from '../presentation/Location'
+import FooterNav from '../presentation/FooterNav'
 
 
 class LocationDash extends Component {

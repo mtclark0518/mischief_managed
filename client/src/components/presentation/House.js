@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Container from './Container'
-import HouseHeading from '../components/HouseHeading';
+import HouseHeading from './HouseHeading';
 class House extends Component {
     giveFocus = () => {
         this.props.focus(this.props.id)
