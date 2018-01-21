@@ -1,7 +1,5 @@
 const express = require('express')
-const http = require('http')
 const app = express();
-const server = http.createServer(app)
 const bodyParser = require('body-parser');
 const path = require('path')
 const routes = require('./backend/config/routes')
@@ -27,4 +25,4 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
-server.listen(PORT, () => log('Shakedown ' + PORT));
+app.listen(PORT, () => log('Shakedown ' + PORT));
