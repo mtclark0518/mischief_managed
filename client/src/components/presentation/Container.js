@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {CSSTransitionGroup} from 'react-transition-group';
 import Student from '../stateful/Student'
-import Staff from '../stateful/Staff'
+import Staff from './Staff'
 class Container extends Component {
     render(){
         let people = {

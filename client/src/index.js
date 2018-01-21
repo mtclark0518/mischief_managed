@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import School from './containers/School'
+import School from './components/stateful/School'
 import registerServiceWorker from './registerServiceWorker';
 const Root = document.getElementById('root')
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import CastleDash from './CastleDash';
-
 import Schedule from './Schedule'
-import '../styles/index.css'
-import Hallows from '../components/Hallows';
+import '../../styles/index.css'
+import Hallows from '../presentation/Hallows';
 import { CSSTransitionGroup } from 'react-transition-group'
 class School extends Component {
   constructor(props){
