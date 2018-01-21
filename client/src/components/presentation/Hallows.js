@@ -2,7 +2,7 @@
 //items have a click function 
 
 import React from 'react'
-import '../styles/hallows.css'
+import '../../styles/hallows.css'
 
 const Hallows = props => {
     return(
