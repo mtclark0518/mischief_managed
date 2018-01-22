@@ -3,7 +3,14 @@ import {CSSTransitionGroup} from 'react-transition-group';
 import Student from '../stateful/Student'
 import Staff from './Staff'
 class Container extends Component {
+
+
+
     render(){
+
+        const interaction = people => {
+            console.log(people)
+        }
         let people = {
             students: this.props.students,
             staff: this.props.staff
@@ -20,7 +27,7 @@ class Container extends Component {
                     house={student.House}
                     location={student.Location}
                     sendUpdate={this.props.sendUpdate}
-                    interaction={people}
+                    interaction={this.interation}
                       />
             )
         })
