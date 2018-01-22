@@ -1,13 +1,8 @@
 TODO: 
 
-  finish schedule
-    unique schedule patterns
-
-    address schedule updates in the front end
-      School component when resetting state
 
   implement interaction
-    hardcode state to class on interaction branch
+    hardcode state to class on interaction branch --done
     add interaction attributes to staff model
     add interaction attributes to student model
     add interation stats to seed.js
@@ -24,6 +19,13 @@ TODO:
         two objects of the same time 
         an array of objects (different from the first two but similar to one another)
       
+
+    finish schedule
+    unique schedule patterns
+
+    address schedule updates in the front end
+      School component when resetting state
+
   scoreboard to the header when in location view
 
 
