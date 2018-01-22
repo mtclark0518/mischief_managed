@@ -1,10 +1,9 @@
 TODO: 
 
-
   implement interaction
     hardcode state to class on interaction branch --done
-    add interaction attributes to staff model
-    add interaction attributes to student model
+    add interaction attributes to staff model --done
+    add interaction attributes to student model --done
     add interation stats to seed.js
       reseed
 
