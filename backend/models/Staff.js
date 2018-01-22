@@ -16,16 +16,13 @@ module.exports = (sequelize, Sequelize) => {
         },
         // attributes that impact the interaction function  -- scaled between 0 - 1
         awareness: {
-            type: Sequelize.INTEGER,
-            allowNull: false
+            type: Sequelize.INTEGER
         },
         severity: {
-            type: Sequelze.INTEGER,
-            allowNull: false
+            type: Sequelize.INTEGER
         },
         biasCorruption: {
-            type: Sequelize.INTEGER,
-            allowNull: true
+            type: Sequelize.INTEGER
         }
     });
     return model

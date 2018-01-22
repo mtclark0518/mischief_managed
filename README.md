@@ -4,8 +4,8 @@ TODO:
     hardcode state to class on interaction branch --done
     add interaction attributes to staff model --done
     add interaction attributes to student model --done
-    add interation stats to seed.js
-      reseed
+    add interation stats to seed.js --done
+      reseed --done
 
     conatainer level holds staff and student objects so this is where the 'interaction' itself takes place
     pass interaction as props into student component
