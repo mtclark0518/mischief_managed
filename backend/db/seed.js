@@ -757,16 +757,16 @@ const createStudents = () => {
 const createOrganizations = () => {
     return DB.Organization.bulkCreate(organizations)
 };
-
+// const data = [createCastle(), createHouse(), createSubject(), createLocation(), createOrganizations(), createStaff(), createStudents()]
 // createCastle()
 //     .then(
-//         createHouse() 
+        // createHouse() 
 //     )
 //     .then(
-//         createSubject()
+        // createSubject()
 //     )
 //     .then(
-//         createLocation()
+        // createLocation()
 //     )
 
 // createOrganizations()
@@ -774,5 +774,10 @@ const createOrganizations = () => {
 //    createStaff()
     
 createStudents()
+// const seed = array => {
+//     array.forEach(item=>{
+//         return item.then( () => { process.exit() } )
+//     })
+// }
 
 .then( () => { process.exit() } )

@@ -8,7 +8,7 @@ TODO:
       reseed --done
 
     conatainer level holds staff and student objects so this is where the 'interaction' itself takes place
-    pass interaction as props into student component
+    pass interaction as props into student component --done
     interaction needs access to other students available 
   
 
@@ -18,6 +18,10 @@ TODO:
         two objects of the same time 
         an array of objects (different from the first two but similar to one another)
       
+
+---make sure to push new db before merging with master
+
+
 
     finish schedule
     unique schedule patterns
