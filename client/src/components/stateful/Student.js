@@ -35,7 +35,7 @@ class Student extends Component {
                         {this.state.updating && (
                             <div className="updatingStudent">
                                 <Label title={this.props.name + ' ' + this.props.family} onClick={this.close}/>
-                                <UpdateForm update={this.props.id} choices={this.props.interaction} closeForm={this.close} sendUpdate={this.props.sendUpdate}/>
+                                <UpdateForm update={this.props} choices={this.props.students} closeForm={this.close} interaction={this.props.interaction}/>
                             </div>
                         )}                    
                     </div>

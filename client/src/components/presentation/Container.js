@@ -6,15 +6,20 @@ class Container extends Component {
 
 
 
+
     render(){
 
-        const interaction = people => {
-            console.log(people)
-        }
-        let people = {
+
+
+        const people = {
             students: this.props.students,
             staff: this.props.staff
         }
+        const interaction = (one, two) => {
+            console.log(one, two)
+            console.log(people.staff)
+        }
+
         const students = this.props.students.map( student => {
             return(
                 <Student
@@ -27,7 +32,8 @@ class Container extends Component {
                     house={student.House}
                     location={student.Location}
                     sendUpdate={this.props.sendUpdate}
-                    interaction={this.interation}
+                    students={people.students}
+                    interaction={interaction}
                       />
             )
         })
@@ -41,6 +47,9 @@ class Container extends Component {
                     house={staff.House}
                     location={staff.Location}
                     subject={staff.Subject}
+                    awareness={staff.awareness}
+                    severity={staff.severity}
+                    biasCorruption={staff.biasCorruption}
                     />
             )
         })  
@@ -60,5 +69,8 @@ class Container extends Component {
             </div>
         )
     }  
+    interaction = (people,staff) => {
+        console.log(people)
+    }
 }
 export default Container;

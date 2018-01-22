@@ -31,13 +31,13 @@ class Schedule extends Component {
         hour/2 <= 12 ? 
             (hour >= 11 ? this.props.setPeriod('meal') :
                 (hour >= 8 ? this.props.setPeriod('class') : 
-                    (hour >= 7 ? this.props.setPeriod('meal') :
-                    this.props.setPeriod("sleep")))) : 
-            (hour >= 22 ? this.props.setPeriod('sleep') : 
-                (hour >= 18 ? this.props.setPeriod("down") :    
+                    (hour >= 7 ? this.props.setPeriod('class') :
+                    this.props.setPeriod("class")))) : 
+            (hour >= 22 ? this.props.setPeriod('class') : 
+                (hour >= 18 ? this.props.setPeriod("class") :    
                     (hour >= 17 ? this.props.setPeriod('meal') : 
                         (hour < 15 ? this.props.setPeriod('class') : 
-                        this.props.setPeriod('down')
+                        this.props.setPeriod('class')
                     )
                 )
             )
