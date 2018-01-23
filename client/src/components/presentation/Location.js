@@ -14,7 +14,7 @@ class Location extends Component {
                     <Panel onClick={this.giveFocus} data={this.props.name}/>
                 )}
                 {this.props.infocus && this.props.infocus.id === this.props.id && (
-                    <div>
+                    <div className="locationContainer">
                         <Label title={this.props.name} onClick={this.props.clear}/>
                         <Container 
                             castleView={this.props.castleView} 
