@@ -196,6 +196,13 @@ button {
     flex-direction: row;
     justify-content: space-between;
 }
+.closeButton{
+    color: black;
+    transition: all 250ms ease;
+}
+.closeButton:hover{
+    color: darkred;
+}
 .locationContainer{
     padding-top: 5vh;
 }
