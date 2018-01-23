@@ -5,7 +5,7 @@ class UpdateForm extends Component {
     constructor(props){
         super(props)
         this.state = {
-            value: 'Where to boss?'
+            value: 'Who we gettin?'
         }
     }
     handleChange = e => {
@@ -18,24 +18,24 @@ class UpdateForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         let amount = parseInt(this.state.value)
-        let update = this.props.update;
-        this.props.sendUpdate(update, amount)
+        console.log(amount)
+        console.log(this.props.update.id)
+        // let update = this.props.update;
+        this.props.interaction(this.props.update.id, amount)
         this.props.closeForm()
     }
     render(){
-        let choices = this.props.choices.students.map(choice=>{
-            console.log(choice)
-            return(
-                <option key={choice.id} value={choice}>{choice.firstName + ' ' + choice.lastName}</option>
-            )
+        let choices = this.props.choices
+            .filter(choice => choice.id !== this.props.update)
+            .map( choice => {
+                return( <option key={choice.id} value={choice.id}>{choice.firstName + ' ' + choice.lastName}</option> )
         })
-        console.log(choices)
         return(
             <form onSubmit={ e => this.handleSubmit(e)} method={"PUT"}>
                 <select value={this.state.value} onChange={e => this.handleChange(e)}>
                     {choices}
                 </select> 
-                <input type="submit"  value={'amount'}/>
+                <input type="submit"  value={'send hex'}/>
             </form>
         )
     }

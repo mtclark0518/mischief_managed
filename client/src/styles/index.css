@@ -155,13 +155,14 @@ button {
     margin: 1%;
     padding: 1%;
     border: 1px solid transparent;
+    display: flex;
+    align-items: center;
     box-shadow: 0 0 1px 0 rgba(35, 35, 40, 0.4);
-    background: rgba(241, 241, 243, 1)
+    background: rgba(241, 241, 243, 1);
+    height: 6vh;
 
 }
-.panelData{
-    
-}
+
 /* Heading Component */
 
 .HouseHeading {
@@ -195,19 +196,34 @@ button {
     flex-direction: row;
     justify-content: space-between;
 }
+.closeButton{
+    color: black;
+    transition: all 250ms ease;
+}
+.closeButton:hover{
+    color: darkred;
+}
+.locationContainer{
+    padding-top: 5vh;
+}
 .STContainer{
     display: flex;
     flex-direction: row;
     flex-wrap:  wrap;
     justify-content: center;
     padding: 1%;
+    padding-top: 5%;
 }
 .studentView{
     text-align: center;
     padding: 3px;
     margin: 7px;
+    display: flex;
+    align-items: center;
 }
 .staffView{
+    display: flex;
+    align-items: center;
     text-align: center;
     padding: 3px;
     margin: 7px;
@@ -215,7 +231,7 @@ button {
     border: 1px solid rgba(25, 25, 25, 0.4);
 }
 .updatingStudent{
-    padding: 1em;
+    padding: 0.3em;
 }
 @media(min-width:700px){
     .scoreboard{
@@ -240,6 +256,10 @@ button {
     .HouseHeading {
         flex-direction: column;
     }
+    .Label{
+        font-size: 1em;
+    }
+
     .studentView, .staffView{
         font-size: 0.8em;
     }

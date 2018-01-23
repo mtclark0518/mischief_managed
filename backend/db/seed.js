@@ -582,7 +582,9 @@ const staff = [
         lastName: 'Dumbledore',
         position: 'Headmaster',
         CastleId: 1,
-        LocationId: 15
+        LocationId: 15,
+        awareness: 1,
+        severity: 0.1
     },
     {
         firstName: 'Minerva',
@@ -592,6 +594,9 @@ const staff = [
         SubjectId: 10,
         HouseId: 1,
         LocationId: 15,
+        awareness: 0.8,
+        severity: 0.75,
+        biasCorruption: 0.3
     },
     {
         firstName: 'Pomona',
@@ -601,6 +606,9 @@ const staff = [
         SubjectId: 6,
         HouseId: 2,
         LocationId: 15,
+        awareness: 0.4,
+        severity: 0.65,
+        biasCorruption: 0.5
     },
     {
         firstName: 'Filius',
@@ -610,6 +618,9 @@ const staff = [
         SubjectId: 3,
         HouseId: 3,
         LocationId: 15,
+        awareness: 0.4,
+        severity: 0.65,
+        biasCorruption: 0.5
     },
     {
         firstName: 'Severus',
@@ -619,6 +630,9 @@ const staff = [
         SubjectId: 9,
         HouseId: 4,
         LocationId: 15,
+        awareness: 0.7,
+        severity: 0.95,
+        biasCorruption: 0.9
     },
     {
         firstName: 'Remus',
@@ -627,6 +641,8 @@ const staff = [
         SubjectId: 4,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.55,
+        severity: 0.5
     },
     {
         firstName: 'Rubius',
@@ -635,6 +651,8 @@ const staff = [
         SubjectId: 2,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.4,
+        severity: 0.3
     },
     {
         firstName: 'Sybill',
@@ -643,6 +661,8 @@ const staff = [
         SubjectId: 5,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.15,
+        severity: 0.7
     },
     {
         firstName: 'Cuthbert',
@@ -651,6 +671,8 @@ const staff = [
         SubjectId: 7,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.5,
+        severity: 0.5
     },
     {
         firstName: 'Charity',
@@ -659,6 +681,8 @@ const staff = [
         SubjectId: 8,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.5,
+        severity: 0.5
     },
     {
         firstName: 'Septima',
@@ -667,6 +691,8 @@ const staff = [
         SubjectId: 1,
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.5,
+        severity: 0.5
     },
     {
         firstName: 'Argus',
@@ -674,6 +700,8 @@ const staff = [
         position: 'Caretaker',
         CastleId: 1,
         LocationId: 15,
+        awareness: 0.6,
+        severity: 0.8
     },
     {
         firstName: 'Irma',
@@ -681,6 +709,8 @@ const staff = [
         position: 'Librarian',
         CastleId: 1,
         LocationId: 18,
+        awareness: 0.55,
+        severity: 0.5
     },
     {
         firstName: 'Poppy',
@@ -688,6 +718,8 @@ const staff = [
         position: 'Matron',
         CastleId: 1,
         LocationId: 17,
+        awareness: 0.65,
+        severity: 0.8
     }
 ]
 const organizations = [
@@ -725,21 +757,27 @@ const createStudents = () => {
 const createOrganizations = () => {
     return DB.Organization.bulkCreate(organizations)
 };
-
+// const data = [createCastle(), createHouse(), createSubject(), createLocation(), createOrganizations(), createStaff(), createStudents()]
 // createCastle()
-    // .then(
+//     .then(
         // createHouse() 
-    // )
-    // .then(
+//     )
+//     .then(
         // createSubject()
-    // )
-    // .then(
+//     )
+//     .then(
         // createLocation()
-    // )
+//     )
 
 // createOrganizations()
 
 //    createStaff()
     
 createStudents()
+// const seed = array => {
+//     array.forEach(item=>{
+//         return item.then( () => { process.exit() } )
+//     })
+// }
+
 .then( () => { process.exit() } )

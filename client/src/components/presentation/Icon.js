@@ -6,7 +6,7 @@ import {faTimesCircle, faMinusSquare} from '@fortawesome/fontawesome-free-regula
 const Icon = {
     Close: function(props){
     return(
-        <button onClick={props.onClick}>
+        <button className="closeButton" onClick={props.onClick}>
             <FontAwesomeIcon icon={faTimesCircle}/>
         </button>
     )},
